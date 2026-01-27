@@ -39,3 +39,41 @@ I think internal simulations of physics are going to come into this - the sense 
 Some of this can only be decided by making it.
 
 What is it like to playtest something slow? Horrible?
+
+## 2026-01-26
+
+I was going to try implementing some stuff this evening but haven't got to it as yet. I've been caught up in thinking about the differences between the games I'm proposing (to myself) but also the question of mobile-friendly, which generally speaking I do want.
+
+### Mobile?
+
+Mobile massively changes the kinds of controls we can reasonably have and the way that they feel. Like, how would you do *Asteroids* on mobile? I could look at an example most obviously I guess. Swipe left and right to turn, tap to shoot? I suppose that's alright actually. Alright well maybe that bit is solvable.
+
+### Time-feel
+
+The other big controls-oriented thing is the relationship between the player's not-slow-time and the game's slow-time. In my imagining of *Pong* for instance it's that the player can move the paddle as rapidly as they want, but the ball will move very slowly (no thoughts just yet on the AI paddle, but I suppose it too can move ultra slow - though in doing so it will kind of imply the player ought to as well?).
+
+That makes sense in mobile (just to tie these two together) as well because there's not necessarily I super obvious way of converting mobile input into slow-input? I suppose you could press or swipe and have it translate to small amount of motion? But it seems off? And I think I like the realtime-ness of the paddle movement as something that throws into relief your relationship to the system. It kind of "creates" time-feel? What the fuck am I talking about with time-feel? Let's not take ourselves too seriously even though it's a pretty fun term.
+
+BUT not every game would have this kind of realtime input or, if it did, it might impact how the game plays. e.g. Asteroids? Can the ship spin at a "real-time" speed but everything else is slow including the pace and cool-down of shooting? If so the game is radically changed because it's so much easier to play? But then I suppose that's just the same as in the Pong... the point here isn't for the game to remain challenging... almost the opposite? The Zen-ness (and the frustration of it?) is all about the lack of tension? Or the relocation of the tension to "I want to *act*!"
+
+### Game choice
+
+So, alright, Asteroids sure. Pong sure. Breakout sure. Tetris?
+
+Tetris... well I suppose so yes. You can move the pieces around willy-nilly in terms of left/right and spin, but they drop slow and presumably you can't do the turbo-drop or maybe even the speed-up thing? Or is it funny to have the speed-up but it's also VERY SLOW?
+
+So Tetris sure. And perhaps one more for the no-reason-for-ot number of five? I do like Snake, but the problem with Snake is that it doesn't have that idea of a separation between player and motion? You contro the snake and the snake is slow and on tiles, so your actions only have an outcome on tile boundaries/ticks (and in fact you would have to make the snake slide continuously between ticks). So it kind of doesn't work?
+
+Space Invaders makes sense (provided a shooting cool-down as with Asteroids). Are they too similar? Frogger is quite funny, though feels somehow really distinct? Missile Command is quite *appealing* to me somehow, but I don't know that I know how to make it? But probably I could learn.
+
+So that fifth slot is up for grabs. 
+
+- Pong
+- Breakout
+- Asteroids
+- Tetris
+- Space Invaders / Frogger / Missile Command
+
+Seems reasonable and I can absolutely make Pong and Breakout *now* so as to get a decent start on this before I lose hope. Tetris scares me a bit, but I can probably do it.
+
+Phaser3 versus p5? Any reason to use one or the other? Probably. I'll think about it tomorrow.
