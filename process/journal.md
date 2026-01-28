@@ -77,3 +77,22 @@ So that fifth slot is up for grabs.
 Seems reasonable and I can absolutely make Pong and Breakout *now* so as to get a decent start on this before I lose hope. Tetris scares me a bit, but I can probably do it.
 
 Phaser3 versus p5? Any reason to use one or the other? Probably. I'll think about it tomorrow.
+
+## Basics, erotics, and next moves (2026-01-28)
+
+Yesterday and today I got the basics of a Pong set up. Slow feels slow. One of the things I don't think I'd accounted for is how *smooth* slowness is... it has a... mouthfeel? I suppose it's a game feel™ isn't it, Steve. At any rate there's a pleasure to it, I think - though I'm perverse by nature. I think there's an "erotics" of slowness in here...? Edging? Am I going there? I'm not meant to go that way, this isn't sexy-times, this is meditation and frustration (is that what sexy times are?).
+
+The Pong feels like it already confirms my feeling that this is worthwhile. It makes the key move (slow ball, a nice slow ball), and the move works, and the move invites further moves. The next moves aren't totally clear but:
+
+- Apparently leaning toward eroticism is occurring to me, but I don't think that's the direction I want juuust right now
+- I think some sort of slow change along with the game itself might be merited - most obviously a very slow palette shift
+- I think, as I noted in a commit, that some music would not be amiss - slow music, drones most obviously, either with random elements so it's non-repeating and/or layering in of elements as the game is prolonged... the reward of the drums or some such...
+- Ways to artificially say "oh you're so deep in this, you're so meditating" that perhaps invite or trick or cause meditation for real?
+
+Currently there's no score - does it need one? Yes I suppose so, though it feels like it's not the point? Finishing the game wouldn't be interesting... it's about the movement... I think I'm talking myself out of the score.
+
+What happens when you miss? What slow thing could happen? The ball teleporting back and starting again feels incorrect?
+
+I'm currently: happy with this.
+
+Can I move so fast that the whole thing is done really soon and I don't second guess myself out of happiness? Let's just see.
