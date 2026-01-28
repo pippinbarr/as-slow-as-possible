@@ -12,6 +12,8 @@ class Pong extends Phaser.Scene {
         this.width = this.game.canvas.width;
         this.height = this.game.canvas.height;
 
+        this.BALL_SPEED = 5;
+        this.PADDLE_SPEED = 5;
         this.PADDLE_WIDTH = this.width / 4;
         this.PADDLE_HEIGHT = this.PADDLE_WIDTH * 0.1;
 
@@ -36,7 +38,7 @@ class Pong extends Phaser.Scene {
         const ball = this.add.circle(this.width / 2, this.height / 2, this.PADDLE_HEIGHT * 0.75, 0x6666ff);
         this.ball = this.physics.add.existing(ball)
 
-        this.ball.body.setVelocity(5, 5)
+        this.ball.body.setVelocity(this.BALL_SPEED, this.BALL_SPEED)
             .setBounce(1, 1);
 
         this.physics.add.collider(this.ball, this.rightWall);
@@ -46,14 +48,26 @@ class Pong extends Phaser.Scene {
     }
 
     update() {
-        this.bottomPaddle.x = this.input.activePointer.x;
+        this.handleInput();
+        this.handleTopPaddle();
+    }
+
+    handleInput() {
+        // Handles mouse and touch
+        this.bottomPaddle.x = Phaser.Math.Clamp(this.input.activePointer.x, this.PADDLE_WIDTH * 0.5, this.width - this.PADDLE_WIDTH * 0.5);
+    }
+
+    handleTopPaddle() {
+        if (this.ball.x < this.topPaddle.x) {
+            this.topPaddle.body.setVelocity(-this.PADDLE_SPEED, 0);
+        }
+        else if (this.ball.x > this.topPaddle.x) {
+            this.topPaddle.body.setVelocity(this.PADDLE_SPEED, 0);
+        }
+        this.topPaddle.x = Phaser.Math.Clamp(this.topPaddle.x, this.PADDLE_WIDTH * 0.5, this.width - this.PADDLE_WIDTH * 0.5);
     }
 
     paddleHit(paddle, ball) {
-        // ball.body.velocity.y = -ball.body.velocity.y;
-    }
-
-    wallHit(wall, ball) {
-        // ball.body.velocity.x = -ball.body.velocity.x;
+        // May want to include "spin" here?
     }
 }
