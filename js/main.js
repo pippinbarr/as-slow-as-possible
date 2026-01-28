@@ -1,5 +1,5 @@
 const DEBUG = false;
-const START_SCENE = "menu";
+const START_SCENE = "pong";
 const WIDTH = 480;
 const HEIGHT = 640;
 const LANG = "en";
@@ -13,6 +13,7 @@ let config = {
     Boot,
     Preloader,
     Menu,
+    Pong,
   ],
   render: {
     pixelArt: true,
