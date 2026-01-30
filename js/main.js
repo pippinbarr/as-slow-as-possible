@@ -33,4 +33,7 @@ let config = {
   },
 };
 
+initStrudel();
+
+
 let game = new Phaser.Game(config);
