@@ -1,5 +1,5 @@
 const DEBUG = false;
-const START_SCENE = "pong";
+const START_SCENE = "breakout";
 const WIDTH = 480;
 const HEIGHT = 640;
 const LANG = "en";
@@ -14,6 +14,7 @@ let config = {
     Preloader,
     Menu,
     Pong,
+    Breakout,
   ],
   render: {
     pixelArt: true,
