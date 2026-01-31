@@ -46,10 +46,14 @@ class Pong extends Phaser.Scene {
         this.physics.add.collider(this.ball, this.topPaddle);
         this.physics.add.collider(this.ball, this.bottomPaddle);
 
-        samples('github:tidalcycles/dirt-samples')
+        samples('github:tidalcycles/dirt-samples');
+
         document.addEventListener('click', () => {
-            stack(note('<c a f e>(3,8)').jux(rev),
-                s("[bd sd bd sd]")).play();
+            stack(
+                note('<c a f e>(3,8)').jux(rev).lpf(700),
+                s("[bd sd bd <sd sd sd sd*2>]").lpf(1500),
+                s("[hh*4 hh*2 hh*2 hh*2]").lpf(sine.range(1000, 1500).slow(4))
+            ).play();
         });
     }
 
