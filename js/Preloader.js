@@ -7,7 +7,7 @@ class Preloader extends Phaser.Scene {
   }
 
   preload() {
-
+    this.load.image(`particle`, `assets/images/particle.png`);
   }
 
   create() {

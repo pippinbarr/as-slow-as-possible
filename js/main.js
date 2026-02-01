@@ -1,4 +1,5 @@
 const DEBUG = false;
+const FAST_MODE = false;
 const START_SCENE = "breakout";
 const WIDTH = 480;
 const HEIGHT = 640;
