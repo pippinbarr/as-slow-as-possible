@@ -1,4 +1,4 @@
-class Pong extends Phaser.Scene {
+class Pong extends Game {
 
     constructor(config) {
         super({
@@ -9,15 +9,12 @@ class Pong extends Phaser.Scene {
     }
 
     create() {
-        this.width = this.game.canvas.width;
-        this.height = this.game.canvas.height;
+        super.create();
 
         this.BALL_SPEED = 5;
         this.PADDLE_SPEED = 5;
         this.PADDLE_WIDTH = this.width / 4;
         this.PADDLE_HEIGHT = this.PADDLE_WIDTH * 0.1;
-
-        this.cameras.main.setBackgroundColor(0x0000dd);
 
         const bottomPaddle = this.add.rectangle(this.width / 2, this.height - this.PADDLE_HEIGHT * 2, this.PADDLE_WIDTH, this.PADDLE_HEIGHT, 0x6666ff);
         this.bottomPaddle = this.physics.add.existing(bottomPaddle);
@@ -46,15 +43,7 @@ class Pong extends Phaser.Scene {
         this.physics.add.collider(this.ball, this.topPaddle);
         this.physics.add.collider(this.ball, this.bottomPaddle);
 
-        samples('github:tidalcycles/dirt-samples');
 
-        document.addEventListener('click', () => {
-            stack(
-                note('<c a f e>(3,8)').jux(rev).lpf(700),
-                s("[bd sd bd <sd sd sd sd*2>]").lpf(1500),
-                s("[hh*4 hh*2 hh*2 hh*2]").lpf(sine.range(1000, 1500).slow(4))
-            ).play();
-        });
     }
 
     update() {

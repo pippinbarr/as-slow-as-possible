@@ -1,6 +1,6 @@
 const DEBUG = false;
 const FAST_MODE = false;
-const START_SCENE = "breakout";
+const START_SCENE = "tetris";
 const WIDTH = 480;
 const HEIGHT = 640;
 const LANG = "en";
@@ -14,13 +14,15 @@ let config = {
     Boot,
     Preloader,
     Menu,
+
     Pong,
     Breakout,
+    Tetris,
   ],
   render: {
-    pixelArt: true,
+    // pixelArt: true,
   },
-  pixelArt: true,
+  // pixelArt: true,
   physics: {
     default: 'arcade',
     arcade: {
