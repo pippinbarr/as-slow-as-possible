@@ -96,3 +96,21 @@ What happens when you miss? What slow thing could happen? The ball teleporting b
 I'm currently: happy with this.
 
 Can I move so fast that the whole thing is done really soon and I don't second guess myself out of happiness? Let's just see.
+
+## Erotica; Music; Suite; Open Source (2026-02-02)
+
+I have a basic implementation of three of the games already and it felt like something more or less immediately, as I wrote. 
+
+At least in Pong, there was the potential for an "erotic charge" version of slowness, the anticipation of physical touch essentially. The meditative thing I think can be felt as well. All through just the slow minimalist version. I wonder the extent to which Pong being two player creates the eroticism of it? Will need to investigate that.
+
+The question becomes (for this and the rest) how I seek to emphasize and shape the experience toward a specific experience of time. Maybe the most fundamental question is just: well, how do you get someone to *stay with it*? Erotic anticipation is an answer, something that fills the attention *in between* key moments is another, pre-emphasis on a meditative state is still another. And they're not all incompatible.
+
+Music has come up as a key question - would some sort of procedural/generative musical accompaniment help to make the in-between time "engaging enough". Do I even want to walk into that territory of feeling responsible for the player's engagement or do I want to pull the old trick of saying "be engaged" and relying on the conceptual layer to do it (losing most people in the process)?
+
+In calling these a "suite" I'm realizing the inheritance/influence of the Nothings Suite which I think I like - a different tradition of variation for me, one where you take known quantities and modify them all in the same way (by generating them from nothing, by slowing them down, by x'ing them). This is turning into a journal entry so let me relocate.
+
+The "in between" is key, and ties very well to meditation and erotic experience. Anticipation on the erotic end, and being-in-the-moment on the meditation end? That seems like a huge part of the "investigation" involved in this then.
+
+In the last commit I found myself thinking about using/wanting to use open source versions of the games as a starting point and just slowing them down and pulling them toward what I need - with the caveat/worry about using a different level of materials meaning I maybe miss affordances/opportunities I would have seen if I'd been paying attention at the deeper level. Also just the classic thing of it taking longer/being a worse experience using existing code than rolling your own.
+
+But I did resolve to try it out, so I will with Tetris at least. No real reason not to.
