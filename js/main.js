@@ -1,5 +1,5 @@
-const DEBUG = false;
-const FAST_MODE = false;
+const DEBUG = true;
+const FAST_MODE = true;
 const START_SCENE = "tetris";
 const WIDTH = 480;
 const HEIGHT = 640;
@@ -37,6 +37,6 @@ let config = {
   },
 };
 
-initStrudel();
+// initStrudel();
 
 let game = new Phaser.Game(config);

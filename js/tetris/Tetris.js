@@ -45,6 +45,7 @@ class Tetris extends Game {
         super.create();
 
         this.tileSize = 32;
+        this.pieceSpeed = FAST_MODE ? 1 : 0.001;
 
         this.currentPiece = this.spawnPiece(this.width / 2, 0);
 
@@ -54,8 +55,7 @@ class Tetris extends Game {
     update(time, delta) {
         this.handleInput();
 
-        this.currentPiece.incY(0.001 * delta);
-        this.currentPiece.y += 0.001 * delta;
+        this.moveCurrentPieceDown(delta);
     }
 
     handleInput() {
@@ -74,6 +74,27 @@ class Tetris extends Game {
         else if (Phaser.Input.Keyboard.JustDown(this.cursors.down)) {
             this.rotatePiece(1);
         }
+    }
+
+    moveCurrentPieceDown(delta) {
+        this.currentPiece.incY(this.pieceSpeed * delta);
+        this.currentPiece.y += this.pieceSpeed * delta;
+
+        // Check if we just passed a tile boundary
+        if (Math.floor(this.currentPiece.y) % this.tileSize === 0) {
+            const blocks = this.currentPiece.getChildren();
+            // Check bottom
+            for (let block of blocks) {
+                if (block.y + block.displayHeight / 2 >= this.height / 2) {
+                    console.log("Bottom")
+                    this.currentPiece.y = Math.floor(this.currentPiece.y);
+                    this.currentPiece = this.spawnPiece(this.width / 2, 0);
+                    break;
+                }
+            }
+        }
+
+
     }
 
     rotatePiece(dir) {
