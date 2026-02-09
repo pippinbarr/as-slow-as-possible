@@ -10,6 +10,8 @@ class Asteroids extends Game {
     }
 
     create() {
+        super.create();
+
         const width = this.cameras.main.width
         const height = this.cameras.main.height
 
@@ -17,27 +19,33 @@ class Asteroids extends Game {
 
         // this.background = this.add.image(0, 0, 'starfield').setOrigin(0, 0)
 
-        this.player = this.physics.add.image(200, 200, 'particle').setScale(50)
-        this.player.setDrag(0.99)
-        this.player.setMaxVelocity(5)
+        // this.player = this.physics.add.image(200, 200, 'particle').setScale(50)
+
         // this.player.setScale(0.5)
-        this.player.setCollideWorldBounds(true)
+        // this.player.setCollideWorldBounds(true)
+
+        const x = this.width / 2;
+        const y = this.height / 2;
+
+        this.player = this.add.triangle(x, y, 0, 0, 0, 20, 20, 10, 0x6666ff, 1);
+        this.physics.add.existing(this.player);
+        this.player.body.setDrag(0.99)
+        this.player.body.setMaxVelocity(5)
 
         // generate our meteors
         this.meteorGroup = this.physics.add.group()
         this.meteorArray = []
 
         for (let i = 0; i < 10; i++) {
-            const meteor = new Meteor(this, 300, 300)
+            // const meteor = new Meteor(this, 300, 300)
 
-            const xPos = Phaser.Math.RND.between(0, 800)
-            const yPos = Phaser.Math.RND.between(0, 600)
-            meteor.setPosition(xPos, yPos)
-            meteor.setActive(true)
-            meteor.setVisible(true)
+            const x = Phaser.Math.RND.between(0, this.width)
+            const y = Phaser.Math.RND.between(0, this.height)
+            const size = Phaser.Math.RND.pick([10, 20, 40]);
 
-            this.meteorGroup.add(meteor, true)
-            this.meteorArray.push(meteor)
+            const circle = this.add.circle(x, y, size, 0x6666ff, 1.0);
+            this.meteorGroup.add(circle);
+            circle.body.setCircle(x, y, size / 2);
         }
 
         this.laserGroup = this.physics.add.group({
@@ -48,10 +56,6 @@ class Asteroids extends Game {
 
         this.physics.add.overlap(this.laserGroup, this.meteorGroup, this.collision, null, this)
 
-        // this.scoreText = this.add
-        // .bitmapText(width - 200, 20, 'arcade', 'Score: 0000', 24)
-        // .setOrigin(0.5)
-
         this.cursors = this.input.keyboard.createCursorKeys()
     }
 
@@ -60,22 +64,21 @@ class Asteroids extends Game {
         if (this.cursors.up.isDown) {
             this.physics.velocityFromRotation(this.player.rotation, 150, this.player.body.acceleration)
         } else {
-            this.player.setAcceleration(0)
+            this.player.body.setAcceleration(0)
         }
 
         if (this.cursors.left.isDown) {
-            this.player.setAngularVelocity(-300)
+            this.player.body.setAngularVelocity(-300)
         } else if (this.cursors.right.isDown) {
-            this.player.setAngularVelocity(300)
+            this.player.body.setAngularVelocity(300)
         } else {
-            this.player.setAngularVelocity(0)
+            this.player.body.setAngularVelocity(0)
         }
 
         if (this.cursors.space.isDown) {
             const shoot = this.laserGroup.get()
             if (shoot) {
                 shoot.fire(this.player.x, this.player.y, this.player.rotation)
-                // this.sound.play('shoot')
             }
         }
 

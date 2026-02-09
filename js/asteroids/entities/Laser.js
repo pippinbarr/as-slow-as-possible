@@ -1,9 +1,10 @@
 class Laser extends Phaser.Physics.Arcade.Sprite {
   constructor(scene, x, y) {
-    super(scene, x, y, 'laser');
+    super(scene, x, y, 'particle');
 
-    this.speed = 0.01
-    this.setScale(0.6)
+    this.speed = 0.01;
+    this.setScale(10, 2);
+    this.setTint(0x6666ff);
 
   }
 

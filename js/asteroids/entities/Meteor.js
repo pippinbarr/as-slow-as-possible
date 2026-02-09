@@ -1,21 +1,27 @@
-class Meteor extends Phaser.Physics.Arcade.Image {
+class Meteor extends Phaser.GameObjects.Graphics {
 
   constructor(scene, x, y) {
-    super(scene, x, y)
+    super(scene, {
+      x: x,
+      y: y
+    });
 
     this.meteorType = Phaser.Math.RND.between(0, 2)
 
     switch (this.meteorType) {
       case 0:
-        this.setTexture('particle').setScale(50);
+        // this.setScale(50);
         break;
       case 1:
-        this.setTexture('particle').setScale(50);
+        // this.setScale(25);
         break;
       case 2:
-        this.setTexture('particle').setScale(50);
+        // this.setScale(10);
         break;
     }
+
+    scene.add.existing(this);
+    scene.physics.add.existing(this);
 
     this.speed = 0.001;
     this.direction = Phaser.Math.RND.angle()
