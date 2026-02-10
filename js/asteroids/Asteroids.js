@@ -38,14 +38,13 @@ class Asteroids extends Game {
 
         for (let i = 0; i < 10; i++) {
             // const meteor = new Meteor(this, 300, 300)
-
             const x = Phaser.Math.RND.between(0, this.width)
             const y = Phaser.Math.RND.between(0, this.height)
             const size = Phaser.Math.RND.pick([10, 20, 40]);
 
             const circle = this.add.circle(x, y, size, 0x6666ff, 1.0);
             this.meteorGroup.add(circle);
-            circle.body.setCircle(x, y, size / 2);
+            circle.body.setCircle(size);
         }
 
         this.laserGroup = this.physics.add.group({
