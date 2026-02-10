@@ -7,22 +7,13 @@ class Asteroids extends Game {
         super({
             key: "asteroids"
         })
+
+        this.missileSpeed = 5 * (FAST_MODE ? 50 : 1);
+        this.asteroidSpeed = 1 * (FAST_MODE ? 50 : 1);
     }
 
     create() {
         super.create();
-
-        const width = this.cameras.main.width
-        const height = this.cameras.main.height
-
-        this.score = 0
-
-        // this.background = this.add.image(0, 0, 'starfield').setOrigin(0, 0)
-
-        // this.player = this.physics.add.image(200, 200, 'particle').setScale(50)
-
-        // this.player.setScale(0.5)
-        // this.player.setCollideWorldBounds(true)
 
         const x = this.width / 2;
         const y = this.height / 2;
@@ -34,28 +25,32 @@ class Asteroids extends Game {
 
         // generate our meteors
         this.meteorGroup = this.physics.add.group()
-        this.meteorArray = []
-
         for (let i = 0; i < 10; i++) {
-            // const meteor = new Meteor(this, 300, 300)
             const x = Phaser.Math.RND.between(0, this.width)
             const y = Phaser.Math.RND.between(0, this.height)
             const size = Phaser.Math.RND.pick([10, 20, 40]);
 
-            const circle = this.add.circle(x, y, size, 0x6666ff, 1.0);
-            this.meteorGroup.add(circle);
-            circle.body.setCircle(size);
+            this.addAsteroid(x, y, size);
         }
 
-        this.laserGroup = this.physics.add.group({
-            classType: Laser,
-            maxSize: 1,
-            runChildUpdate: true
-        })
+        this.missileGroup = this.physics.add.group()
 
-        this.physics.add.overlap(this.laserGroup, this.meteorGroup, this.collision, null, this)
+        this.physics.add.overlap(this.missileGroup, this.meteorGroup, this.collision, null, this)
 
         this.cursors = this.input.keyboard.createCursorKeys()
+    }
+
+    addAsteroid(x, y, size) {
+        const angle = Math.random() * Math.PI;
+        const vx = Math.cos(angle) * this.missileSpeed;
+        const vy = Math.sin(angle) * this.missileSpeed;
+
+        const circle = this.add.circle(x, y, size, 0x6666ff, 1.0);
+
+        this.meteorGroup.add(circle);
+        circle.body.setCircle(size);
+        circle.size = size;
+        circle.body.setVelocity(vx, vy);
     }
 
     update(time, delta) {
@@ -74,30 +69,40 @@ class Asteroids extends Game {
             this.player.body.setAngularVelocity(0)
         }
 
-        if (this.cursors.space.isDown) {
-            const shoot = this.laserGroup.get()
-            if (shoot) {
-                shoot.fire(this.player.x, this.player.y, this.player.rotation)
+        if (Phaser.Input.Keyboard.JustDown(this.cursors.space)) {
+            const angle = this.player.rotation;
+            const x = this.player.x + Math.cos(angle) * 10;
+            const y = this.player.y + Math.sin(angle) * 10;
+            const vx = Math.cos(angle) * this.missileSpeed;
+            const vy = Math.sin(angle) * this.missileSpeed;
+            const missile = this.add.rectangle(x, y, 4, 4, 0x6666ff);
+            this.physics.add.existing(missile);
+            this.missileGroup.add(missile);
+            missile.body.setVelocity(vx, vy);
+        }
+
+        for (let asteroid of this.meteorGroup.getChildren()) {
+            if (asteroid.x < 0 || asteroid.x > this.width) {
+                asteroid.x = this.width - asteroid.x;
+            }
+            if (asteroid.y < 0 || asteroid.y > this.height) {
+                asteroid.y = this.height - asteroid.y;
             }
         }
-
-
-        for (const meteor of this.meteorArray) {
-            meteor.update(time, delta)
-        }
-
-        // this.scoreText.setText('Score: ' + this.score)
-
     }
 
-    collision(laser, meteor) {
-        laser.destroy()
-        meteor.destroy()
-        // this.score += 10
-        // this.sound.play('explosion')
+    collision(missile, asteroid) {
+        // World's most hopeless Asteroids splitting algorithm
+        if (asteroid.size === 40) {
+            this.addAsteroid(asteroid.x + 50, asteroid.y, 20);
+            this.addAsteroid(asteroid.x - 50, asteroid.y, 20);
+        }
+        else if (asteroid.size === 20) {
+            this.addAsteroid(asteroid.x + 50, asteroid.y, 10);
+            this.addAsteroid(asteroid.x - 50, asteroid.y, 10);
 
-        // if (this.meteorGroup.countActive() === 0) {
-        //     this.scene.switch('game-over-scene')
-        // }
+        }
+        missile.destroy();
+        asteroid.destroy();
     }
 }

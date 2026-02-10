@@ -1,4 +1,4 @@
-const DEBUG = true;
+const DEBUG = false;
 const FAST_MODE = true;
 const START_SCENE = "asteroids";
 const WIDTH = 480;
