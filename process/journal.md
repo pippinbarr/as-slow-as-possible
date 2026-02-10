@@ -114,3 +114,19 @@ The "in between" is key, and ties very well to meditation and erotic experience.
 In the last commit I found myself thinking about using/wanting to use open source versions of the games as a starting point and just slowing them down and pulling them toward what I need - with the caveat/worry about using a different level of materials meaning I maybe miss affordances/opportunities I would have seen if I'd been paying attention at the deeper level. Also just the classic thing of it taking longer/being a worse experience using existing code than rolling your own.
 
 But I did resolve to try it out, so I will with Tetris at least. No real reason not to.
+
+## Scrutiny, Missiles and UFOs (2026-02-10)
+
+### Scrutiny
+
+I got circle colliders working on my asteroids this morning because I couldn't bear them to be otherwise. And the reason for that is that when they were square (but the asteroids themselves circles to try to keep with a rectangles-and-circles aesthetic) the missile would of course often collide before visually touching the asteroid. Which in the fast-paced hectic world of normal play you don't really notice (or you make the hitbox smaller that the asteroid and so you get the opposite where the missile collides "late"). But one of the key practical outcomes of slowness is that you *see* any of those compromises really distinctly. 
+
+I'm actually in two minds about it - one way is to hew to the "reality" of the original games and have flawed collisions etc. become visible to the player in a way they wouldn't normally be. Another is to embrace slowness as they operating factor and have things "make sense" in that slow world. Currently I'm leaning to the latter because I still have it in mind that this is "about" relaxing/calming/meditating and distractions like odd collisions would seem to distract from that.
+
+So there are kind of different factors of slowness I hadn't anticipated that now rear their heads, scrutiny being a big one. Players have the *time* to examine (and find wanting?) the game. The game seems more vulnerable to the player's gaze? Even at the same time that the game is being sort of "muscular" in asserting an "inhuman" (or at least "non-gamer") timescale? It reminds me a bit of the CPU edition of Ancient Greek Punishment, that tension between the unbeatable/eternal Sisyphus and simultaneously his vulnerability once the timescale is huge to things like electricity shutdowns and hardware degradation.
+
+### Missiles and UFOs
+
+I took a look at the Atari version of Asteroids to check on what the missiles look like and they're just dots. I also saw that the cooldown is way *less* than I thought. I'd imagined a single missile at a time, but in fact you could shoot tons of them! So that needs to be worked in (and indicated?). 
+
+Also recalled the existence of the UFO so need to contemplate how I approach that.
