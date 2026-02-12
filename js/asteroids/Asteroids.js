@@ -1,4 +1,4 @@
-// Implementation from:
+// Original implementation from:
 // https://github.com/wazooinc/phaser-meteor-swarm
 // Has a basic license in the README
 
@@ -17,23 +17,29 @@ class Asteroids extends Game {
     create() {
         super.create();
 
-        // Create the player
         const x = this.width / 2;
         const y = this.height / 2;
+
+        // Create the player's rocket flame?
+        this.playerFlame = this.add.triangle(x, y, 0, 0, 0, 20, -20, 10, 0xff66ff, 1);
+        this.physics.add.existing(this.playerFlame)
+        this.playerFlame.setOrigin(0.5, 0.5);
+        this.playerFlame.setScale(0);
+
+        // Create the player
         this.player = this.add.triangle(x, y, 0, 0, 0, 20, 20, 10, 0x6666ff, 1);
         this.physics.add.existing(this.player);
         this.player.body.setDrag(0.99)
         this.player.body.setMaxVelocity(this.shipSpeed)
 
-        // Create the player's rocket flame?
-        // this.playerFlame = this.add.triangle(x, y, 0, 0, 0, 20, -20, 10, 0xff66ff, 1);
+
 
         // generate our meteors
         this.meteorGroup = this.physics.add.group()
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 5; i++) {
             const x = Phaser.Math.RND.between(0, this.width)
             const y = Phaser.Math.RND.between(0, this.height)
-            const size = Phaser.Math.RND.pick([10, 20, 40]);
+            const size = 40;
 
             this.addAsteroid(x, y, size);
         }
@@ -47,8 +53,8 @@ class Asteroids extends Game {
 
     addAsteroid(x, y, size) {
         const angle = Math.random() * Math.PI;
-        const vx = Math.cos(angle) * this.missileSpeed;
-        const vy = Math.sin(angle) * this.missileSpeed;
+        const vx = Math.cos(angle) * this.asteroidSpeed * 40 / size;
+        const vy = Math.sin(angle) * this.asteroidSpeed * 40 / size;
 
         const circle = this.add.circle(x, y, size, 0x6666ff, 1.0);
 
@@ -59,12 +65,20 @@ class Asteroids extends Game {
     }
 
     update(time, delta) {
+        super.update(time, delta);
+
+        this.playerFlame.body.x = this.player.body.x;
+        this.playerFlame.body.y = this.player.body.y;
+        this.playerFlame.body.rotation = this.player.body.rotation;
+
 
         if (this.cursors.up.isDown) {
             this.physics.velocityFromRotation(this.player.rotation, this.shipSpeed, this.player.body.acceleration);
-            // this.player.body.setAcceleration(2000)
+            this.playerFlame.setScale(1, 1);
+
         } else {
             this.player.body.setAcceleration(0)
+            this.playerFlame.setScale(0);
         }
 
         if (this.cursors.left.isDown) {
@@ -108,19 +122,17 @@ class Asteroids extends Game {
                 missile.destroy();
             }
         }
-
     }
 
     collision(missile, asteroid) {
         // World's most hopeless Asteroids splitting algorithm
         if (asteroid.size === 40) {
-            this.addAsteroid(asteroid.x + 50, asteroid.y, 20);
-            this.addAsteroid(asteroid.x - 50, asteroid.y, 20);
+            this.addAsteroid(asteroid.x + Phaser.Math.Between(-20, 20), asteroid.y + Phaser.Math.Between(-20, 20), 20);
+            this.addAsteroid(asteroid.x + Phaser.Math.Between(-20, 20), asteroid.y + Phaser.Math.Between(-20, 20), 20);
         }
         else if (asteroid.size === 20) {
-            this.addAsteroid(asteroid.x + 50, asteroid.y, 10);
-            this.addAsteroid(asteroid.x - 50, asteroid.y, 10);
-
+            this.addAsteroid(asteroid.x + Phaser.Math.Between(-10, 10), asteroid.y + Phaser.Math.Between(-10, 10), 10);
+            this.addAsteroid(asteroid.x + Phaser.Math.Between(-10, 10), asteroid.y + Phaser.Math.Between(-10, 10), 10);
         }
         missile.destroy();
         asteroid.destroy();
