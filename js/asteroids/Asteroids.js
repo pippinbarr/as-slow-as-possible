@@ -10,18 +10,23 @@ class Asteroids extends Game {
 
         this.missileSpeed = 5 * (FAST_MODE ? 50 : 1);
         this.asteroidSpeed = 1 * (FAST_MODE ? 50 : 1);
+        this.shipSpeed = 3 * (FAST_MODE ? 50 : 1);
+        this.shipSpinSpeed = 6 * 50;  //(FAST_MODE ? 50 : 1);
     }
 
     create() {
         super.create();
 
+        // Create the player
         const x = this.width / 2;
         const y = this.height / 2;
-
         this.player = this.add.triangle(x, y, 0, 0, 0, 20, 20, 10, 0x6666ff, 1);
         this.physics.add.existing(this.player);
         this.player.body.setDrag(0.99)
-        this.player.body.setMaxVelocity(5)
+        this.player.body.setMaxVelocity(this.shipSpeed)
+
+        // Create the player's rocket flame?
+        // this.playerFlame = this.add.triangle(x, y, 0, 0, 0, 20, -20, 10, 0xff66ff, 1);
 
         // generate our meteors
         this.meteorGroup = this.physics.add.group()
@@ -56,15 +61,16 @@ class Asteroids extends Game {
     update(time, delta) {
 
         if (this.cursors.up.isDown) {
-            this.physics.velocityFromRotation(this.player.rotation, 150, this.player.body.acceleration)
+            this.physics.velocityFromRotation(this.player.rotation, this.shipSpeed, this.player.body.acceleration);
+            // this.player.body.setAcceleration(2000)
         } else {
             this.player.body.setAcceleration(0)
         }
 
         if (this.cursors.left.isDown) {
-            this.player.body.setAngularVelocity(-300)
+            this.player.body.setAngularVelocity(-this.shipSpinSpeed)
         } else if (this.cursors.right.isDown) {
-            this.player.body.setAngularVelocity(300)
+            this.player.body.setAngularVelocity(this.shipSpinSpeed)
         } else {
             this.player.body.setAngularVelocity(0)
         }
@@ -89,6 +95,20 @@ class Asteroids extends Game {
                 asteroid.y = this.height - asteroid.y;
             }
         }
+
+        if (this.player.x < 0 || this.player.x > this.width) {
+            this.player.x = this.width - this.player.x;
+        }
+        if (this.player.y < 0 || this.player.y > this.height) {
+            this.player.y = this.height - this.player.y;
+        }
+
+        for (let missile of this.missileGroup.getChildren()) {
+            if (missile.x < 0 || missile.x > this.width || missile.y < 0 || missile.y > this.height) {
+                missile.destroy();
+            }
+        }
+
     }
 
     collision(missile, asteroid) {

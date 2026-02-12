@@ -27,7 +27,7 @@ Questions:
 
 ## Asteroids
 
-I haven't made this yet. I like the idea that the ship spins in "real time" and everything else is slow - need a cool-down on the gun (and it needs to be clear). 
+Basics of this are now in place.
 
 - As above, and
 
