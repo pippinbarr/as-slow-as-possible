@@ -32,8 +32,6 @@ class Asteroids extends Game {
         this.player.body.setDrag(0.99)
         this.player.body.setMaxVelocity(this.shipSpeed)
 
-
-
         // generate our meteors
         this.meteorGroup = this.physics.add.group()
         for (let i = 0; i < 5; i++) {
@@ -137,4 +135,6 @@ class Asteroids extends Game {
         missile.destroy();
         asteroid.destroy();
     }
+
+
 }

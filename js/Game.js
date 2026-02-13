@@ -20,5 +20,46 @@ class Game extends Phaser.Scene {
         //         s("[hh*4 hh*2 hh*2 hh*2]").lpf(sine.range(1000, 1500).slow(4))
         //     ).play();
         // });
+
+        this.timer = 3 * 60 + 3;
+        this.timerText = this.add.text(this.width - 10, this.height - 10, "hi", {
+            font: "24px sans-serif",
+            color: "#6666ff",
+            // backgroundColor: "#000",
+            padding: {
+                top: 0,
+                bottom: 0,
+            },
+            // align: "right",
+        }).setOrigin(1, 1);
+        this.updateTimerText();
+
+        this.input.keyboard.on('keydown-ONE', () => {
+            this.scene.start("pong");
+        }, this);
+        this.input.keyboard.on('keydown-TWO', () => {
+            this.scene.start("breakout");
+        }, this);
+        this.input.keyboard.on('keydown-THREE', () => {
+            this.scene.start("asteroids");
+        }, this);
+    }
+
+    update(time, delta) {
+        super.update();
+
+        this.timer -= delta / 1000;
+        if (this.timer < 0) {
+            this.timer = 0;
+            // And end...
+        }
+        this.updateTimerText();
+    }
+
+
+    updateTimerText() {
+        const minutes = Math.floor(this.timer / 60)
+        const seconds = Math.floor(this.timer - minutes * 60);
+        this.timerText.text = `${minutes}:${seconds < 10 ? "0" + seconds : seconds}`;
     }
 }

@@ -32,7 +32,7 @@ class Pong extends Game {
         this.rightWall = this.physics.add.existing(rightWall);
         this.rightWall.body.setImmovable(true);
 
-        const ball = this.add.circle(this.width / 2, this.height / 2, this.PADDLE_HEIGHT * 0.75, 0x6666ff);
+        const ball = this.add.circle(this.width / 2, this.height / 2, this.PADDLE_HEIGHT * 0.75, 0xff66ff);
         this.ball = this.physics.add.existing(ball)
 
         this.ball.body.setVelocity(this.BALL_SPEED, this.BALL_SPEED)
@@ -46,7 +46,9 @@ class Pong extends Game {
 
     }
 
-    update() {
+    update(time, delta) {
+        super.update(time, delta);
+
         this.handleInput();
         this.handleTopPaddle();
     }

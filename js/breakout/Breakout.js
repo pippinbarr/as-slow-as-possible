@@ -30,7 +30,7 @@ class Breakout extends Game {
         // this.rightWall = this.physics.add.existing(rightWall);
         // this.rightWall.body.setImmovable(true);
 
-        const ball = this.add.circle(this.width / 2, this.height / 1.6, this.PADDLE_HEIGHT * 0.75, 0x6666ff);
+        const ball = this.add.circle(this.width / 2, this.height / 1.6, this.PADDLE_HEIGHT * 0.75, 0xff66ff);
         this.ball = this.physics.add.existing(ball)
 
         this.ball.body
@@ -69,7 +69,9 @@ class Breakout extends Game {
 
     }
 
-    update() {
+    update(time, delta) {
+        super.update(time, delta);
+
         this.handleInput();
     }
 
@@ -83,8 +85,6 @@ class Breakout extends Game {
     }
 
     brickHit(ball, brick) {
-        console.log("Hit")
         brick.destroy();
-        // ball.body.velocity.y *= -1;
     }
 }
