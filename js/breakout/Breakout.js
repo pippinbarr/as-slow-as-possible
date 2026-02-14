@@ -18,7 +18,7 @@ class Breakout extends Game {
         this.PADDLE_HEIGHT = this.PADDLE_WIDTH * 0.1;
 
 
-        const paddle = this.add.rectangle(this.width / 2, this.height - this.PADDLE_HEIGHT * 2, this.PADDLE_WIDTH, this.PADDLE_HEIGHT, 0x6666ff);
+        const paddle = this.add.rectangle(this.width / 2, this.height - this.PADDLE_HEIGHT * 2, this.PADDLE_WIDTH, this.PADDLE_HEIGHT, this.fgColour);
         this.paddle = this.physics.add.existing(paddle);
         this.paddle.body.setImmovable(true);
 
@@ -30,7 +30,7 @@ class Breakout extends Game {
         // this.rightWall = this.physics.add.existing(rightWall);
         // this.rightWall.body.setImmovable(true);
 
-        const ball = this.add.circle(this.width / 2, this.height / 1.6, this.PADDLE_HEIGHT * 0.75, 0xff66ff);
+        const ball = this.add.circle(this.width / 2, this.height / 1.6, this.PADDLE_HEIGHT * 0.75, this.highlightColour);
         this.ball = this.physics.add.existing(ball)
 
         this.ball.body

@@ -3,13 +3,18 @@ class Game extends Phaser.Scene {
         super({
             key: config.key
         });
+
+        this.fgColour = 0x6666ff;
+        this.textColour = "#6666ff";
+        this.highlightColour = 0xff66ff;
+        this.bgColour = 0x0000dd;
     }
 
     create() {
         this.width = this.game.canvas.width;
         this.height = this.game.canvas.height;
 
-        this.cameras.main.setBackgroundColor(0x0000dd);
+        this.cameras.main.setBackgroundColor(this.bgColour);
 
         // samples('github:tidalcycles/dirt-samples');
 
@@ -24,13 +29,11 @@ class Game extends Phaser.Scene {
         this.timer = 3 * 60 + 3;
         this.timerText = this.add.text(this.width - 10, this.height - 10, "hi", {
             font: "24px sans-serif",
-            color: "#6666ff",
-            // backgroundColor: "#000",
+            color: this.textColour,
             padding: {
                 top: 0,
                 bottom: 0,
             },
-            // align: "right",
         }).setOrigin(1, 1);
         this.updateTimerText();
 
@@ -42,6 +45,9 @@ class Game extends Phaser.Scene {
         }, this);
         this.input.keyboard.on('keydown-THREE', () => {
             this.scene.start("asteroids");
+        }, this);
+        this.input.keyboard.on('keydown-FOUR', () => {
+            this.scene.start("missilecommand");
         }, this);
     }
 

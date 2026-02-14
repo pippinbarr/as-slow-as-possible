@@ -1,6 +1,6 @@
 const DEBUG = false;
 const FAST_MODE = false;
-const START_SCENE = "asteroids";
+const START_SCENE = "missilecommand";
 const WIDTH = 480;
 const HEIGHT = 640;
 const LANG = "en";
@@ -19,6 +19,7 @@ let config = {
     Breakout,
     Tetris,
     Asteroids,
+    MissileCommand,
   ],
   render: {
     // pixelArt: true,

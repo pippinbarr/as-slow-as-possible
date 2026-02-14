@@ -37,6 +37,10 @@ Of all of them this is the least established but I'm including it because it's t
 
 I haven't made it, regardless, but I feel there's "something there" in the motion and nature of input, the idea of calculating trajectories and intersections coming to the fore. Will have to make and try it to know though.
 
+### Having "made" a prototype (2026-02-14)
+
+I found a suitable implementation by Dominik Froehlich (domdom82) and adapted it to my setup. Quite a pleasure doing that and including Dominik's license in the folder along with the code. A bunch of tweaks to make it work in my OOP structure and then to get colours and sizing right, but once I slowed the game down genuinely weird and kind of fascinating. I think I need a few more changes but I'm already pretty excited to have this one in the fold. I'm also happy, I think, for this to be the last, so that there are just four total - two paddle games and two missile games. Makes sense to me.
+
 # Games v1
 
 The point here is to have a place I can do some good old design thinking about specific games within the collection. As well as to come up with which games those might be.

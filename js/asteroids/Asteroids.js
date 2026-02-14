@@ -1,6 +1,6 @@
 // Original implementation from:
 // https://github.com/wazooinc/phaser-meteor-swarm
-// Has a basic license in the README
+// Put their license into this folder
 
 class Asteroids extends Game {
     constructor(config) {
@@ -21,13 +21,13 @@ class Asteroids extends Game {
         const y = this.height / 2;
 
         // Create the player's rocket flame?
-        this.playerFlame = this.add.triangle(x, y, 0, 0, 0, 20, -20, 10, 0xff66ff, 1);
+        this.playerFlame = this.add.triangle(x, y, 0, 0, 0, 20, -20, 10, this.highlightColour, 1);
         this.physics.add.existing(this.playerFlame)
         this.playerFlame.setOrigin(0.5, 0.5);
         this.playerFlame.setScale(0);
 
         // Create the player
-        this.player = this.add.triangle(x, y, 0, 0, 0, 20, 20, 10, 0x6666ff, 1);
+        this.player = this.add.triangle(x, y, 0, 0, 0, 20, 20, 10, this.fgColour, 1);
         this.physics.add.existing(this.player);
         this.player.body.setDrag(0.99)
         this.player.body.setMaxVelocity(this.shipSpeed)
@@ -54,7 +54,7 @@ class Asteroids extends Game {
         const vx = Math.cos(angle) * this.asteroidSpeed * 40 / size;
         const vy = Math.sin(angle) * this.asteroidSpeed * 40 / size;
 
-        const circle = this.add.circle(x, y, size, 0x6666ff, 1.0);
+        const circle = this.add.circle(x, y, size, this.fgColour, 1.0);
 
         this.meteorGroup.add(circle);
         circle.body.setCircle(size);
@@ -93,7 +93,7 @@ class Asteroids extends Game {
             const y = this.player.y + Math.sin(angle) * 10;
             const vx = Math.cos(angle) * this.missileSpeed;
             const vy = Math.sin(angle) * this.missileSpeed;
-            const missile = this.add.rectangle(x, y, 4, 4, 0x6666ff);
+            const missile = this.add.rectangle(x, y, 4, 4, this.highlightColour);
             this.physics.add.existing(missile);
             this.missileGroup.add(missile);
             missile.body.setVelocity(vx, vy);
