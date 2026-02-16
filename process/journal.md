@@ -130,3 +130,11 @@ So there are kind of different factors of slowness I hadn't anticipated that now
 I took a look at the Atari version of Asteroids to check on what the missiles look like and they're just dots. I also saw that the cooldown is way *less* than I thought. I'd imagined a single missile at a time, but in fact you could shoot tons of them! So that needs to be worked in (and indicated?). 
 
 Also recalled the existence of the UFO so need to contemplate how I approach that.
+
+## Full suite, Too slow, Taste (2026-02-15)
+
+I now have versions of the "full suite" of games I intend to produce up and running: Pong, Breakout, Asteroids, and Missile Command. It feels a shame to lose Tetris maybe, but also fine. A match-3 would be funny too, but essentially this can be the first one and I can always make a new set. Four feels like enough to explore important questions and feelings.
+
+Missile Command feels too slow in a way that interests me. There is clearly a pace I'm looking for with this which isn't literlaly "as slow as possible" which could be a frame update every thousand years. So working out quite what the slow pace is is key - a weird player-experience question. Makes me think of things Jonathan said the other evening about the "taste" of a game (as in flavour). I'm searching for a specific level of slowness that will, I suppose, best unlock the kinds of feelings I hope the player will have... a balancing of boredom and frustration (slow flow? haha), a willingness to continue, a sense of high anticipation at key moments, a sense of peace and calm...
+
+So, this project stays alive in my mind which is neat. Mobile controls worrying me right now but I'll either beat that or stay desktop.
