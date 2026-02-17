@@ -4,8 +4,10 @@ class MissileCommand extends Game {
             key: "missilecommand"
         });
 
-        this.playerMissileSpeed = 2 * FAST_MODE ? 50 : 1;
-        this.enemyMissileDelay = 2000 * (FAST_MODE ? 1 : 10);
+        this.enemyMissileSpeed = 7 * (FAST_MODE ? 10 : 1);
+        this.playerMissileSpeed = 10 * (FAST_MODE ? 10 : 1);
+        this.enemyMissileDelay = 2000 * (FAST_MODE ? 1 : 5);
+        this.explodeDuration = 2000 * (FAST_MODE ? 1 : 5);
     }
 
     create() {
@@ -76,15 +78,17 @@ class MissileCommand extends Game {
         if (launchPos == null) {
             return;
         }
-        const missile = this.add.rectangle(launchPos.x, launchPos.y, 5, 5, this.highlightColour)
+
+        const missile = this.add.rectangle(launchPos.x, launchPos.y - launchPos.displayHeight * 0.4, 5, 5, this.highlightColour)
         this.physics.add.existing(missile);
-        this.physics.accelerateTo(missile, pointer.x, pointer.y, this.playerMissileSpeed / 2, this.playerMissileSpeed, this.playerMissileSpeed);
+        // this.physics.accelerateTo(missile, pointer.x, pointer.y, this.playerMissileSpeed / 2, this.playerMissileSpeed / 2, this.playerMissileSpeed);
+        this.physics.moveToObject(missile, pointer, this.playerMissileSpeed);
 
         const dest_line_1 = this.add.line(0, 0, 0, 0, 0, 20, this.highlightColour);
         const dest_line_2 = this.add.line(0, 0, 0, 0, 20, 0, this.highlightColour);
         const dest = this.add.container(pointer.x, pointer.y, [dest_line_1, dest_line_2]);
-        dest.setSize(20, 20);
-        dest.setRotation(45.0);
+        dest.setSize(2, 2);
+        dest.setRotation(Math.PI / 4);
         this.physics.add.existing(dest);
 
         const collider = this.physics.add.overlap(missile, dest, (missileOnDest) => {
@@ -97,7 +101,7 @@ class MissileCommand extends Game {
     }
 
     explode(x, y, radius, color) {
-        const explosion = this.add.circle(x, y, 1, color, 0.01);
+        const explosion = this.add.circle(x, y, 1, color, 1);
         this.physics.add.existing(explosion);
         explosion.body.setCircle(1);
         this.explosionGroup.add(explosion);
@@ -105,9 +109,8 @@ class MissileCommand extends Game {
         const tween = this.tweens.add({
             targets: explosion,
             radius: radius,
-            fillAlpha: 0.8,
-            ease: 'Power3',
-            duration: 1000,
+            ease: 'sine',
+            duration: this.explodeDuration,
             yoyo: true,
             onUpdate: (tween, target) => {
                 target.body.setCircle(target.radius);
@@ -154,12 +157,15 @@ class MissileCommand extends Game {
         const startX = this.getRndInteger(0, this.width)
 
         const missile = this.add.rectangle(startX, startY, 5, 5, this.highlightColour)
+
         this.enemyMissiles.push(missile);
         this.physics.add.existing(missile);
-        this.physics.moveToObject(missile, target, this.playerMissileSpeed * 0.75);
+        this.physics.moveToObject(missile, target, this.enemyMissileSpeed);
+
 
         const collTarget = this.physics.add.overlap(missile, this.targetGroup, (msl, tgt) => {
             msl.body.stop();
+            // msl.line.destroy();
             msl.destroy();
             if (tgt != this.ground) {
                 tgt.body.setEnable(false);
@@ -167,7 +173,6 @@ class MissileCommand extends Game {
             }
             this.physics.world.removeCollider(collTarget);
             this.explode(msl.x, msl.y, 80, this.highlightColour);
-            this.checkGameOver();
         });
 
         const collExplosion = this.physics.add.overlap(missile, this.explosionGroup, (msl, exp) => {
@@ -179,29 +184,6 @@ class MissileCommand extends Game {
 
     }
 
-    addScore(s) {
-        score += s;
-        scoreText.setText(score);
-    }
-
-    checkGameOver() {
-        let finished = true;
-        for (const t of this.targets) {
-            if (t.visible) {
-                finished = false;
-            }
-        }
-    }
-
-    resetGame() {
-        gameOver = false;
-        addScore(-score);
-        gameOverText.setVisible(false);
-        for (const t in targets) {
-            targets[t].setVisible(true);
-            targets[t].body.setEnable(true);
-        }
-    }
 }
 
 

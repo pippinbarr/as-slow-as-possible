@@ -16,11 +16,11 @@ class Pong extends Game {
         this.PADDLE_WIDTH = this.width / 4;
         this.PADDLE_HEIGHT = this.PADDLE_WIDTH * 0.1;
 
-        const bottomPaddle = this.add.rectangle(this.width / 2, this.height - this.PADDLE_HEIGHT * 2, this.PADDLE_WIDTH, this.PADDLE_HEIGHT, this.fgColour);
+        const bottomPaddle = this.add.rectangle(this.width / 2, this.height - this.PADDLE_HEIGHT * 4, this.PADDLE_WIDTH, this.PADDLE_HEIGHT, this.fgColour);
         this.bottomPaddle = this.physics.add.existing(bottomPaddle);
         this.bottomPaddle.body.setImmovable(true);
 
-        const topPaddle = this.add.rectangle(this.width / 2, this.PADDLE_HEIGHT * 2, this.PADDLE_WIDTH, this.PADDLE_HEIGHT, this.fgColour);
+        const topPaddle = this.add.rectangle(this.width / 2, this.PADDLE_HEIGHT * 4, this.PADDLE_WIDTH, this.PADDLE_HEIGHT, this.fgColour);
         this.topPaddle = this.physics.add.existing(topPaddle);
         this.topPaddle.body.setImmovable(true);
 
