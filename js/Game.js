@@ -4,10 +4,10 @@ class Game extends Phaser.Scene {
             key: config.key
         });
 
-        this.fgColour = 0x6666ff;
-        this.textColour = "#6666ff";
-        this.highlightColour = 0xff66ff;
-        this.bgColour = 0x0000dd;
+        this.fgColour = 0x7777ff;
+        this.textColour = "#7777ff";
+        this.highlightColour = 0xff77ff;
+        this.bgColour = 0x0000ff;
     }
 
     create() {

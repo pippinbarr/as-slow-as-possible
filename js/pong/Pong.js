@@ -11,8 +11,8 @@ class Pong extends Game {
     create() {
         super.create();
 
-        this.BALL_SPEED = 5;
-        this.PADDLE_SPEED = 5;
+        this.BALL_SPEED = 5 * (FAST_MODE ? 40 : 1);
+        this.PADDLE_SPEED = 5 * (FAST_MODE ? 10 : 1);
         this.PADDLE_WIDTH = this.width / 4;
         this.PADDLE_HEIGHT = this.PADDLE_WIDTH * 0.1;
 
@@ -34,14 +34,14 @@ class Pong extends Game {
 
         const ball = this.add.circle(this.width / 2, this.height / 2, this.PADDLE_HEIGHT * 0.75, this.highlightColour);
         this.ball = this.physics.add.existing(ball)
-
-        this.ball.body.setVelocity(this.BALL_SPEED, this.BALL_SPEED)
+        this.ball.body.setMaxVelocity(this.BALL_SPEED * 2, this.BALL_SPEED);
+        this.ball.body.setVelocity(Phaser.Math.Between(-this.BALL_SPEED, this.BALL_SPEED), this.BALL_SPEED)
             .setBounce(1, 1);
 
         this.physics.add.collider(this.ball, this.rightWall);
         this.physics.add.collider(this.ball, this.leftWall);
-        this.physics.add.collider(this.ball, this.topPaddle);
-        this.physics.add.collider(this.ball, this.bottomPaddle);
+        this.physics.add.collider(this.ball, this.topPaddle, this.paddleHit);
+        this.physics.add.collider(this.ball, this.bottomPaddle, this.paddleHit);
 
 
     }
@@ -68,7 +68,10 @@ class Pong extends Game {
         this.topPaddle.x = Phaser.Math.Clamp(this.topPaddle.x, this.PADDLE_WIDTH * 0.5, this.width - this.PADDLE_WIDTH * 0.5);
     }
 
-    paddleHit(paddle, ball) {
+    paddleHit(ball, paddle) {
         // May want to include "spin" here?
+        const dx = ball.x - paddle.x;
+        ball.body.velocity.x += dx * 2;
+        console.log(dx);
     }
 }

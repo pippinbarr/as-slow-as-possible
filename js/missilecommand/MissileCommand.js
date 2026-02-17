@@ -83,13 +83,13 @@ class MissileCommand extends Game {
             return;
         }
 
-        const missile = this.add.circle(launchPos.x, launchPos.y - launchPos.displayHeight * 0.7, 3, this.highlightColour)
+        const missile = this.add.circle(launchPos.x, launchPos.y - launchPos.displayHeight * 0.7, 3, this.fgColour)
         this.physics.add.existing(missile);
         // this.physics.accelerateTo(missile, pointer.x, pointer.y, this.playerMissileSpeed / 2, this.playerMissileSpeed / 2, this.playerMissileSpeed);
         this.physics.moveToObject(missile, pointer, this.playerMissileSpeed);
 
-        const dest_line_1 = this.add.line(0, 0, 0, 0, 0, 20, this.highlightColour);
-        const dest_line_2 = this.add.line(0, 0, 0, 0, 20, 0, this.highlightColour);
+        const dest_line_1 = this.add.line(0, 0, 0, 0, 0, 20, this.fgColour);
+        const dest_line_2 = this.add.line(0, 0, 0, 0, 20, 0, this.fgColour);
         const dest = this.add.container(pointer.x, pointer.y, [dest_line_1, dest_line_2]);
         dest.setSize(2, 2);
         dest.setRotation(Math.PI / 4);
@@ -100,7 +100,7 @@ class MissileCommand extends Game {
             this.physics.world.removeCollider(collider);
             missile.destroy();
             dest.destroy();
-            this.explode(dest.x, dest.y, 25, this.highlightColour);
+            this.explode(dest.x, dest.y, 25, this.fgColour);
         });
     }
 

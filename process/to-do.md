@@ -10,12 +10,13 @@
 
 ## Pong
 
-- How to handle the reset when someone misses? One weird option is simply not to (per Missile Command? Seems really weird but also refocuses what the game means?)
+- ~~How to handle the reset when someone misses? One weird option is simply not to (per Missile Command? Seems really weird but also refocuses what the game means?)~~
+- ~~Add spin off the paddle~~
 
 ## Breakout
 - **I think the answer here is repeated: Nothing would happen, there would just not be anything left to do if you reached it** ~~Game over? Could you ever win? ~~
-
-- How to handle the reset when someone misses? (See Pong above)
+- ~~How to handle the reset when someone misses? (See Pong above)~~
+- ~~Add spin off the paddle~~
  
 ## Asteroids
 - ~~Add a flame to the back of the player when accelerating (could tie to progress toward max velocity for visual effect? Can it be redish? If so should I have a highlight colour throughout for just one element? Ball, flame, something?)~~
@@ -36,5 +37,6 @@
 - **Better now but maybe not yet correct** What is the right speed for this thing?
 - **And it's fairly beautiful** ~~Do get a line going behind the enemy missiles~~
 - **Genius level: nothing happens until the timer runs down** Handling game over? 
+- ~~Blue line for player misiles?~~
 
 - Maximum number of missiles? I think so? - but then how to indicate?
