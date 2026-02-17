@@ -4,8 +4,8 @@ class MissileCommand extends Game {
             key: "missilecommand"
         });
 
-        this.enemyMissileSpeed = 7 * (FAST_MODE ? 10 : 1);
-        this.playerMissileSpeed = 10 * (FAST_MODE ? 10 : 1);
+        this.enemyMissileSpeed = 7 * (FAST_MODE ? 10 : 2);
+        this.playerMissileSpeed = 10 * (FAST_MODE ? 10 : 4);
         this.enemyMissileDelay = 2000 * (FAST_MODE ? 1 : 5);
         this.explodeDuration = 2000 * (FAST_MODE ? 1 : 5);
     }
@@ -25,14 +25,14 @@ class MissileCommand extends Game {
         this.enemyMissiles = [];
 
         this.towers = [];
-        this.towers.push(this.newTower(80, 500));
-        this.towers.push(this.newTower(400, 500));
+        this.towers.push(this.newTower(80, 510));
+        this.towers.push(this.newTower(400, 510));
         // this.towers.push(this.newTower(720, 500));
 
         this.cities = [];
-        this.cities.push(this.newCity(160, 515));
-        this.cities.push(this.newCity(240, 515));
-        this.cities.push(this.newCity(320, 515));
+        this.cities.push(this.newCity(160, 535));
+        this.cities.push(this.newCity(240, 535));
+        this.cities.push(this.newCity(320, 535));
         // this.cities.push(this.newCity(480, 515));
         // this.cities.push(this.newCity(560, 515));
         // this.cities.push(this.newCity(640, 515));
@@ -50,21 +50,25 @@ class MissileCommand extends Game {
 
     update(time, delta) {
         super.update(time, delta);
+
+        for (let m of this.enemyMissiles) {
+            m.trace.line.setTo(m.trace.startX, m.trace.startY, m.x, m.y);
+        }
     }
 
-    newTower(x, y) {
-        const top = this.add.arc(0, 0, 20, 180, 360, false, this.fgColour);
+    newCity(x, y) {
+        const top = this.add.arc(0, 0, 30, 180, 360, false, this.fgColour);
         // top.setStrokeStyle(2, 0x11111100);
-        const bottom = this.add.rectangle(0, 20, 40, 40, this.fgColour)
+        // const bottom = this.add.rectangle(0, 20, 40, 40, this.fgColour)
         // bottom.setStrokeStyle(2, 0x11111100);
 
-        const container = this.add.container(x, y, [top, bottom]);
+        const container = this.add.container(x, y, [top]);
         container.setSize(40, 60);
         this.physics.add.existing(container);
         return container;
     }
 
-    newCity(x, y) {
+    newTower(x, y) {
         const city = this.add.triangle(0, 0, 0, 50, 50, 50, 25, 0, this.fgColour);
         // city.setStrokeStyle(2, 0x111111);
         const container = this.add.container(x, y, [city]);
@@ -79,7 +83,7 @@ class MissileCommand extends Game {
             return;
         }
 
-        const missile = this.add.rectangle(launchPos.x, launchPos.y - launchPos.displayHeight * 0.4, 5, 5, this.highlightColour)
+        const missile = this.add.circle(launchPos.x, launchPos.y - launchPos.displayHeight * 0.7, 3, this.highlightColour)
         this.physics.add.existing(missile);
         // this.physics.accelerateTo(missile, pointer.x, pointer.y, this.playerMissileSpeed / 2, this.playerMissileSpeed / 2, this.playerMissileSpeed);
         this.physics.moveToObject(missile, pointer, this.playerMissileSpeed);
@@ -156,17 +160,24 @@ class MissileCommand extends Game {
         const startY = 0;
         const startX = this.getRndInteger(0, this.width)
 
-        const missile = this.add.rectangle(startX, startY, 5, 5, this.highlightColour)
+        const missile = this.add.circle(startX, startY, 5, this.highlightColour)
+        const line = this.add.line(0, 0, 0, 0, 0, 0, this.highlightColour)
+            .setOrigin(0, 0);
+        missile.trace = {
+            line: line,
+            startX: startX,
+            startY: startY
+        };
 
         this.enemyMissiles.push(missile);
         this.physics.add.existing(missile);
         this.physics.moveToObject(missile, target, this.enemyMissileSpeed);
 
-
         const collTarget = this.physics.add.overlap(missile, this.targetGroup, (msl, tgt) => {
             msl.body.stop();
-            // msl.line.destroy();
+            msl.trace.line.destroy();
             msl.destroy();
+            this.enemyMissiles.splice(this.enemyMissiles.indexOf(msl), 1)
             if (tgt != this.ground) {
                 tgt.body.setEnable(false);
                 tgt.setVisible(false);
@@ -177,7 +188,9 @@ class MissileCommand extends Game {
 
         const collExplosion = this.physics.add.overlap(missile, this.explosionGroup, (msl, exp) => {
             msl.body.stop();
+            msl.trace.line.destroy();
             msl.destroy();
+            this.enemyMissiles.splice(this.enemyMissiles.indexOf(msl), 1)
             this.physics.world.removeCollider(collExplosion);
             this.explode(msl.x, msl.y, 50, this.highlightColour);
         });

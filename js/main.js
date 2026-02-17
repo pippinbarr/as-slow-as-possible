@@ -1,5 +1,5 @@
 const DEBUG = false;
-const FAST_MODE = true;
+const FAST_MODE = false;
 const START_SCENE = "missilecommand";
 const WIDTH = 480;
 const HEIGHT = 640;
