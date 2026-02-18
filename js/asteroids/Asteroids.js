@@ -9,9 +9,12 @@ class Asteroids extends Game {
         })
 
         this.missileSpeed = 5 * (FAST_MODE ? 50 : 1);
-        this.asteroidSpeed = 1 * (FAST_MODE ? 50 : 1);
-        this.shipSpeed = 3 * (FAST_MODE ? 50 : 1);
-        this.shipSpinSpeed = 6 * 50;  //(FAST_MODE ? 50 : 1);
+        this.asteroidSpeed = 0.5 * (FAST_MODE ? 50 : 1);
+        this.shipSpeed = 3 * (FAST_MODE ? 50 : 2);
+        this.shipSpinSpeed = 6 * (FAST_MODE ? 50 : 5);
+        this.asteroidSpinSpeed = 0.25 * (FAST_MODE ? 50 : 1);
+        this.explosionVelocity = 1 * (FAST_MODE ? 50 : 1);
+        this.explosionDuration = 50 * (FAST_MODE ? 50 : 500);
     }
 
     create() {
@@ -32,8 +35,8 @@ class Asteroids extends Game {
         this.player.body.setDrag(0.99)
         this.player.body.setMaxVelocity(this.shipSpeed)
 
-        // generate our meteors
-        this.meteorGroup = this.physics.add.group()
+        // generate our asteroids
+        this.asteroidGroup = this.physics.add.group()
         for (let i = 0; i < 5; i++) {
             const x = Phaser.Math.RND.between(0, this.width)
             const y = Phaser.Math.RND.between(0, this.height)
@@ -44,22 +47,48 @@ class Asteroids extends Game {
 
         this.missileGroup = this.physics.add.group()
 
-        this.physics.add.overlap(this.missileGroup, this.meteorGroup, this.collision, null, this)
+        this.physics.add.overlap(this.missileGroup, this.asteroidGroup, this.missileAsteroidCollision, null, this)
+        this.physics.add.overlap(this.player, this.asteroidGroup, this.playerAsteroidCollision, null, this)
 
         this.cursors = this.input.keyboard.createCursorKeys()
+        this.inputEnabled = true;
     }
 
     addAsteroid(x, y, size) {
-        const angle = Math.random() * Math.PI;
+        const angle = Math.random() * 2 * Math.PI;
         const vx = Math.cos(angle) * this.asteroidSpeed * 40 / size;
         const vy = Math.sin(angle) * this.asteroidSpeed * 40 / size;
 
-        const circle = this.add.circle(x, y, size, this.fgColour, 1.0);
+        const asteroid = this.add.graphics();
+        asteroid.fillStyle(this.fgColour, 1)
+        asteroid.beginPath();
+        asteroid.moveTo(size + Phaser.Math.Between(-size / 8, size / 2), 0);
+        let a = 0;
+        const verts = 6 + Math.floor(Math.random() * 4)
+        let maxD = 0;
+        for (let p = 0; p < verts - 1; p++) {
+            a += 2 * Math.PI / verts;
+            let d = size + Phaser.Math.Between(-size / 8, size / 2);
+            if (d > maxD) maxD = d;
+            const x = Math.cos(a) * d;
+            const y = Math.sin(a) * d;
+            asteroid.lineTo(x, y);
+        }
+        asteroid.closePath();
+        asteroid.fillPath();
 
-        this.meteorGroup.add(circle);
-        circle.body.setCircle(size);
-        circle.size = size;
-        circle.body.setVelocity(vx, vy);
+        asteroid.x = x;
+        asteroid.y = y;
+
+        const physicsAsteroid = this.physics.add.existing(asteroid);
+        this.asteroidGroup.add(physicsAsteroid)
+
+        const bodySize = maxD * 0.75
+        physicsAsteroid.body.setCircle(bodySize, -bodySize, -bodySize);
+        physicsAsteroid.body.setVelocity(vx, vy);
+        physicsAsteroid.body.setAngularVelocity(this.asteroidSpinSpeed)
+
+        physicsAsteroid.size = size;
     }
 
     update(time, delta) {
@@ -69,6 +98,35 @@ class Asteroids extends Game {
         this.playerFlame.body.y = this.player.body.y;
         this.playerFlame.body.rotation = this.player.body.rotation;
 
+
+        this.handleInput();
+
+
+        for (let asteroid of this.asteroidGroup.getChildren()) {
+            if (asteroid.x < 0 || asteroid.x > this.width) {
+                asteroid.x = this.width - asteroid.x;
+            }
+            if (asteroid.y < 0 || asteroid.y > this.height) {
+                asteroid.y = this.height - asteroid.y;
+            }
+        }
+
+        if (this.player.x < 0 || this.player.x > this.width) {
+            this.player.x = this.width - this.player.x;
+        }
+        if (this.player.y < 0 || this.player.y > this.height) {
+            this.player.y = this.height - this.player.y;
+        }
+
+        for (let missile of this.missileGroup.getChildren()) {
+            if (missile.x < 0 || missile.x > this.width || missile.y < 0 || missile.y > this.height) {
+                missile.destroy();
+            }
+        }
+    }
+
+    handleInput() {
+        if (!this.inputEnabled) return;
 
         if (this.cursors.up.isDown) {
             this.physics.velocityFromRotation(this.player.rotation, this.shipSpeed, this.player.body.acceleration);
@@ -98,31 +156,9 @@ class Asteroids extends Game {
             this.missileGroup.add(missile);
             missile.body.setVelocity(vx, vy);
         }
-
-        for (let asteroid of this.meteorGroup.getChildren()) {
-            if (asteroid.x < 0 || asteroid.x > this.width) {
-                asteroid.x = this.width - asteroid.x;
-            }
-            if (asteroid.y < 0 || asteroid.y > this.height) {
-                asteroid.y = this.height - asteroid.y;
-            }
-        }
-
-        if (this.player.x < 0 || this.player.x > this.width) {
-            this.player.x = this.width - this.player.x;
-        }
-        if (this.player.y < 0 || this.player.y > this.height) {
-            this.player.y = this.height - this.player.y;
-        }
-
-        for (let missile of this.missileGroup.getChildren()) {
-            if (missile.x < 0 || missile.x > this.width || missile.y < 0 || missile.y > this.height) {
-                missile.destroy();
-            }
-        }
     }
 
-    collision(missile, asteroid) {
+    missileAsteroidCollision(missile, asteroid) {
         // World's most hopeless Asteroids splitting algorithm
         if (asteroid.size === 40) {
             this.addAsteroid(asteroid.x + Phaser.Math.Between(-20, 20), asteroid.y + Phaser.Math.Between(-20, 20), 20);
@@ -134,6 +170,29 @@ class Asteroids extends Game {
         }
         missile.destroy();
         asteroid.destroy();
+    }
+
+    playerAsteroidCollision(player, asteroid) {
+        if (this.player.visible) {
+            const emitter = this.add.particles(player.x, player.y, 'particle', {
+                lifespan: this.explosionDuration,
+                speed: { min: this.explosionVelocity, max: this.explosionVelocity * 1.2 },
+                scale: { start: 4, end: 4 },
+                emitting: false,
+                alpha: { start: 1, end: 0.2 },
+                tint: this.highlightColour
+            });
+            emitter.addEmitZone({
+                type: 'random',
+                source: this.player.geom,
+            })
+            emitter.explode(20)
+        }
+
+
+        this.player.setVisible(false);
+        this.playerFlame.setVisible(false);
+        this.inputEnabled = false;
     }
 
 
