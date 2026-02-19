@@ -49,6 +49,7 @@ class Game extends Phaser.Scene {
         this.input.keyboard.on('keydown-FOUR', () => {
             this.scene.start("missilecommand");
         }, this);
+
     }
 
     update(time, delta) {
