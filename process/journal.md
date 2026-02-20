@@ -138,3 +138,21 @@ I now have versions of the "full suite" of games I intend to produce up and runn
 Missile Command feels too slow in a way that interests me. There is clearly a pace I'm looking for with this which isn't literally "as slow as possible" which could be a frame update every thousand years. So working out quite what the slow pace is is key - a weird player-experience question. Makes me think of things Jonathan said the other evening about the "taste" of a game (as in flavour). I'm searching for a specific level of slowness that will, I suppose, best unlock the kinds of feelings I hope the player will have... a balancing of boredom and frustration (slow flow? haha), a willingness to continue, a sense of high anticipation at key moments, a sense of peace and calm...
 
 So, this project stays alive in my mind which is neat. Mobile controls worrying me right now but I'll either beat that or stay desktop.
+
+## Input; Down with asteroids (2026-02-20)
+
+I'm avoiding thinking about mobile/touch controls a bit and it might be time to tackle that.
+
+- Pong: Should be okay to just tap-and-hold on either side of the screen
+- Breakout: As with Pong
+- Missile Command: Tap to fire
+- Asteroids: Oh fuck. Tap-and-hold sides to rotation + swipe-and-hold for thrust + tap for shoot? Clearly bullshit.
+    - Tap-and-drag for rotation and thrust (but weds them) and tap for shoot? Still quite bad
+    
+Is this a deal breaker for this one? Feels a *bit* dumb to have worked on it so hard. And there's something beautiful specifically about spatial navigation in this context that I would rather not lose. Could it be tap and hold and it rotates to and thrusts to that point? And then a separate tap to fire? Still weird. I suppose there must be a mobile Asteroids I could crib from?
+
+If not Asteroids then what? Combat (Tanks)? Has similar complexities of motion involved, though less pressure on elegant movement (which I think is a part of the *Asteroids* problem). There's a balance to having two paddle games and two shooting games. Oh Duck Hunt would be pretty funny but ludicrous. Not all that interesting at that speed other than *waiting* for the duck to come? Is there something there? That you might even "let" it continue before shooting it? I think the shooting in duck hunt is instantaneous right? (And if not it kind of collapses to Missile Command in important ways that I don't want). 
+
+Are we back to Space Invaders? Perhaps we are. It's a different task to Missile Command while remaining related. There will be implementations out there I can take.
+
+I think that might be the direction and I retire Asteroids for now.
