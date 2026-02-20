@@ -26,9 +26,9 @@
 - **Kind of a half-way thing... feeling slow but not so slow it's dumb** ~~Rotation in slow motion?~~
 - **Created irregular polygonal asteroids and they're lovely** ~~Why do circular asteroids feel kind of dumb?~~
 - ~~Player explosions that would look right in slow motion? Recompose player at death out of multiple triangles for instance? Sounds like a horrible math experience, but could be worthwhile. (Or maybe I just create a particle effect for it, a bit easier...)~~
+- **Maybe it's good enough? Otherwise we're talking Matter.js** ~~Improve hit zone stuff with player-asteroid collision (looks weird)~~
 
-- Improve hit zone stuff with player-asteroid collision (looks weird)
-- Improve asteroid breakup positioning 
+- Improve asteroid breakup positioning and motion?
 - Add timing limit to missiles (at least create the same spatial cap if you spam? How to signal the missile is not ready to fire? Attach it to the front of the ship all the time and fire? Something else?)
 
 ## Missile Command

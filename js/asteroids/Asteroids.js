@@ -48,8 +48,8 @@ class Asteroids extends Game {
 
         this.missileGroup = this.physics.add.group()
 
-        this.physics.add.overlap(this.missileGroup, this.asteroidGroup, this.missileAsteroidCollision, null, this)
-        this.physics.add.overlap(this.player, this.asteroidGroup, this.playerAsteroidCollision, null, this)
+        this.physics.add.overlap(this.missileGroup, this.asteroidGroup, this.thingAsteroidCollision, null, this)
+        this.physics.add.overlap(this.player, this.asteroidGroup, this.thingAsteroidCollision, null, this)
 
         this.cursors = this.input.keyboard.createCursorKeys()
         this.inputEnabled = true;
@@ -105,30 +105,33 @@ class Asteroids extends Game {
         this.playerFlame.body.y = this.player.body.y;
         this.playerFlame.body.rotation = this.player.body.rotation;
 
-
         this.handleInput();
 
+        this.wrapThings();
 
-        for (let asteroid of this.asteroidGroup.getChildren()) {
-            if (asteroid.x < 0 || asteroid.x > this.width) {
-                asteroid.x = this.width - asteroid.x;
-            }
-            if (asteroid.y < 0 || asteroid.y > this.height) {
-                asteroid.y = this.height - asteroid.y;
-            }
-        }
 
-        if (this.player.x < 0 || this.player.x > this.width) {
-            this.player.x = this.width - this.player.x;
-        }
-        if (this.player.y < 0 || this.player.y > this.height) {
-            this.player.y = this.height - this.player.y;
-        }
 
         for (let missile of this.missileGroup.getChildren()) {
             if (missile.x < 0 || missile.x > this.width || missile.y < 0 || missile.y > this.height) {
                 missile.destroy();
             }
+        }
+    }
+
+    wrapThings() {
+        for (let asteroid of this.asteroidGroup.getChildren()) {
+            this.wrapThing(asteroid);
+        }
+        this.wrapThing(this.player);
+    }
+
+    wrapThing(thing) {
+        if (thing.x < -thing.body.width / 1.5 || thing.x > this.width + thing.body.width / 1.5) {
+            console.log(thing.x, thing.body.width);
+            thing.x = this.width - thing.x;
+        }
+        if (thing.y < -thing.body.height / 1.5 || thing.y > this.height + thing.body.height / 1.5) {
+            thing.y = this.height - thing.y;
         }
     }
 
@@ -165,7 +168,8 @@ class Asteroids extends Game {
         }
     }
 
-    missileAsteroidCollision(missile, asteroid) {
+    thingAsteroidCollision(thing, asteroid) {
+        if (!thing.visible) return;
 
         const size = asteroid.size;
         if (asteroid.size >= 20) {
@@ -174,32 +178,32 @@ class Asteroids extends Game {
             this.addAsteroid(asteroid.x + Phaser.Math.Between(-size, size), asteroid.y + Phaser.Math.Between(-size, size), halfSize, asteroid.body.velocity.x * 2.5, asteroid.body.velocity.y * 1.5);
         }
 
-        missile.destroy();
-        asteroid.destroy();
-    }
+        if (thing === this.player) {
+            if (this.player.visible) {
+                const emitter = this.add.particles(this.player.x, this.player.y, 'particle', {
+                    lifespan: this.explosionDuration,
+                    speed: { min: this.explosionVelocity, max: this.explosionVelocity * 1.2 },
+                    scale: { start: 4, end: 4 },
+                    emitting: false,
+                    alpha: { start: 1, end: 0.2 },
+                    tint: this.highlightColour
+                });
+                emitter.addEmitZone({
+                    type: 'random',
+                    source: this.player.geom,
+                })
+                emitter.explode(20);
 
-    playerAsteroidCollision(player, asteroid) {
-        if (this.player.visible) {
-            const emitter = this.add.particles(player.x, player.y, 'particle', {
-                lifespan: this.explosionDuration,
-                speed: { min: this.explosionVelocity, max: this.explosionVelocity * 1.2 },
-                scale: { start: 4, end: 4 },
-                emitting: false,
-                alpha: { start: 1, end: 0.2 },
-                tint: this.highlightColour
-            });
-            emitter.addEmitZone({
-                type: 'random',
-                source: this.player.geom,
-            })
-            emitter.explode(20)
+                this.player.setVisible(false);
+                this.player.setActive(false);
+                this.playerFlame.setVisible(false);
+                this.inputEnabled = false;
+            }
+        }
+        else {
+            thing.destroy();
         }
 
-
-        this.player.setVisible(false);
-        this.playerFlame.setVisible(false);
-        this.inputEnabled = false;
+        asteroid.destroy();
     }
-
-
 }
