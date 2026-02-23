@@ -1,6 +1,6 @@
 const DEBUG = true;
-const FAST_MODE = true;
-const START_SCENE = "asteroids";
+const FAST_MODE = false;
+const START_SCENE = "spaceinvaders";
 const WIDTH = 480;
 const HEIGHT = 640;
 const LANG = "en";
@@ -20,6 +20,7 @@ let config = {
     Tetris,
     Asteroids,
     MissileCommand,
+    SpaceInvaders
   ],
   render: {
     // pixelArt: true,

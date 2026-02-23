@@ -26,8 +26,8 @@ class Game extends Phaser.Scene {
         //     ).play();
         // });
 
-        this.timer = 3 * 60 + 3;
-        this.timerText = this.add.text(this.width - 10, this.height - 10, "hi", {
+        this.timer = 3 * 60;
+        this.timerText = this.add.text(this.width - 10, this.height - 10, "3:00", {
             font: "24px sans-serif",
             color: this.textColour,
             padding: {
