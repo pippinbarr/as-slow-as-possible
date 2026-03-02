@@ -44,7 +44,7 @@ class Game extends Phaser.Scene {
             this.scene.start("breakout");
         }, this);
         this.input.keyboard.on('keydown-THREE', () => {
-            this.scene.start("asteroids");
+            this.scene.start("spaceinvaders");
         }, this);
         this.input.keyboard.on('keydown-FOUR', () => {
             this.scene.start("missilecommand");

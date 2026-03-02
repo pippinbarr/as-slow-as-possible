@@ -28,10 +28,14 @@
 - **Genius level: nothing happens until the timer runs down** Handling game over? 
 - ~~Blue line for player misiles?~~
 
-- Maximum number of missiles? I think so? - but then how to indicate?
+- Maximum number of missiles? I think so? - but then how to indicate? (Replicate Space Invader solution which is nice)
 
 ## Space Invaders
-- Find an open source implementation, take it, slow it down
+- **Did this and then found it kind of too much so started making my own** ~~Find an open source implementation, take it, slow it down~~
+- **Still need to work out cooldowns** ~~Confirm with a "real space invaders" things like cool down, whether missile hits missile, when you die, etc.~~
+- **Finally did the obvious and it's quite nice.** ~~Missile cooldown for player (just try something)~~
+
+- Work on the timing which is ass
 
 ## Retired for now
 

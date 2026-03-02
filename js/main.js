@@ -1,4 +1,4 @@
-const DEBUG = true;
+const DEBUG = false;
 const FAST_MODE = false;
 const START_SCENE = "spaceinvaders";
 const WIDTH = 480;
