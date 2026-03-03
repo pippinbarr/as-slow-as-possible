@@ -8,6 +8,10 @@
 
 - Right?
 
+## Menu
+
+- We need a menu system for choosing the game and the difficulty
+
 ## Pong
 
 - ~~How to handle the reset when someone misses? One weird option is simply not to (per Missile Command? Seems really weird but also refocuses what the game means?)~~
@@ -27,15 +31,17 @@
 - **And it's fairly beautiful** ~~Do get a line going behind the enemy missiles~~
 - **Genius level: nothing happens until the timer runs down** Handling game over? 
 - ~~Blue line for player misiles?~~
+- **Added Space Invaders way of showing missile availability** ~~Show the missile when it's ready to launch~~
+- **Each tower has 10 missiles** ~~Maximum number of missiles? I think so? - but then how to indicate? (A little row of dots below each tower showing quantity I suppose...)~~
 
-- Maximum number of missiles? I think so? - but then how to indicate? (Replicate Space Invader solution which is nice)
+- Work on the timing
 
 ## Space Invaders
 - **Did this and then found it kind of too much so started making my own** ~~Find an open source implementation, take it, slow it down~~
 - **Still need to work out cooldowns** ~~Confirm with a "real space invaders" things like cool down, whether missile hits missile, when you die, etc.~~
 - **Finally did the obvious and it's quite nice.** ~~Missile cooldown for player (just try something)~~
 
-- Work on the timing which is ass
+- Work on the timing
 
 ## Retired for now
 

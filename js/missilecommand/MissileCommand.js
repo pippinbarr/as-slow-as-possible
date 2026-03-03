@@ -8,6 +8,7 @@ class MissileCommand extends Game {
         this.playerMissileSpeed = 10 * (FAST_MODE ? 10 : 4);
         this.enemyMissileDelay = 2000 * (FAST_MODE ? 1 : 5);
         this.explodeDuration = 2000 * (FAST_MODE ? 1 : 5);
+        this.towerMissileCooldown = 50 * (FAST_MODE ? 1 : 5);
     }
 
     create() {
@@ -71,22 +72,29 @@ class MissileCommand extends Game {
     newTower(x, y) {
         const city = this.add.triangle(0, 0, 0, 50, 50, 50, 25, 0, this.fgColour);
         // city.setStrokeStyle(2, 0x111111);
-        const container = this.add.container(x, y, [city]);
-        container.setSize(50, 25);
-        this.physics.add.existing(container);
-        return container;
+        const tower = this.add.container(x, y, [city]);
+        tower.setSize(50, 25);
+        this.physics.add.existing(tower);
+
+        tower.missilesRemaining = 10;
+        tower.missiles = [];
+        for (let m = 0; m < tower.missilesRemaining; m++) {
+            const missile = this.add.rectangle(tower.x - tower.width * 0.4 + (m * 5), tower.y + tower.displayHeight * 1.25, 4, 4, this.highlightColour);
+            tower.missiles.push(missile);
+        }
+
+        this.addMissileTo(tower);
+
+        return tower;
     }
 
     launchMissile(pointer) {
-        const launchPos = this.selectLaunchPos(pointer);
-        if (launchPos == null) {
+        const tower = this.selectLaunchTower(pointer);
+        if (tower === null) {
             return;
         }
 
-        const missile = this.add.circle(launchPos.x, launchPos.y - launchPos.displayHeight * 0.7, 3, this.fgColour)
-        this.physics.add.existing(missile);
-        // this.physics.accelerateTo(missile, pointer.x, pointer.y, this.playerMissileSpeed / 2, this.playerMissileSpeed / 2, this.playerMissileSpeed);
-        this.physics.moveToObject(missile, pointer, this.playerMissileSpeed);
+        this.physics.moveToObject(tower.missile, pointer, this.playerMissileSpeed);
 
         const dest_line_1 = this.add.line(0, 0, 0, 0, 0, 20, this.fgColour);
         const dest_line_2 = this.add.line(0, 0, 0, 0, 20, 0, this.fgColour);
@@ -94,6 +102,7 @@ class MissileCommand extends Game {
         dest.setSize(2, 2);
         dest.setRotation(Math.PI / 4);
         this.physics.add.existing(dest);
+        const missile = tower.missile;
 
         const collider = this.physics.add.overlap(missile, dest, (missileOnDest) => {
             missileOnDest.body.stop();
@@ -102,6 +111,22 @@ class MissileCommand extends Game {
             dest.destroy();
             this.explode(dest.x, dest.y, 25, this.fgColour);
         });
+
+        tower.missile = null;
+        setTimeout(() => {
+            this.addMissileTo(tower);
+        }, this.towerMissileCooldown)
+    }
+
+    addMissileTo(tower) {
+        if (tower.missiles.length > 0) {
+            const missile = this.add.rectangle(tower.x, tower.y - tower.displayHeight, 4, 4, this.highlightColour);
+            this.physics.add.existing(missile);
+            tower.missile = missile;
+
+            const missileIcon = tower.missiles.pop();
+            missileIcon.destroy();
+        }
     }
 
     explode(x, y, radius, color) {
@@ -127,7 +152,7 @@ class MissileCommand extends Game {
         });
     }
 
-    selectLaunchPos(pointer) {
+    selectLaunchTower(pointer) {
         if (pointer.y > 500) {
             return null;
         }
@@ -138,7 +163,7 @@ class MissileCommand extends Game {
                 return null;
             }
             const twrCandidate = this.physics.closest(pointer, twrs);
-            if (twrCandidate.visible) {
+            if (twrCandidate.visible && twrCandidate.missile !== null) {
                 return twrCandidate;
             } else {
                 const remainingTowers = twrs.filter((value, index, arr) => value != twrCandidate);
@@ -146,7 +171,9 @@ class MissileCommand extends Game {
             }
         }
 
-        return closestTower(this.towers);
+        const selectedTower = closestTower(this.towers);
+        // console.log(selectedTower)
+        return selectedTower;
     }
 
     getRndInteger(min, max) {
