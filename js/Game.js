@@ -3,18 +3,13 @@ class Game extends Phaser.Scene {
         super({
             key: config.key
         });
-
-        this.fgColour = 0x7777ff;
-        this.textColour = "#7777ff";
-        this.highlightColour = 0xff77ff;
-        this.bgColour = 0x0000ff;
     }
 
     create() {
         this.width = this.game.canvas.width;
         this.height = this.game.canvas.height;
 
-        this.cameras.main.setBackgroundColor(this.bgColour);
+        this.cameras.main.setBackgroundColor(BG_COLOR);
 
         // samples('github:tidalcycles/dirt-samples');
 
@@ -29,7 +24,7 @@ class Game extends Phaser.Scene {
         this.timer = 3 * 60;
         this.timerText = this.add.text(this.width - 10, this.height - 10, "3:00", {
             font: "24px sans-serif",
-            color: this.textColour,
+            color: TEXT_COLOR,
             padding: {
                 top: 0,
                 bottom: 0,
@@ -49,6 +44,14 @@ class Game extends Phaser.Scene {
         this.input.keyboard.on('keydown-FOUR', () => {
             this.scene.start("missilecommand");
         }, this);
+
+        this.cameras.main.once('camerafadeincomplete', function (camera) {
+            console.log("Faded in")
+        }, this);
+
+
+
+        this.cameras.main.fadeIn(FADE_TIME, 0, 0, 255);
 
     }
 

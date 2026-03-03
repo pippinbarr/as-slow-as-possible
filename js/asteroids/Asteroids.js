@@ -24,13 +24,13 @@ class Asteroids extends Game {
         const y = this.height / 2;
 
         // Create the player's rocket flame?
-        this.playerFlame = this.add.triangle(x, y, 0, 0, 0, 20, -20, 10, this.highlightColour, 1);
+        this.playerFlame = this.add.triangle(x, y, 0, 0, 0, 20, -20, 10, HIGHLIGHT_COLOR, 1);
         this.physics.add.existing(this.playerFlame)
         this.playerFlame.setOrigin(0.5, 0.5);
         // this.playerFlame.setScale(0);
 
         // Create the player
-        this.player = this.add.triangle(x, y, 0, 0, 0, 20, 20, 10, this.fgColour, 1);
+        this.player = this.add.triangle(x, y, 0, 0, 0, 20, 20, 10, FG_COLOR, 1);
         this.physics.add.existing(this.player);
         this.player.body.setDrag(0.99)
         this.player.body.setMaxVelocity(this.shipSpeed)
@@ -67,7 +67,7 @@ class Asteroids extends Game {
         }
 
         const asteroid = this.add.graphics();
-        asteroid.fillStyle(this.fgColour, 1)
+        asteroid.fillStyle(FG_COLOR, 1)
         asteroid.beginPath();
         asteroid.moveTo(size + Phaser.Math.Between(-size / 8, size / 2), 0);
         let a = 0;
@@ -161,7 +161,7 @@ class Asteroids extends Game {
             const y = this.player.y + Math.sin(angle) * 10;
             const vx = Math.cos(angle) * this.missileSpeed;
             const vy = Math.sin(angle) * this.missileSpeed;
-            const missile = this.add.rectangle(x, y, 4, 4, this.highlightColour);
+            const missile = this.add.rectangle(x, y, 4, 4, HIGHLIGHT_COLOR);
             this.physics.add.existing(missile);
             this.missileGroup.add(missile);
             missile.body.setVelocity(vx, vy);
@@ -186,7 +186,7 @@ class Asteroids extends Game {
                     scale: { start: 4, end: 4 },
                     emitting: false,
                     alpha: { start: 1, end: 0.2 },
-                    tint: this.highlightColour
+                    tint: HIGHLIGHT_COLOR
                 });
                 emitter.addEmitZone({
                     type: 'random',

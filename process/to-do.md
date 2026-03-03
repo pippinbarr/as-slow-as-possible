@@ -10,7 +10,10 @@
 
 ## Menu
 
-- We need a menu system for choosing the game and the difficulty
+- **Basic menu up and running without too much agony** ~~We need a menu system for choosing the game~~
+- **Looks awesome too** ~~Some kind of crossfade or other fade to make it slow to go between menu and next thing etc. Probably yes.~~
+
+- and the difficulty
 
 ## Pong
 
@@ -33,6 +36,7 @@
 - ~~Blue line for player misiles?~~
 - **Added Space Invaders way of showing missile availability** ~~Show the missile when it's ready to launch~~
 - **Each tower has 10 missiles** ~~Maximum number of missiles? I think so? - but then how to indicate? (A little row of dots below each tower showing quantity I suppose...)~~
+- ~~Destroy missile stocks on tower destroyed~~
 
 - Work on the timing
 

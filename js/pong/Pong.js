@@ -16,11 +16,11 @@ class Pong extends Game {
         this.PADDLE_WIDTH = this.width / 4;
         this.PADDLE_HEIGHT = this.PADDLE_WIDTH * 0.1;
 
-        const bottomPaddle = this.add.rectangle(this.width / 2, this.height - this.PADDLE_HEIGHT * 4, this.PADDLE_WIDTH, this.PADDLE_HEIGHT, this.fgColour);
+        const bottomPaddle = this.add.rectangle(this.width / 2, this.height - this.PADDLE_HEIGHT * 4, this.PADDLE_WIDTH, this.PADDLE_HEIGHT, FG_COLOR);
         this.bottomPaddle = this.physics.add.existing(bottomPaddle);
         this.bottomPaddle.body.setImmovable(true);
 
-        const topPaddle = this.add.rectangle(this.width / 2, this.PADDLE_HEIGHT * 4, this.PADDLE_WIDTH, this.PADDLE_HEIGHT, this.fgColour);
+        const topPaddle = this.add.rectangle(this.width / 2, this.PADDLE_HEIGHT * 4, this.PADDLE_WIDTH, this.PADDLE_HEIGHT, FG_COLOR);
         this.topPaddle = this.physics.add.existing(topPaddle);
         this.topPaddle.body.setImmovable(true);
 
@@ -32,7 +32,7 @@ class Pong extends Game {
         this.rightWall = this.physics.add.existing(rightWall);
         this.rightWall.body.setImmovable(true);
 
-        const ball = this.add.circle(this.width / 2, this.height / 2, this.PADDLE_HEIGHT * 0.75, this.highlightColour);
+        const ball = this.add.circle(this.width / 2, this.height / 2, this.PADDLE_HEIGHT * 0.75, HIGHLIGHT_COLOR);
         this.ball = this.physics.add.existing(ball)
         this.ball.body.setMaxVelocity(this.BALL_SPEED * 2, this.BALL_SPEED);
         this.ball.body.setVelocity(Phaser.Math.Between(-this.BALL_SPEED, this.BALL_SPEED), this.BALL_SPEED)

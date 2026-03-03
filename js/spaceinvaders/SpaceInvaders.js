@@ -18,7 +18,7 @@ class SpaceInvaders extends Game {
 
         // Player
         const playerUnit = 42;
-        const playerTriangle = this.add.triangle(0, 0, 0, playerUnit, playerUnit, playerUnit, playerUnit / 2, 0, this.fgColour);
+        const playerTriangle = this.add.triangle(0, 0, 0, playerUnit, playerUnit, playerUnit, playerUnit / 2, 0, FG_COLOR);
         this.player = this.physics.add.existing(playerTriangle);
         this.player.setPosition(this.width / 2, this.height - this.player.displayHeight / 2 - 80);
         this.player.body.setCollideWorldBounds(true);
@@ -84,13 +84,13 @@ class SpaceInvaders extends Game {
     getInvaderShape(row, unit) {
         const mainSize = unit * 0.8;
         if (row % 3 === 0) {
-            return this.add.rectangle(0, 0, mainSize, mainSize, this.fgColour);
+            return this.add.rectangle(0, 0, mainSize, mainSize, FG_COLOR);
         }
         else if ((row + 1) % 3 === 0) {
-            return this.add.triangle(0, 0, 0, mainSize, mainSize, mainSize, mainSize * 0.5, 0, this.fgColour)
+            return this.add.triangle(0, 0, 0, mainSize, mainSize, mainSize, mainSize * 0.5, 0, FG_COLOR)
         }
         else if ((row + 2) % 3 == 0) {
-            return this.add.circle(0, 0, mainSize * 0.5, this.fgColour);
+            return this.add.circle(0, 0, mainSize * 0.5, FG_COLOR);
         }
         else console.error("Whoops... no matching shape.")
     }
@@ -102,7 +102,7 @@ class SpaceInvaders extends Game {
         const offsetX = baseUnit * 1.5;
         this.basesGroup = this.physics.add.group();
         for (let baseNum = 0; baseNum < bases; baseNum++) {
-            const baseShape = this.add.rectangle(0, 0, baseUnit, baseUnit / 2, this.fgColour);
+            const baseShape = this.add.rectangle(0, 0, baseUnit, baseUnit / 2, FG_COLOR);
             const base = this.physics.add.existing(baseShape);
             base.setPosition(offsetX + baseNum * 2 * baseUnit, this.player.y - this.player.displayHeight);
             this.basesGroup.add(base);
@@ -135,7 +135,7 @@ class SpaceInvaders extends Game {
     }
 
     fireMissile(invader) {
-        const missile = this.add.rectangle(invader.x, invader.y + invader.displayHeight / 2, 4, 4, this.highlightColour);
+        const missile = this.add.rectangle(invader.x, invader.y + invader.displayHeight / 2, 4, 4, HIGHLIGHT_COLOR);
         this.physics.add.existing(missile);
         this.invaderMissilesGroup.add(missile);
         missile.body.setVelocity(0, this.invaderMissileSpeed);
@@ -170,7 +170,7 @@ class SpaceInvaders extends Game {
     }
 
     addPlayerMissile() {
-        const missile = this.add.rectangle(this.player.x, this.player.y - this.player.displayHeight / 2, 4, 4, this.highlightColour);
+        const missile = this.add.rectangle(this.player.x, this.player.y - this.player.displayHeight / 2, 4, 4, HIGHLIGHT_COLOR);
         this.physics.add.existing(missile);
         this.player.missile = missile;
     }

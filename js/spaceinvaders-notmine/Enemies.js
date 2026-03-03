@@ -44,7 +44,7 @@ class Enemies {
         // Create enemies
         for (let i = 0; i < ROW_SIZE * COLUMN_SIZE; i++) {
 
-            const enemyRect = this.scene.add.rectangle(0, 0, 20, 20, this.fgColour);
+            const enemyRect = this.scene.add.rectangle(0, 0, 20, 20, FG_COLOR);
             const enemy = this.scene.physics.add.existing(enemyRect);
 
             // Offsets
