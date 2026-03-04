@@ -12,8 +12,11 @@
 
 - **Basic menu up and running without too much agony** ~~We need a menu system for choosing the game~~
 - **Looks awesome too** ~~Some kind of crossfade or other fade to make it slow to go between menu and next thing etc. Probably yes.~~
+- ~~and the difficulty~~
+- ~~add red underline to title?~~
 
-- and the difficulty
+- Add memory for unlocking Nightmare
+- Make nightmare work (clock counts up)
 
 ## Pong
 

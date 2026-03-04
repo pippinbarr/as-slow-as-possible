@@ -5,6 +5,10 @@ class Game extends Phaser.Scene {
         });
     }
 
+    init(data) {
+        this.duration = data.duration;
+    }
+
     create() {
         this.width = this.game.canvas.width;
         this.height = this.game.canvas.height;
@@ -21,7 +25,8 @@ class Game extends Phaser.Scene {
         //     ).play();
         // });
 
-        this.timer = 3 * 60;
+        this.timer = this.duration;
+
         this.timerText = this.add.text(this.width - 10, this.height - 10, "3:00", {
             font: "24px sans-serif",
             color: TEXT_COLOR,
@@ -45,14 +50,17 @@ class Game extends Phaser.Scene {
             this.scene.start("missilecommand");
         }, this);
 
-        this.cameras.main.once('camerafadeincomplete', function (camera) {
-            console.log("Faded in")
+        this.cameras.main.once('camerafadeincomplete', (camera) => {
+            this.start();
         }, this);
-
-
 
         this.cameras.main.fadeIn(FADE_TIME, 0, 0, 255);
 
+        this.physics.pause()
+    }
+
+    start() {
+        this.physics.resume()
     }
 
     update(time, delta) {

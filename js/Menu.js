@@ -1,9 +1,9 @@
 class Menu extends Phaser.Scene {
 
   constructor(config) {
-    super({
-      key: "menu"
-    });
+    super(config);
+
+    this.indent = 50;
   }
 
   create() {
@@ -12,7 +12,16 @@ class Menu extends Phaser.Scene {
 
     this.cameras.main.setBackgroundColor(BG_COLOR);
 
-    this.titleText = this.add.text(10, 10, "As Slow As Possible", {
+    this.cameras.main.once('camerafadeincomplete', function (camera) {
+
+    }, this);
+    this.cameras.main.fadeIn(FADE_TIME, 0, 0, 255);
+
+  }
+
+  createTitle(title) {
+    // Title
+    this.titleText = this.add.text(this.indent, this.indent, title, {
       font: "24px sans-serif",
       color: TEXT_COLOR,
       padding: {
@@ -21,58 +30,51 @@ class Menu extends Phaser.Scene {
       },
     }).setOrigin(0, 0);
 
-    const menuItems = [
-      {
-        text: "Pong",
-        state: "pong"
-      },
-      {
-        text: "Breakout",
-        state: "breakout"
-      },
-      {
-        text: "Space Invaders",
-        state: "spaceinvaders"
-      },
-      {
-        text: "Missile Command",
-        state: "missilecommand"
-      }
-    ]
+    // Underline
+    this.add.line(this.titleText.x, this.titleText.y + this.titleText.displayHeight, 0, 0, this.titleText.displayWidth, 0, HIGHLIGHT_COLOR)
+      .setOrigin(0, 0);
+  }
 
-    for (let i = 0; i < menuItems.length; i++) {
-      const item = menuItems[i];
-      const menuItem = this.add.text(10, 110 + 50 * i, item.text, {
+  createMenu(data) {
+    // Go through the menu data and create menu items for each entry
+    for (let i = 0; i < data.length; i++) {
+      const itemData = data[i];
+      const menuItemText = this.add.text(this.indent, 110 + 50 * i, itemData.text, {
         font: "24px sans-serif",
         color: TEXT_COLOR,
-        // backgroundColor: FG_COLOR,
         padding: {
           top: 0,
           bottom: 0,
         },
       }).setOrigin(0, 0);
-      menuItem.state = item.state;
 
-      menuItem.setInteractive(new Phaser.Geom.Rectangle(0, 0, menuItem.width, menuItem.height), Phaser.Geom.Rectangle.Contains);
+      if (itemData.locked) {
+        menuItemText.setAlpha(0.666);
+        return;
+      }
 
-      menuItem.on('pointerover', () => {
-        menuItem.setTint(HIGHLIGHT_COLOR);
+      menuItemText.setInteractive(new Phaser.Geom.Rectangle(0, 0, menuItemText.width, menuItemText.height), Phaser.Geom.Rectangle.Contains);
+
+      menuItemText.on('pointerover', () => {
+        menuItemText.setTint(HIGHLIGHT_COLOR);
       });
 
-      menuItem.on('pointerout', () => {
-        menuItem.setTint(0xffffff);
+      menuItemText.on('pointerout', () => {
+        menuItemText.setTint(0xffffff);
       });
 
-      menuItem.on('pointerdown', () => {
-        menuItem.y += 2;
-        menuItem.x += 2;
+      menuItemText.on('pointerdown', () => {
+        menuItemText.y += 2;
+        menuItemText.x += 2;
       });
 
-      menuItem.on('pointerup', () => {
-        menuItem.y -= 2;
-        menuItem.x -= 2;
+      menuItemText.on('pointerup', () => {
+        menuItemText.y -= 2;
+        menuItemText.x -= 2;
         this.cameras.main.fade(FADE_TIME, 0, 0, 255, false, (camera, progress) => {
-          if (progress == 1) this.scene.start(menuItem.state);
+          if (progress == 1) {
+            this.scene.start(itemData.toState, itemData);
+          }
         });
       });
     }

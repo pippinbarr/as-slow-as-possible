@@ -1,6 +1,6 @@
 const DEBUG = false;
 const FAST_MODE = true;
-const START_SCENE = "menu";
+const START_SCENE = "gamemenu";
 const WIDTH = 480;
 const HEIGHT = 640;
 const LANG = "en";
@@ -12,7 +12,6 @@ const BG_COLOR = 0x0000ff;
 
 const FADE_TIME = FAST_MODE ? 1000 : 5000;
 
-
 let config = {
   type: Phaser.AUTO,
   width: WIDTH,
@@ -21,7 +20,8 @@ let config = {
   scene: [
     Boot,
     Preloader,
-    Menu,
+    GameMenu,
+    DifficultyMenu,
 
     Pong,
     Breakout,
