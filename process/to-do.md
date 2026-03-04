@@ -2,7 +2,7 @@
 
 ## Difficulty levels
 
-- That rather lovely idea of difficulty being reflected in either how long you play or how slow it is or both...
+- **I think it's better and less complex to leave it as duration** ~~That rather lovely idea of difficulty being reflected in either how long you play or how slow it is or both...~~
 
 ## Sound/music
 
