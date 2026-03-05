@@ -172,7 +172,6 @@ class MissileCommand extends Game {
         }
 
         const selectedTower = closestTower(this.towers);
-        // console.log(selectedTower)
         return selectedTower;
     }
 

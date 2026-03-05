@@ -86,7 +86,6 @@ class Tetris extends Game {
             // Check bottom
             for (let block of blocks) {
                 if (block.y + block.displayHeight / 2 >= this.height / 2) {
-                    console.log("Bottom")
                     this.currentPiece.y = Math.floor(this.currentPiece.y);
                     this.currentPiece = this.spawnPiece(this.width / 2, 0);
                     break;
@@ -99,7 +98,6 @@ class Tetris extends Game {
 
     rotatePiece(dir) {
         let newIndex = this.currentPiece.pieceTypeDataIndex + dir;
-        console.log(newIndex);
         if (newIndex < 0) {
             newIndex = this.currentPiece.pieceTypeData.length - 1;
         }

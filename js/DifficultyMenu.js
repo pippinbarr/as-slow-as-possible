@@ -34,7 +34,8 @@ class DifficultyMenu extends Menu {
           text: "Nightmare",
           toState: this.gameScene,
           duration: -1,
-          locked: this.registry.get(this.gameScene)
+          locked: this.registry.get(this.gameScene),
+          subtext: "Unlock by completing the game on Hard"
         }
       ]
     };

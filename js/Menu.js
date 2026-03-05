@@ -48,6 +48,18 @@ class Menu extends Phaser.Scene {
         },
       }).setOrigin(0, 0);
 
+      if (itemData.subtext && itemData.locked) {
+        const menuItemSubtext = this.add.text(menuItemText.x, menuItemText.y + menuItemText.height * 1.1, itemData.subtext, {
+          font: "18px sans-serif",
+          color: TEXT_COLOR,
+          padding: {
+            top: 0,
+            bottom: 0,
+          },
+        }).setOrigin(0, 0);
+        // menuItemSubtext.setAlpha(0.666);
+      }
+
       if (itemData.locked) {
         menuItemText.setAlpha(0.666);
         return;

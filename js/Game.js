@@ -7,11 +7,14 @@ class Game extends Phaser.Scene {
 
     init(data) {
         this.duration = data.duration;
+        this.key = data.toState;
     }
 
     create() {
         this.width = this.game.canvas.width;
         this.height = this.game.canvas.height;
+
+        this.gameOver = false;
 
         this.cameras.main.setBackgroundColor(BG_COLOR);
 
@@ -25,7 +28,7 @@ class Game extends Phaser.Scene {
         //     ).play();
         // });
 
-        this.timer = this.duration;
+        this.timer = this.duration > 0 ? this.duration : 0;
 
         this.timerText = this.add.text(this.width - 10, this.height - 10, "3:00", {
             font: "24px sans-serif",
@@ -66,18 +69,47 @@ class Game extends Phaser.Scene {
     update(time, delta) {
         super.update();
 
-        this.timer -= delta / 1000;
-        if (this.timer < 0) {
-            this.timer = 0;
-            // And end...
+        if (!this.gameOver) {
+            this.timer += this.duration > 0 ? -delta / 1000 : delta / 1000;
+
+            if (this.timer < 0) {
+                this.timer = 0;
+
+                this.gameOver = true;
+
+                const freshData = {
+                    pong: this.registry.get("pong"),
+                    missilecommand: this.registry.get("missilecommand"),
+                    breakout: this.registry.get("breakout"),
+                    spaceinvaders: this.registry.get("spaceinvaders")
+                };
+                freshData[this.key] = false;
+                this.registry.set(freshData);
+                localStorage.setItem("as-slow-as-possible-data", JSON.stringify(freshData))
+
+                this.scene.start("gamemenu");
+            }
+            this.updateTimerText();
         }
-        this.updateTimerText();
     }
 
 
     updateTimerText() {
-        const minutes = Math.floor(this.timer / 60)
-        const seconds = Math.floor(this.timer - minutes * 60);
-        this.timerText.text = `${minutes}:${seconds < 10 ? "0" + seconds : seconds}`;
+        const hours = Math.floor(this.timer / 60 / 60);
+        const hoursText = (hours < 10) ? "0" + hours : hours;
+
+        const minutes = Math.floor(this.timer / 60) - (hours * 60);
+        const minutesText = (minutes < 10) ? "0" + minutes : minutes;
+
+        const seconds = Math.floor(this.timer) - (hours * 60 * 60) - (minutes * 60);
+        const secondsText = (seconds < 10) ? "0" + seconds : seconds;
+
+
+        if (this.duration > 0) {
+            this.timerText.text = `${minutesText}:${secondsText}`;
+        }
+        else {
+            this.timerText.text = `${hoursText}:${minutesText}:${secondsText}`;
+        }
     }
 }

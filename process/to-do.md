@@ -3,6 +3,8 @@
 ## Difficulty levels
 
 - **I think it's better and less complex to leave it as duration** ~~That rather lovely idea of difficulty being reflected in either how long you play or how slow it is or both...~~
+- ~~Implement Nightmare's count up (based on duration of -1)~~
+- ~~Implement Nightmare unlock when you win on Hard~~
 
 ## Sound/music
 
@@ -14,19 +16,22 @@
 - **Looks awesome too** ~~Some kind of crossfade or other fade to make it slow to go between menu and next thing etc. Probably yes.~~
 - ~~and the difficulty~~
 - ~~add red underline to title?~~
-
-- Add memory for unlocking Nightmare
-- Make nightmare work (clock counts up)
+- ~~Indicate under Nightmare that it can be unlocked (remove text when it's unlocked)~~
+- **Nah let's not overthink it** ~~Fancy UX to indicate when Nightmare unlocked but they haven't tried?~~
 
 ## Pong
 
 - ~~How to handle the reset when someone misses? One weird option is simply not to (per Missile Command? Seems really weird but also refocuses what the game means?)~~
 - ~~Add spin off the paddle~~
 
+- Ball fades back in after a miss
+
 ## Breakout
 - **I think the answer here is repeated: Nothing would happen, there would just not be anything left to do if you reached it** ~~Game over? Could you ever win? ~~
 - ~~How to handle the reset when someone misses? (See Pong above)~~
 - ~~Add spin off the paddle~~
+
+- Ball fades back in after a miss
 
 ## Missile Command
 - ~~Targeting the x is a bit off~~
@@ -42,6 +47,7 @@
 - ~~Destroy missile stocks on tower destroyed~~
 
 - Work on the timing
+- Ship fades back in after death (three times?)
 
 ## Space Invaders
 - **Did this and then found it kind of too much so started making my own** ~~Find an open source implementation, take it, slow it down~~
@@ -49,6 +55,7 @@
 - **Finally did the obvious and it's quite nice.** ~~Missile cooldown for player (just try something)~~
 
 - Work on the timing
+- What happens when all towers gone in Missile Command? I like the idea of continuing to just watch the missile shower, but is that "correct"?
 
 ## Retired for now
 

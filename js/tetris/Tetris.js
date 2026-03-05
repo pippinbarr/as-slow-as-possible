@@ -110,7 +110,6 @@ class Tetris extends Game {
         }
         // this.startSound.play();
         this.spawnPiece();
-        // console.log(this.currentPiece);
 
         setTimeout(() => {
 
@@ -173,7 +172,6 @@ class Tetris extends Game {
 
     // Déplacement de la pièce
     movePiece(dx, dy) {
-        console.log(this.currentPiece.dy);
         this.currentPiece.x += dx;
 
         this.currentPiece.dy += 0.1;

@@ -127,7 +127,6 @@ class Asteroids extends Game {
 
     wrapThing(thing) {
         if (thing.x < -thing.body.width / 1.5 || thing.x > this.width + thing.body.width / 1.5) {
-            console.log(thing.x, thing.body.width);
             thing.x = this.width - thing.x;
         }
         if (thing.y < -thing.body.height / 1.5 || thing.y > this.height + thing.body.height / 1.5) {

@@ -1,5 +1,5 @@
 const DEBUG = false;
-const FAST_MODE = false;
+const FAST_MODE = true;
 const START_SCENE = "gamemenu";
 const WIDTH = 480;
 const HEIGHT = 640;

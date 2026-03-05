@@ -72,6 +72,5 @@ class Pong extends Game {
         // May want to include "spin" here?
         const dx = ball.x - paddle.x;
         ball.body.velocity.x += dx * 2;
-        console.log(dx);
     }
 }
