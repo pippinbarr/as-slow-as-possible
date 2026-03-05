@@ -156,3 +156,17 @@ If not Asteroids then what? Combat (Tanks)? Has similar complexities of motion i
 Are we back to Space Invaders? Perhaps we are. It's a different task to Missile Command while remaining related. There will be implementations out there I can take.
 
 I think that might be the direction and I retire Asteroids for now.
+
+## Mostly there? But also not... (2026-03-05)
+
+Wellll it has been a little while since I've taken the time to write a journal entry on this puppy. Commit history shows that I've done quite a bit since the last, though mostly the pivot to Space Invaders is now done and then I've mostly been working on menu stuff and simpler aesthetic tweak stuff (like discovering the beauty of fades).
+
+It feels like the project is in that classic state where it functions and the bits and pieces are all in place but a lot hangs on the "syrupy feel" I'm looking for and that's not established really for any of them except perhaps Pong and Breakout feel kind of good?
+
+Need to think of how much I want to deal with communicating the point of the slowness/shape the player's perception of it ahead of time versus just letting it happen? To what extent do I care if the player just bounces of with "I don't have time for this bullshit"? Or is that well within the parameters with the idea they might be then like "oh ha ha" as they walk away?
+
+Do I want the game to "take a position" on slowness as relaxation? As test of nerves? Could be as simple as a subtitle for example, doesn't have to be massively complex? Or does the title do enough on its own even? Do I solve this or just ship it with a more ambiguous vibe and see what happens?
+
+Main remaining stuff is timefeel so I guess that'll be my big push for tomorrow. And there remains the question of music looming - nothing really done there except I did learn about .clip() and .slow() a bit more in strudel so it's possible I can build something where there are multiple time signatures(??) and overlaps and that's enough to get us something? Bea's drum patterning in their project was nice too... randomization for the drums perhaps.
+
+ANY HOO.

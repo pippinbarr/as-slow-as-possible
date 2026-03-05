@@ -46,7 +46,6 @@ class GameMenu extends Menu {
     const playerDataString = localStorage.getItem("as-slow-as-possible-data");
 
     const playerData = JSON.parse(playerDataString);
-    console.log(playerData);
     if (playerData) {
       this.registry.set(playerData);
     }
