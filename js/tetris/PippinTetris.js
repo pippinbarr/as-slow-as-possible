@@ -45,7 +45,7 @@ class Tetris extends Game {
         super.create();
 
         this.tileSize = 32;
-        this.pieceSpeed = FAST_MODE ? 1 : 0.001;
+        this.pieceSpeed = 0.001 / TIME_SCALE;
 
         this.currentPiece = this.spawnPiece(this.width / 2, 0);
 

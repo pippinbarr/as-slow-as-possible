@@ -11,7 +11,7 @@ class Breakout extends Game {
     create() {
         super.create();
 
-        this.BALL_SPEED = FAST_MODE ? 200 : 5;
+        this.BALL_SPEED = 5 / TIME_SCALE;
         this.PADDLE_SPEED = 5;
         this.PADDLE_WIDTH = this.width / 4;
         this.PADDLE_HEIGHT = this.PADDLE_WIDTH * 0.1;

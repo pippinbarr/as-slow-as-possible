@@ -1,5 +1,8 @@
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const TIME_SCALE = urlParams.get('timescale') || 1;
+
 const DEBUG = false;
-const FAST_MODE = false;
 const START_SCENE = "gamemenu";
 const WIDTH = 480;
 const HEIGHT = 640;
@@ -10,7 +13,7 @@ const TEXT_COLOR = "#7777ff";
 const HIGHLIGHT_COLOR = 0xff77ff;
 const BG_COLOR = 0x0000ff;
 
-const FADE_TIME = FAST_MODE ? 1000 : 5000;
+const FADE_TIME = 5000 * TIME_SCALE;
 
 let config = {
   type: Phaser.AUTO,

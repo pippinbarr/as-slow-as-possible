@@ -8,13 +8,14 @@ class Asteroids extends Game {
             key: "asteroids"
         })
 
-        this.missileSpeed = 5 * (FAST_MODE ? 50 : 1);
-        this.asteroidSpeed = 0.5 * (FAST_MODE ? 50 : 1);
-        this.shipSpeed = 3 * (FAST_MODE ? 50 : 2);
-        this.shipSpinSpeed = 6 * (FAST_MODE ? 50 : 5);
-        this.asteroidSpinSpeed = 0.25 * (FAST_MODE ? 50 : 1);
-        this.explosionVelocity = 1 * (FAST_MODE ? 50 : 1);
-        this.explosionDuration = 50 * (FAST_MODE ? 50 : 500);
+        this.missileSpeed = 5 / TIME_SCALE;
+        this.asteroidSpeed = 0.5 / TIME_SCALE;
+        this.shipSpeed = 6 / TIME_SCALE;
+        this.shipSpinSpeed = 30 / TIME_SCALE;
+        this.asteroidSpinSpeed = 0.25 / TIME_SCALE;
+        this.explosionVelocity = 1 / TIME_SCALE;
+
+        this.explosionDuration = 2000 * TIME_SCALE;
     }
 
     create() {

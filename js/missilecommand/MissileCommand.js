@@ -4,11 +4,11 @@ class MissileCommand extends Game {
             key: "missilecommand"
         });
 
-        this.enemyMissileSpeed = 7 * (FAST_MODE ? 10 : 2);
-        this.playerMissileSpeed = 10 * (FAST_MODE ? 10 : 4);
-        this.enemyMissileDelay = 2000 * (FAST_MODE ? 1 : 5);
-        this.explodeDuration = 2000 * (FAST_MODE ? 1 : 5);
-        this.towerMissileCooldown = 50 * (FAST_MODE ? 1 : 5);
+        this.enemyMissileSpeed = 14 / TIME_SCALE;
+        this.playerMissileSpeed = 40 / TIME_SCALE;
+        this.enemyMissileDelay = 10000 * TIME_SCALE;
+        this.explodeDuration = 10000 * TIME_SCALE;
+        this.towerMissileCooldown = 250 * TIME_SCALE;
     }
 
     create() {

@@ -4,11 +4,14 @@ class SpaceInvaders extends Game {
             key: "spaceinvaders"
         });
 
-        this.playerSpeed = 20 * (FAST_MODE ? 50 : 1);
-        this.invaderSpeed = 0.1 * (FAST_MODE ? 50 : 1);
-        this.playerMissileSpeed = 20 * (FAST_MODE ? 50 : 1);
-        this.invaderMissileSpeed = 20 * (FAST_MODE ? 50 : 1);
-        this.playerMissileCooldown = 500 * (FAST_MODE ? 1 : 10);
+        this.playerSpeed = 20 / TIME_SCALE;
+        this.invaderSpeed = 0.1 / TIME_SCALE;
+
+        this.playerMissileSpeed = 20 / TIME_SCALE;
+        this.invaderMissileSpeed = 20 / TIME_SCALE;
+
+        this.playerMissileCooldown = 5000 * TIME_SCALE;
+
         this.invaderUnit = 36;
         this.invaders = [];
     }
