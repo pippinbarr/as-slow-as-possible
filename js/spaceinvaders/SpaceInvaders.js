@@ -23,7 +23,7 @@ class SpaceInvaders extends Game {
         const playerUnit = 42;
         const playerTriangle = this.add.triangle(0, 0, 0, playerUnit, playerUnit, playerUnit, playerUnit / 2, 0, FG_COLOR);
         this.player = this.physics.add.existing(playerTriangle);
-        this.player.setPosition(this.width / 2, this.height - this.player.displayHeight / 2 - 80);
+        this.player.setPosition(this.width / 2, this.height - this.player.displayHeight / 0.66);
         this.player.body.setCollideWorldBounds(true);
 
         this.addPlayerMissile();
@@ -74,7 +74,7 @@ class SpaceInvaders extends Game {
             for (let col = 0; col < cols; col++) {
                 const invaderShape = this.getInvaderShape(row, this.invaderUnit);
                 const invader = this.physics.add.existing(invaderShape);
-                invader.setPosition(offsetX + col * this.invaderUnit, offsetY + row * this.invaderUnit);
+                invader.setPosition(offsetX + col * this.invaderUnit, offsetY + 1.5 * row * this.invaderUnit);
                 this.invadersGroup.add(invader);
                 invader.row = row;
                 invader.col = col;
@@ -189,6 +189,7 @@ class SpaceInvaders extends Game {
     invadersHitPlayer(invader, player) {
         this.player.setActive(false);
         this.player.setVisible(false);
+        this.player.missile.destroy();
         this.inputEnabled = false;
 
     }

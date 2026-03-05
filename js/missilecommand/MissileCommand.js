@@ -19,24 +19,20 @@ class MissileCommand extends Game {
             this.launchMissile(this.input.activePointer);
         });
 
-        this.ground = this.add.rectangle(this.width / 2, this.height - 80, this.width, 60, FG_COLOR);
+        this.ground = this.add.rectangle(this.width / 2, this.height * 0.9, this.width, 60, FG_COLOR);
         this.physics.add.existing(this.ground);
         // this.ground.setStrokeStyle(2, 0x111111);
 
         this.enemyMissiles = [];
 
         this.towers = [];
-        this.towers.push(this.newTower(80, 510));
-        this.towers.push(this.newTower(400, 510));
-        // this.towers.push(this.newTower(720, 500));
+        this.towers.push(this.newTower(this.width * 0.15, this.height * 0.82));
+        this.towers.push(this.newTower(this.width * 0.85, this.height * 0.82));
 
         this.cities = [];
-        this.cities.push(this.newCity(160, 535));
-        this.cities.push(this.newCity(240, 535));
-        this.cities.push(this.newCity(320, 535));
-        // this.cities.push(this.newCity(480, 515));
-        // this.cities.push(this.newCity(560, 515));
-        // this.cities.push(this.newCity(640, 515));
+        this.cities.push(this.newCity(this.width * 0.33, this.height * 0.85));
+        this.cities.push(this.newCity(this.width * 0.5, this.height * 0.85));
+        this.cities.push(this.newCity(this.width * 0.66, this.height * 0.85));
 
         this.targets = [];
         this.targets = this.targets.concat(this.towers);

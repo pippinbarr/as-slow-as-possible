@@ -3,9 +3,9 @@ const urlParams = new URLSearchParams(queryString);
 const TIME_SCALE = urlParams.get('timescale') || 1;
 
 const DEBUG = false;
-const START_SCENE = "gamemenu";
+const START_SCENE = "pong";
 const WIDTH = 480;
-const HEIGHT = 640;
+const HEIGHT = 850;
 const LANG = "en";
 
 const FG_COLOR = 0x7777ff;
@@ -28,8 +28,6 @@ let config = {
 
     Pong,
     Breakout,
-    Tetris,
-    Asteroids,
     MissileCommand,
     SpaceInvaders
   ],

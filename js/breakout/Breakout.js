@@ -32,7 +32,7 @@ class Breakout extends Game {
         // this.rightWall.body.setImmovable(true);
         // this.walls.add(this.rightWall)
 
-        const ball = this.add.circle(this.width / 2, this.height / 1.6, this.PADDLE_HEIGHT * 0.75, HIGHLIGHT_COLOR);
+        const ball = this.add.circle(this.width / 2, this.height / 1.4, this.PADDLE_HEIGHT * 0.75, HIGHLIGHT_COLOR);
         this.ball = this.physics.add.existing(ball)
 
         this.physics.world.setBounds(0, 0, this.width, this.height + 50);
@@ -44,8 +44,8 @@ class Breakout extends Game {
             .setCollideWorldBounds(true)
 
         this.bricks = this.physics.add.group();
-        const cols = 8;
-        const rows = 16;
+        const cols = 10;
+        const rows = 6;
         const padding = 4;
         const cellWidth = this.width / cols;
         const cellHeight = this.PADDLE_HEIGHT + padding;
@@ -53,21 +53,27 @@ class Breakout extends Game {
         const brickHeight = this.PADDLE_HEIGHT;
         let x = brickWidth / 2;
         let y = brickHeight;
-        for (let i = 0; i < cols * rows; i++) {
-            const brick = this.bricks.create(300, 400, 'particle');
-            brick.setDisplaySize(brickWidth, brickHeight)
-            brick.setImmovable(true);
-            brick.setTint(0x6666ff);
+
+        for (let set = 0; set < 3; set++) {
+            const bricks = [];
+            for (let i = 0; i < cols * rows; i++) {
+                const brick = this.bricks.create(300, 400, 'particle');
+                brick.setDisplaySize(brickWidth, brickHeight)
+                brick.setImmovable(true);
+                brick.setTint(0x6666ff);
+                bricks.push(brick);
+            }
+
+            Phaser.Actions.GridAlign(bricks, {
+                width: cols,
+                height: rows,
+                cellWidth: cellWidth,
+                cellHeight: cellHeight,
+                x: cellWidth / 2,
+                y: 100 + set * 180
+            });
         }
 
-        Phaser.Actions.GridAlign(this.bricks.getChildren(), {
-            width: cols,
-            height: rows,
-            cellWidth: cellWidth,
-            cellHeight: cellHeight,
-            x: cellWidth / 2,
-            y: 100
-        });
 
         this.physics.add.collider(this.ball, this.paddle, this.paddleHit);
         this.physics.add.collider(this.ball, this.bricks, this.brickHit, null, this);
