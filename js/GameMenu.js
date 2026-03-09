@@ -7,6 +7,8 @@ class GameMenu extends Menu {
   }
 
   create() {
+    this.input.setDefaultCursor('default');
+
     const data = {
       title: "As Slow As Possible",
       menuItems: [

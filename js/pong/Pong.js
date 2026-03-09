@@ -4,6 +4,9 @@ class Pong extends Game {
         super({
             key: "pong"
         });
+
+        this.ballLaunchDelay = 6000 * TIME_SCALE;
+        this.ballReviveDealy = 5000 * TIME_SCALE;
     }
 
     create() {
@@ -32,16 +35,15 @@ class Pong extends Game {
 
         const ball = this.add.circle(this.width / 2, this.height / 2, this.PADDLE_HEIGHT * 0.75, HIGHLIGHT_COLOR);
         this.ball = this.physics.add.existing(ball)
-        this.ball.body.setMaxVelocity(this.BALL_SPEED * 2, this.BALL_SPEED);
-        this.ball.body.setVelocity(Phaser.Math.Between(-this.BALL_SPEED, this.BALL_SPEED), this.BALL_SPEED)
+        this.ball.body.setMaxVelocity(this.BALL_SPEED * 2, this.BALL_SPEED)
             .setBounce(1, 1);
+
+        this.ball.body.setVelocity(Phaser.Math.Between(-this.BALL_SPEED, this.BALL_SPEED), this.BALL_SPEED)
 
         this.physics.add.collider(this.ball, this.rightWall);
         this.physics.add.collider(this.ball, this.leftWall);
         this.physics.add.collider(this.ball, this.topPaddle, this.paddleHit);
         this.physics.add.collider(this.ball, this.bottomPaddle, this.paddleHit);
-
-
     }
 
     update(time, delta) {
@@ -49,6 +51,24 @@ class Pong extends Game {
 
         this.handleInput();
         this.handleTopPaddle();
+
+        if (this.ball.y > this.height + this.ball.displayHeight) {
+            this.addTimePenalty();
+            this.ball.body.setVelocity(0, 0);
+            this.ball.setAlpha(0);
+            this.ball.setPosition(this.width / 2, this.height / 2);
+            setTimeout(() => {
+                this.tweens.add({
+                    targets: this.ball,
+                    alpha: 1,
+                    onComplete: () => {
+                        this.ball.body.setVelocity(Phaser.Math.Between(-this.BALL_SPEED, this.BALL_SPEED), this.BALL_SPEED)
+                            .setBounce(1, 1);
+                    },
+                    duration: this.ballLaunchDelay
+                })
+            }, this.ballReviveDealy);
+        }
     }
 
     handleInput() {

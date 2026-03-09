@@ -11,6 +11,8 @@ class Game extends Phaser.Scene {
     }
 
     create() {
+        this.input.setDefaultCursor('none');
+
         this.width = this.game.canvas.width;
         this.height = this.game.canvas.height;
 
@@ -59,18 +61,23 @@ class Game extends Phaser.Scene {
 
         this.cameras.main.fadeIn(FADE_TIME, 0, 0, 255);
 
-        this.physics.pause()
+        this.physics.pause();
+        this.stopTimer();
     }
 
     start() {
-        this.physics.resume()
+        this.physics.resume();
+        this.startTimer();
     }
 
     update(time, delta) {
         super.update();
 
         if (!this.gameOver) {
-            this.timer += this.duration > 0 ? -delta / 1000 : delta / 1000;
+
+            if (this.timerOn) {
+                this.timer += this.duration > 0 ? -delta / 1000 : delta / 1000;
+            }
 
             if (this.timer < 0) {
                 this.timer = 0;
@@ -93,6 +100,18 @@ class Game extends Phaser.Scene {
         }
     }
 
+    startTimer() {
+        this.timerOn = true;
+    }
+
+    stopTimer() {
+        this.timerOn = false;
+    }
+
+    addTimePenalty() {
+        this.timer += this.duration > 0 ? 30 : -30;
+        if (this.timer < 0) this.timer = 0;
+    }
 
     updateTimerText() {
         const hours = Math.floor(this.timer / 60 / 60);

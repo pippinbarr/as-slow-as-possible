@@ -35,7 +35,7 @@ class Breakout extends Game {
         const ball = this.add.circle(this.width / 2, this.height / 1.4, this.PADDLE_HEIGHT * 0.75, HIGHLIGHT_COLOR);
         this.ball = this.physics.add.existing(ball)
 
-        this.physics.world.setBounds(0, 0, this.width, this.height + 50);
+        this.physics.world.setBounds(0, 0, this.width, this.height * 3);
 
         this.ball.body
             .setMaxVelocity(this.BALL_SPEED * 2, this.BALL_SPEED)
@@ -87,7 +87,23 @@ class Breakout extends Game {
         this.handleInput();
 
         if (this.ball.y > this.height + this.ball.displayHeight) {
-            this.ball.destroy();
+            this.ball.body.setVelocity(0, 0);
+            this.ball.setAlpha(0);
+            this.ball.setPosition(this.width / 2, this.height / 1.4);
+
+            this.addTimePenalty();
+
+            setTimeout(() => {
+                this.tweens.add({
+                    targets: this.ball,
+                    alpha: 1,
+                    onComplete: () => {
+                        this.ball.body.setVelocity(Phaser.Math.Between(-this.BALL_SPEED, this.BALL_SPEED), this.BALL_SPEED)
+                            .setBounce(1, 1);
+                    },
+                    duration: this.ballLaunchDelay
+                })
+            }, this.ballReviveDealy);
         }
     }
 
