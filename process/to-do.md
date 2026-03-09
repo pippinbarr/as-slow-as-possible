@@ -6,7 +6,7 @@
 - ~~Fix everything that got broken by the dimensions (layouts mostly, but does breakout columns etc. work?)~~
 
 - Figure out input (mobile especially) -- is it that a hold-press on left or right side moves paddle/ship and a tap in the centre "fires" (or tap in specific location for MC)? Relatively simple at least. Make it the same for desktop or do that with keyboard?
-- Instructions for input?
+- Instructions for input? (Where?)
 
 ## Difficulty levels
 
@@ -32,14 +32,14 @@
 - ~~How to handle the reset when someone misses? One weird option is simply not to (per Missile Command? Seems really weird but also refocuses what the game means?)~~
 - ~~Add spin off the paddle~~
 
-- Ball fades back in after a miss
+- Ball fades back in after a miss + time goes up (30 seconds?)
 
 ## Breakout
 - **I think the answer here is repeated: Nothing would happen, there would just not be anything left to do if you reached it** ~~Game over? Could you ever win? ~~
 - ~~How to handle the reset when someone misses? (See Pong above)~~
 - ~~Add spin off the paddle~~
 
-- Ball fades back in after a miss
+- Ball fades back in after a miss + time goes up (30 seconds?)
 
 ## Missile Command
 - ~~Targeting the x is a bit off~~
@@ -55,7 +55,10 @@
 - ~~Destroy missile stocks on tower destroyed~~
 
 - Work on the timing
-- Ship fades back in after death (three times?)
+- Missiles are just cooldown (no limit)
+- Time added when bases/turrets destroys (30 seconds?)
+- When both player turrets destroyed, game resets
+
 
 ## Space Invaders
 - **Did this and then found it kind of too much so started making my own** ~~Find an open source implementation, take it, slow it down~~
@@ -63,7 +66,9 @@
 - **Finally did the obvious and it's quite nice.** ~~Missile cooldown for player (just try something)~~
 
 - Work on the timing
-- What happens when all towers gone in Missile Command? I like the idea of continuing to just watch the missile shower, but is that "correct"?
+- Ship fades back in after death (may need to destroy incoming missiles to make it not happen) + add 30 seconds to time
+- Game resets if invaders reach player
+- Game resets if player kills all invaders
 
 ## Retired for now
 

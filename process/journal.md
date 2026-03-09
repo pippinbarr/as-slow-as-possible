@@ -170,3 +170,31 @@ Do I want the game to "take a position" on slowness as relaxation? As test of ne
 Main remaining stuff is timefeel so I guess that'll be my big push for tomorrow. And there remains the question of music looming - nothing really done there except I did learn about .clip() and .slow() a bit more in strudel so it's possible I can build something where there are multiple time signatures(??) and overlaps and that's enough to get us something? Bea's drum patterning in their project was nice too... randomization for the drums perhaps.
 
 ANY HOO.
+
+## Continuous versus contemplative (2026-03-09)
+
+Hi journal. In thinking about "game over" situations in all the game (missed ball in Pong or Breakout, dead ship in Space Invaders, dead bases in Missile Command) I keep coming back to the decision of whether the player should now contemplate the dead world of the game for the remainder of the time, or whether they should get a new ball/ship/base and forge ahead. It's most awkward for Missile Command where there's no real idea of that as I understand it? And conversely it's kind of most *satisfying* to imagine continuing missile command as just an observer... but would that be too great an inconsistency with the others? Because losing your ball forever in Pong seems kind of dumb? 
+
+Though what excuse is there for missing in the first place? But again... what's the point here? To experience the mastery/power/rhythms of *play* at the syrupy speed, or to experience the "world" as it exists, or to play the game more literally (e.g. points in Pong and Breakout and Space Invaders etc.)?
+
+Instinctively I don't like the thought of points because I felt I was very specifically *replacing* them with the timer. The point became to "survive" the experience of slow play, to show your mastery over yourself. Does that more suggest that you should keep playing the whole time? Or that you should simply be present?
+
+This similarly gets at the resource of missiles in Missile Command, which I had limited, but does that make sense? Maybe a little more of a cooldown would do it?
+
+What is at the core of this thing in the end?
+
+I think it's obvious that Pong or Breakout with no ball with is uninteresting... I'm removing the sense of surviving play... why not just put it aside. No new balls... yes.
+
+Space Invaders is kind of the same - it's "something else" to just witness the destruction of your bases without a ship/thing to protect them.
+
+And I suppose to that end it's the same for Missile Command. Which means what? Resurrecting bases I suppose, after some amount of time? Or just taking them out of the targeting system altogether?
+
+Or you just reset the game if you lose both bases? (And add time to the timer??? Whoa... that's saucy... I quite like that? The punishment for poor play is you lose more of your *actual life* to the game... yeah... yeah I think... so?)
+
+So 
+
+- Pong and Breakout: each miss adds time to the timer (10 seconds? 30 seconds? Relative to difficulty setting?)
+- Space Invaders: each ship death adds time to the timer (but you get a new ship more or less immediately? Reset the entire game if the invaders reach the bottom...)
+- Missile Command: each base/turret death adds time to the timer (and game resets once all turrets destroyed?)
+
+I think this is worth implementing and I'm probably going to feel more feelings about it as I go that will lead the way.
