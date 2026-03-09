@@ -117,7 +117,11 @@ class SpaceInvaders extends Game {
 
         this.invadersMovementHandled = false;
 
-        this.handleInput();
+        // this.handleInput();
+
+        if (this.player.missile) {
+            this.player.missile.x = this.player.body.x + this.player.body.width / 2;
+        }
 
         this.invadersGroup.incX(this.invaderSpeed * this.invadersGroup.dir);
 
@@ -144,33 +148,26 @@ class SpaceInvaders extends Game {
         missile.body.setVelocity(0, this.invaderMissileSpeed);
     }
 
-    handleInput() {
-        if (!this.inputEnabled) return;
+    // handleInput() {
+    //     if (!this.inputEnabled) return;
 
-        if (this.cursors.left.isDown) {
-            this.player.body.setVelocity(-this.playerSpeed, 0)
-        } else if (this.cursors.right.isDown) {
-            this.player.body.setVelocity(this.playerSpeed, 0)
-        } else {
-            this.player.body.setVelocity(0, 0)
-        }
+    //     if (this.cursors.left.isDown) {
+    //         this.player.body.setVelocity(-this.playerSpeed, 0)
+    //     } else if (this.cursors.right.isDown) {
+    //         this.player.body.setVelocity(this.playerSpeed, 0)
+    //     } else {
+    //         this.player.body.setVelocity(0, 0)
+    //     }
 
-        if (this.player.missile) {
-            this.player.missile.x = this.player.body.x + this.player.body.width / 2;
-        }
+    //     if (this.player.missile) {
+    //         this.player.missile.x = this.player.body.x + this.player.body.width / 2;
+    //     }
 
-        if (Phaser.Input.Keyboard.JustDown(this.cursors.space)) {
-            if (this.player.missile !== null) {
-                this.playerMissilesGroup.add(this.player.missile);
-                this.player.missile.body.setVelocity(0, -this.playerMissileSpeed);
-                this.player.missile = null;
-                setTimeout(() => {
-                    this.addPlayerMissile();
-                }, this.playerMissileCooldown)
-            }
+    //     // if (Phaser.Input.Keyboard.JustDown(this.cursors.space)) {
 
-        }
-    }
+
+    //     // }
+    // }
 
     addPlayerMissile() {
         const missile = this.add.rectangle(this.player.x, this.player.y - this.player.displayHeight / 2, 4, 4, HIGHLIGHT_COLOR);
@@ -214,4 +211,31 @@ class SpaceInvaders extends Game {
         this.inputEnabled = false;
         missile.destroy();
     }
+
+    left() {
+        console.log("Moving?")
+        this.player.body.setVelocity(-this.playerSpeed, 0);
+    }
+
+    right() {
+        this.player.body.setVelocity(this.playerSpeed, 0);
+    }
+
+    tapAt(x, y) {
+        if (x < this.width * 0.33 || x > this.width * 0.66) return;
+
+        if (this.player.missile !== null) {
+            this.playerMissilesGroup.add(this.player.missile);
+            this.player.missile.body.setVelocity(0, -this.playerMissileSpeed);
+            this.player.missile = null;
+            setTimeout(() => {
+                this.addPlayerMissile();
+            }, this.playerMissileCooldown)
+        }
+    }
+
+    noInput() {
+        this.player.body.setVelocity(0, 0);
+    }
+
 }

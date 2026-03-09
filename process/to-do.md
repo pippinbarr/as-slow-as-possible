@@ -4,8 +4,8 @@
 
 - **It's at least 16:9 now for better or worse... let's see how it holds up** ~~Maybe more of a screen size agnostic approach? Or at least aim to fill the window a bit better on mobile? What did I use for the phone game? 16:9, so that would be more like 480x720 at least.~~
 - ~~Fix everything that got broken by the dimensions (layouts mostly, but does breakout columns etc. work?)~~
+- ~~Figure out input (mobile especially) -- is it that a hold-press on left or right side moves paddle/ship and a tap in the centre "fires" (or tap in specific location for MC)? Relatively simple at least. Make it the same for desktop or do that with keyboard?~~
 
-- Figure out input (mobile especially) -- is it that a hold-press on left or right side moves paddle/ship and a tap in the centre "fires" (or tap in specific location for MC)? Relatively simple at least. Make it the same for desktop or do that with keyboard?
 - Instructions for input? (Where?)
 
 ## Difficulty levels
@@ -31,15 +31,13 @@
 
 - ~~How to handle the reset when someone misses? One weird option is simply not to (per Missile Command? Seems really weird but also refocuses what the game means?)~~
 - ~~Add spin off the paddle~~
-
-- Ball fades back in after a miss + time goes up (30 seconds?)
+- ~~Ball fades back in after a miss + time goes up (30 seconds?)~~
 
 ## Breakout
 - **I think the answer here is repeated: Nothing would happen, there would just not be anything left to do if you reached it** ~~Game over? Could you ever win? ~~
 - ~~How to handle the reset when someone misses? (See Pong above)~~
 - ~~Add spin off the paddle~~
-
-- Ball fades back in after a miss + time goes up (30 seconds?)
+- ~~Ball fades back in after a miss + time goes up (30 seconds?)~~
 
 ## Missile Command
 - ~~Targeting the x is a bit off~~

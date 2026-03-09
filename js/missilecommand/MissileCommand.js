@@ -15,9 +15,9 @@ class MissileCommand extends Game {
         super.create();
 
         this.input.setDefaultCursor('crosshair');
-        this.input.on('pointerdown', () => {
-            this.launchMissile(this.input.activePointer);
-        });
+        // this.input.on('pointerdown', () => {
+        //     this.launchMissile(this.input.activePointer);
+        // });
 
         this.ground = this.add.rectangle(this.width / 2, this.height * 0.9, this.width, 60, FG_COLOR);
         this.physics.add.existing(this.ground);
@@ -228,6 +228,10 @@ class MissileCommand extends Game {
             this.explode(msl.x, msl.y, 50, HIGHLIGHT_COLOR);
         });
 
+    }
+
+    tapAt(x, y) {
+        this.launchMissile({ x: x, y: y });
     }
 
 }

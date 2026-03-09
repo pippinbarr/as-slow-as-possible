@@ -12,7 +12,7 @@ class Breakout extends Game {
         super.create();
 
         this.BALL_SPEED = 5 / TIME_SCALE;
-        this.PADDLE_SPEED = 5;
+        this.PADDLE_SPEED = 5 / TIME_SCALE;
         this.PADDLE_WIDTH = this.width / 4;
         this.PADDLE_HEIGHT = this.PADDLE_WIDTH * 0.1;
 
@@ -84,7 +84,7 @@ class Breakout extends Game {
     update(time, delta) {
         super.update(time, delta);
 
-        this.handleInput();
+        // this.handleInput();
 
         if (this.ball.y > this.height + this.ball.displayHeight) {
             this.ball.body.setVelocity(0, 0);
@@ -107,10 +107,10 @@ class Breakout extends Game {
         }
     }
 
-    handleInput() {
-        // Handles mouse and touch
-        this.paddle.x = Phaser.Math.Clamp(this.input.activePointer.x, this.PADDLE_WIDTH * 0.5, this.width - this.PADDLE_WIDTH * 0.5);
-    }
+    // handleInput() {
+    //     // Handles mouse and touch
+    //     this.paddle.x = Phaser.Math.Clamp(this.input.activePointer.x, this.PADDLE_WIDTH * 0.5, this.width - this.PADDLE_WIDTH * 0.5);
+    // }
 
     paddleHit(ball, paddle) {
         // May want to include "spin" here?
@@ -125,4 +125,17 @@ class Breakout extends Game {
     wallHit(ball, wall) {
 
     }
+
+    left() {
+        this.paddle.body.setVelocity(-this.PADDLE_SPEED, 0);
+    }
+
+    right() {
+        this.paddle.body.setVelocity(this.PADDLE_SPEED, 0);
+    }
+
+    noInput() {
+        this.paddle.body.setVelocity(0, 0);
+    }
+
 }

@@ -3,7 +3,7 @@ const urlParams = new URLSearchParams(queryString);
 const TIME_SCALE = urlParams.get('timescale') || 1;
 
 const DEBUG = false;
-const START_SCENE = "gamemenu";
+const START_SCENE = "pong";
 const WIDTH = 480;
 const HEIGHT = 850;
 const LANG = "en";

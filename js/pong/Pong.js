@@ -49,7 +49,7 @@ class Pong extends Game {
     update(time, delta) {
         super.update(time, delta);
 
-        this.handleInput();
+        // this.handleInput();
         this.handleTopPaddle();
 
         if (this.ball.y > this.height + this.ball.displayHeight) {
@@ -71,9 +71,21 @@ class Pong extends Game {
         }
     }
 
-    handleInput() {
-        // Handles mouse and touch
-        this.bottomPaddle.x = Phaser.Math.Clamp(this.input.activePointer.x, this.PADDLE_WIDTH * 0.5, this.width - this.PADDLE_WIDTH * 0.5);
+    // handleInput() {
+    //     // Handles mouse and touch
+    //     this.bottomPaddle.x = Phaser.Math.Clamp(this.input.activePointer.x, this.PADDLE_WIDTH * 0.5, this.width - this.PADDLE_WIDTH * 0.5);
+    // }
+
+    left() {
+        this.bottomPaddle.body.setVelocity(-this.PADDLE_SPEED, 0);
+    }
+
+    right() {
+        this.bottomPaddle.body.setVelocity(this.PADDLE_SPEED, 0);
+    }
+
+    noInput() {
+        this.bottomPaddle.body.setVelocity(0, 0);
     }
 
     handleTopPaddle() {

@@ -61,17 +61,46 @@ class Game extends Phaser.Scene {
 
         this.cameras.main.fadeIn(FADE_TIME, 0, 0, 255);
 
+        this.setupInput();
         this.physics.pause();
         this.stopTimer();
+    }
+
+    setupInput() {
+        this.input.on('pointerdown', () => {
+            this.tapAt(this.input.activePointer.x, this.input.activePointer.y);
+        });
+    }
+
+    handleInput() {
+        if (this.input.activePointer.isDown) {
+            if (this.input.activePointer.x < this.width * 0.33) {
+                this.left();
+            }
+            else if (this.input.activePointer.x > this.width * 0.66) {
+                this.right();
+            }
+            else {
+                this.noInput();
+            }
+        }
+        else {
+            this.noInput();
+        }
     }
 
     start() {
         this.physics.resume();
         this.startTimer();
+        this.inputEnabled = true;
     }
 
     update(time, delta) {
         super.update();
+
+        if (this.inputEnabled) {
+            this.handleInput();
+        }
 
         if (!this.gameOver) {
 
@@ -130,5 +159,23 @@ class Game extends Phaser.Scene {
         else {
             this.timerText.text = `${hoursText}:${minutesText}:${secondsText}`;
         }
+    }
+
+
+
+    left() {
+        // To be implemented by child
+    }
+
+    right() {
+        // To be implemented by child
+    }
+
+    tapAt(x, y) {
+        // To be implemented by child
+    }
+
+    noInput() {
+        // To be implemented by child
     }
 }
