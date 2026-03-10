@@ -3,7 +3,7 @@ const urlParams = new URLSearchParams(queryString);
 const TIME_SCALE = urlParams.get('timescale') || 1;
 
 const DEBUG = false;
-const START_SCENE = "pong";
+const START_SCENE = "gamemenu";
 const WIDTH = 480;
 const HEIGHT = 850;
 const LANG = "en";
@@ -49,6 +49,40 @@ let config = {
   },
 };
 
-// initStrudel();
+initStrudel({
+  prebake: () => samples('github:tidalcycles/dirt-samples'),
+});
+// document.addEventListener('click', () => s('bd sd').play());
+
+document.addEventListener("click", startTheMusic)
 
 let game = new Phaser.Game(config);
+
+function startTheMusic() {
+  stack(
+    chord("<C G Am Am7 F7 Am C G F>")
+      .voicing()
+      // .sound("supersaw"),
+      // .add(-24)
+      .sound("sine")
+      .gain(0)
+      .sometimes(x => x.gain("0.8"))
+      // .sometimesBy(0.7, x => x.gain("0.8"))
+      // .octave(-2)
+      .clip(1.8)
+      .slow(3.14)
+      .attack(1).decay(7),
+    stack(s("<bd ~ ~ [hh hh] ~ bd ~ bd ~ ~ ~ bd hh bd ~ ~ ~ ~ bd>")
+      .gain(0)
+      .sometimes(x => x.gain("0.5 0.4 0.3 0.5 0.6 1 0.4")),
+      s("<~ sd ~ [~ ~] ~ ~ ~ ~ ~ sd ~ ~ ~ ~ ~ ~ sd ~ ~>")
+        .gain(0)
+        .sometimes(x => x.gain("0.2 0.2")),
+    )
+      // .bank("dr")
+      // .sometimesBy(0.628, x => x.gain("1"))
+      .fast(6.28)
+      .room(2)
+  ).play();
+  document.removeEventListener("click", startTheMusic);
+}
