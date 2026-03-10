@@ -12,6 +12,11 @@ class MissileCommand extends Game {
     }
 
     create() {
+        const TOUCH_INSTRUCTIONS = "Tap on the screen to target and launch missiles from one of your missile batteries.\n\nTap here to begin.";
+        const KEYBOARD_INSTRUCTIONS = "Click on the screen to target and launch a missile from one of your missile batteries.\n\n Press space to begin.";
+
+        this.instructions = this.sys.game.device.input.touch ? TOUCH_INSTRUCTIONS : KEYBOARD_INSTRUCTIONS;
+
         super.create();
 
         this.input.setDefaultCursor('crosshair');
@@ -40,6 +45,10 @@ class MissileCommand extends Game {
 
         this.targetGroup = this.physics.add.group(this.targets.concat(this.ground));
         this.explosionGroup = this.physics.add.group([]);
+    }
+
+    startPlay() {
+        super.startPlay();
 
         this.launchEnemyMissile();
         this.time.addEvent({ delay: this.enemyMissileDelay, callback: this.launchEnemyMissile, loop: true, callbackScope: this });
@@ -55,9 +64,6 @@ class MissileCommand extends Game {
 
     newCity(x, y) {
         const top = this.add.arc(0, 0, 30, 180, 360, false, FG_COLOR);
-        // top.setStrokeStyle(2, 0x11111100);
-        // const bottom = this.add.rectangle(0, 20, 40, 40, FG_COLOR)
-        // bottom.setStrokeStyle(2, 0x11111100);
 
         const container = this.add.container(x, y, [top]);
         container.setSize(40, 60);
@@ -149,7 +155,7 @@ class MissileCommand extends Game {
     }
 
     selectLaunchTower(pointer) {
-        if (pointer.y > 500) {
+        if (pointer.y > this.height * 0.75) {
             return null;
         }
 
@@ -231,7 +237,13 @@ class MissileCommand extends Game {
     }
 
     tapAt(x, y) {
+        if (this.state != this.states.PLAY) return;
+
         this.launchMissile({ x: x, y: y });
+    }
+
+    space() {
+
     }
 
 }

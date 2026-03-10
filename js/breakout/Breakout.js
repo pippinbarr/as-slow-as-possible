@@ -4,11 +4,14 @@ class Breakout extends Game {
         super({
             key: "breakout"
         });
-
-
     }
 
     create() {
+        const TOUCH_INSTRUCTIONS = "Touch the sides of the screen to move your paddle left and right.\n\nTap here to begin.";
+        const KEYBOARD_INSTRUCTIONS = "Use the arrow keys to move your paddle left and right.\n\nPress space to begin.";
+
+        this.instructions = this.sys.game.device.input.touch ? TOUCH_INSTRUCTIONS : KEYBOARD_INSTRUCTIONS;
+
         super.create();
 
         this.BALL_SPEED = 5 / TIME_SCALE;
@@ -19,7 +22,8 @@ class Breakout extends Game {
 
         const paddle = this.add.rectangle(this.width / 2, this.height - this.PADDLE_HEIGHT * 4, this.PADDLE_WIDTH, this.PADDLE_HEIGHT, FG_COLOR);
         this.paddle = this.physics.add.existing(paddle);
-        this.paddle.body.setImmovable(true);
+        this.paddle.body.setImmovable(true)
+            .setCollideWorldBounds(true)
 
         // this.walls = this.physics.add.group();
         // const leftWall = this.add.rectangle(-this.PADDLE_WIDTH * 0.5, this.height / 2, this.PADDLE_WIDTH, this.height);

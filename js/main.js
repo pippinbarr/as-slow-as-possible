@@ -9,9 +9,11 @@ const HEIGHT = 850;
 const LANG = "en";
 
 const FG_COLOR = 0x7777ff;
-const TEXT_COLOR = "#7777ff";
+const FG_COLOR_STRING = "#7777ff";
 const HIGHLIGHT_COLOR = 0xff77ff;
+const HIGHLIGHT_COLOR_STRING = "#ff77ff";
 const BG_COLOR = 0x0000ff;
+const BG_COLOR_STRING = "#0000ff";
 
 const FADE_TIME = 5000 * TIME_SCALE;
 
@@ -72,7 +74,8 @@ function startTheMusic() {
       // .octave(-2)
       .clip(1.8)
       .slow(3.14)
-      .attack(1).decay(7),
+      .attack(1).decay(7)
+      .hpf(1000),
     stack(s("<bd ~ ~ [hh hh] ~ bd ~ bd ~ ~ ~ bd hh bd ~ ~ ~ ~ bd>")
       .gain(0)
       .sometimes(x => x.gain("0.5 0.4 0.3 0.5 0.6 1 0.4")),

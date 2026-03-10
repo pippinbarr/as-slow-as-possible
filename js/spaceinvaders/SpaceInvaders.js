@@ -17,6 +17,11 @@ class SpaceInvaders extends Game {
     }
 
     create() {
+        const TOUCH_INSTRUCTIONS = "Touch the sides of the screen to move your laser cannon left and right. Tap in the center of the screen to fire.\n\nTap here to begin.";
+        const KEYBOARD_INSTRUCTIONS = "Use the arrow keys to move your laser cannon left and right. Press space to fire. \n\nPress space to begin.";
+
+        this.instructions = this.sys.game.device.input.touch ? TOUCH_INSTRUCTIONS : KEYBOARD_INSTRUCTIONS;
+
         super.create();
 
         // Player
@@ -47,7 +52,7 @@ class SpaceInvaders extends Game {
         this.createBases();
 
         // Controls
-        this.cursors = this.input.keyboard.createCursorKeys()
+        // this.cursors = this.input.keyboard.createCursorKeys()
         this.inputEnabled = true;
 
         // Overlaps
@@ -81,7 +86,7 @@ class SpaceInvaders extends Game {
                 this.invaders[row][col] = invader;
             }
         }
-        this.invadersGroup.dir = 1;
+        this.invadersGroup.dir = 0;
     }
 
     getInvaderShape(row, unit) {
@@ -110,6 +115,11 @@ class SpaceInvaders extends Game {
             base.setPosition(offsetX + baseNum * 2 * baseUnit, this.player.y - this.player.displayHeight);
             this.basesGroup.add(base);
         }
+    }
+
+    startPlay() {
+        super.startPlay();
+        this.invadersGroup.dir = 1;
     }
 
     update(time, delta) {
@@ -224,6 +234,14 @@ class SpaceInvaders extends Game {
     tapAt(x, y) {
         if (x < this.width * 0.33 || x > this.width * 0.66) return;
 
+        this.fire();
+    }
+
+    space() {
+        this.fire();
+    }
+
+    fire() {
         if (this.player.missile !== null) {
             this.playerMissilesGroup.add(this.player.missile);
             this.player.missile.body.setVelocity(0, -this.playerMissileSpeed);

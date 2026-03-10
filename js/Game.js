@@ -20,19 +20,31 @@ class Game extends Phaser.Scene {
 
         this.cameras.main.setBackgroundColor(BG_COLOR);
 
-
-
         this.timer = this.duration > 0 ? this.duration : 0;
 
         this.timerText = this.add.text(this.width - 10, this.height - 10, "3:00", {
             font: "24px sans-serif",
-            color: TEXT_COLOR,
+            color: FG_COLOR_STRING,
             padding: {
                 top: 0,
                 bottom: 0,
             },
         }).setOrigin(1, 1);
         this.updateTimerText();
+
+        this.instructionsText = this.add.text(this.width * 0.5, this.height * 0.5, this.instructions, {
+            font: "18px sans-serif",
+            color: BG_COLOR_STRING,
+            padding: 10,
+            backgroundColor: HIGHLIGHT_COLOR_STRING,
+            wordWrap: {
+                width: this.width * 0.8
+            }
+        })
+            .setOrigin(0.5, 0.5)
+            .setAlpha(0)
+            .setDepth(1000)
+
 
         this.input.keyboard.on('keydown-ONE', () => {
             this.scene.start("pong");
@@ -47,24 +59,80 @@ class Game extends Phaser.Scene {
             this.scene.start("missilecommand");
         }, this);
 
+        this.states = {
+            FADE_IN: "fadein",
+            INSTRUCTIONS: "instructions",
+            PLAY: "play",
+            GAME_OVER: "gameover",
+            FADE_OUT: "fadeout"
+        };
+        this.state = this.states.FADE_IN;
+
+        this.fadeIn();
+    }
+
+    fadeIn() {
+        this.setupInput();
+        this.stopTimer();
+        this.physics.pause();
+
         this.cameras.main.once('camerafadeincomplete', (camera) => {
-            this.start();
+            this.state = this.states.INSTRUCTIONS;
+            this.showInstructions();
         }, this);
 
         this.cameras.main.fadeIn(FADE_TIME, 0, 0, 255);
+    }
 
-        this.setupInput();
-        this.physics.pause();
-        this.stopTimer();
+    showInstructions() {
+        this.tweens.add({
+            targets: this.instructionsText,
+            alpha: 1,
+            onComplete: () => {
+                if (this.sys.game.device.input.touch) {
+                    this.input.once('pointerdown', () => {
+                        this.startPlay();
+                    });
+                }
+                else {
+                    this.input.keyboard.once("keydown-SPACE", () => {
+                        this.startPlay();
+                    });
+                }
+            }
+        })
     }
 
     setupInput() {
         this.input.on('pointerdown', () => {
             this.tapAt(this.input.activePointer.x, this.input.activePointer.y);
         });
+
+        if (!this.sys.game.device.input.touch) {
+            this.cursors = this.input.keyboard.createCursorKeys();
+        }
+
+        this.inputEnabled = false;
+    }
+
+    startPlay() {
+        this.startTimer();
+        this.physics.resume();
+        this.inputEnabled = true;
+        this.state = this.states.PLAY;
+        this.instructionsText.setVisible(false);
     }
 
     handleInput() {
+        if (this.sys.game.device.input.touch) {
+            this.handleTouchInput();
+        }
+        else {
+            this.handleKeyboardInput();
+        }
+    }
+
+    handleTouchInput() {
         if (this.input.activePointer.isDown) {
             if (this.input.activePointer.x < this.width * 0.33) {
                 this.left();
@@ -78,6 +146,22 @@ class Game extends Phaser.Scene {
         }
         else {
             this.noInput();
+        }
+    }
+
+    handleKeyboardInput() {
+        if (this.cursors.left.isDown) {
+            this.left();
+        }
+        else if (this.cursors.right.isDown) {
+            this.right();
+        }
+        else {
+            this.noInput();
+        }
+
+        if (Phaser.Input.Keyboard.JustDown(this.cursors.space)) {
+            this.space();
         }
     }
 
@@ -153,8 +237,6 @@ class Game extends Phaser.Scene {
         }
     }
 
-
-
     left() {
         // To be implemented by child
     }
@@ -164,6 +246,10 @@ class Game extends Phaser.Scene {
     }
 
     tapAt(x, y) {
+        // To be implemented by child
+    }
+
+    space() {
         // To be implemented by child
     }
 

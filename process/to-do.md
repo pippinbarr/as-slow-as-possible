@@ -5,8 +5,11 @@
 - **It's at least 16:9 now for better or worse... let's see how it holds up** ~~Maybe more of a screen size agnostic approach? Or at least aim to fill the window a bit better on mobile? What did I use for the phone game? 16:9, so that would be more like 480x720 at least.~~
 - ~~Fix everything that got broken by the dimensions (layouts mostly, but does breakout columns etc. work?)~~
 - ~~Figure out input (mobile especially) -- is it that a hold-press on left or right side moves paddle/ship and a tap in the centre "fires" (or tap in specific location for MC)? Relatively simple at least. Make it the same for desktop or do that with keyboard?~~
+- ~~Resurrect cursor input for desktop~~
+- ~~Instructions for input? (Where? When? Always?)~~
+- ~~z-index of instructions~~
 
-- Instructions for input? (Where?)
+- Leaving a game back to the menu / game over stuff / no escape though right?
 
 ## Difficulty levels
 
@@ -14,9 +17,13 @@
 - ~~Implement Nightmare's count up (based on duration of -1)~~
 - ~~Implement Nightmare unlock when you win on Hard~~
 
+- Make it *slower* as well in difficulty levels, or don't want to suggest slowness is a nightmare?
+
 ## Sound/music
 
-- Right?
+- **Well there's something now** ~~Right?~~
+
+- Work on the music
 
 ## Menu
 

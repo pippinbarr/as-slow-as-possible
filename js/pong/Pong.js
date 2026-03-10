@@ -10,6 +10,11 @@ class Pong extends Game {
     }
 
     create() {
+        const TOUCH_INSTRUCTIONS = "Touch the sides of the screen to move your paddle left and right.\n\nTap here to begin.";
+        const KEYBOARD_INSTRUCTIONS = "Use the arrow keys to move your paddle left and right.\n\nPress space to begin.";
+
+        this.instructions = this.sys.game.device.input.touch ? TOUCH_INSTRUCTIONS : KEYBOARD_INSTRUCTIONS;
+
         super.create();
 
         this.BALL_SPEED = 10 / TIME_SCALE;
@@ -19,11 +24,13 @@ class Pong extends Game {
 
         const bottomPaddle = this.add.rectangle(this.width / 2, this.height - this.PADDLE_HEIGHT * 4, this.PADDLE_WIDTH, this.PADDLE_HEIGHT, FG_COLOR);
         this.bottomPaddle = this.physics.add.existing(bottomPaddle);
-        this.bottomPaddle.body.setImmovable(true);
+        this.bottomPaddle.body.setImmovable(true)
+            .setCollideWorldBounds(true)
 
         const topPaddle = this.add.rectangle(this.width / 2, this.PADDLE_HEIGHT * 4, this.PADDLE_WIDTH, this.PADDLE_HEIGHT, FG_COLOR);
         this.topPaddle = this.physics.add.existing(topPaddle);
-        this.topPaddle.body.setImmovable(true);
+        this.topPaddle.body.setImmovable(true)
+            .setCollideWorldBounds(true)
 
         const leftWall = this.add.rectangle(-this.PADDLE_WIDTH * 0.5, this.height / 2, this.PADDLE_WIDTH, this.height);
         this.leftWall = this.physics.add.existing(leftWall);
