@@ -54,7 +54,8 @@ initStrudel({
 });
 // document.addEventListener('click', () => s('bd sd').play());
 
-document.addEventListener("click", startTheMusic)
+document.addEventListener("mousedown", startTheMusic)
+document.addEventListener("touchstart", startTheMusic)
 
 let game = new Phaser.Game(config);
 
