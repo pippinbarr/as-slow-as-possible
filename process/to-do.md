@@ -15,15 +15,14 @@
 - **I think it's better and less complex to leave it as duration** ~~That rather lovely idea of difficulty being reflected in either how long you play or how slow it is or both...~~
 - ~~Implement Nightmare's count up (based on duration of -1)~~
 - ~~Implement Nightmare unlock when you win on Hard~~
-
-- Make it *slower* as well in difficulty levels, or don't want to suggest slowness is a nightmare?
+- **No I think it's too much, no need to double the same joke/idea** ~~Make it *slower* as well in difficulty levels, or don't want to suggest slowness is a nightmare?~~
 
 ## Sound/music
 
 - **Well there's something now** ~~Right?~~
 - **Couldn't work this out** ~~[~] 2026-03-11 Asap sound when you navigate away ands back on mobile?~~
 
-- Work on the music
+- Work on the music // Though I'm starting to feel like it probably does the trick?
 
 ## Menu
 
@@ -43,11 +42,17 @@
 - ~~Add spin off the paddle~~
 - ~~Ball fades back in after a miss + time goes up (30 seconds?)~~
 
+- Rethink the punitive thing?
+- Timing?
+
 ## Breakout
 - **I think the answer here is repeated: Nothing would happen, there would just not be anything left to do if you reached it** ~~Game over? Could you ever win? ~~
 - ~~How to handle the reset when someone misses? (See Pong above)~~
 - ~~Add spin off the paddle~~
 - ~~Ball fades back in after a miss + time goes up (30 seconds?)~~
+
+- Rethink the punitive thing?
+- Timing?
 
 ## Missile Command
 - ~~Targeting the x is a bit off~~
@@ -61,20 +66,21 @@
 - **Added Space Invaders way of showing missile availability** ~~Show the missile when it's ready to launch~~
 - **Each tower has 10 missiles** ~~Maximum number of missiles? I think so? - but then how to indicate? (A little row of dots below each tower showing quantity I suppose...)~~
 - ~~Destroy missile stocks on tower destroyed~~
+- ~~Missiles are just cooldown (no limit)~~
+- ~~When both player turrets destroyed, game resets~~
+- **Nah I don't think this works.** ~~Do I still believe in this? // Time added when bases/turrets destroys (30 seconds?)~~
 
 - Work on the timing
-- Missiles are just cooldown (no limit)
-- Time added when bases/turrets destroys (30 seconds?)
-- When both player turrets destroyed, game resets
 
 
 ## Space Invaders
 - **Did this and then found it kind of too much so started making my own** ~~Find an open source implementation, take it, slow it down~~
 - **Still need to work out cooldowns** ~~Confirm with a "real space invaders" things like cool down, whether missile hits missile, when you die, etc.~~
 - **Finally did the obvious and it's quite nice.** ~~Missile cooldown for player (just try something)~~
+- **I do not think so** ~~Do I still believe in this? // Add 30 seconds to time on death~~
 
 - Work on the timing
-- Ship fades back in after death (may need to destroy incoming missiles to make it not happen) + add 30 seconds to time
+- Ship fades back in after death (may need to destroy incoming missiles to make it not happen)
 - Game resets if invaders reach player
 - Game resets if player kills all invaders
 
