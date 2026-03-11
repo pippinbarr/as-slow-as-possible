@@ -36,6 +36,11 @@ class DifficultyMenu extends Menu {
           duration: -1,
           locked: this.registry.get(this.gameScene),
           subtext: "Unlock by completing the game on Hard"
+        },
+        {
+          text: "←",
+          toState: "gamemenu",
+          duration: 0
         }
       ]
     };

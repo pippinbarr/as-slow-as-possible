@@ -10,8 +10,6 @@
 - ~~z-index of instructions~~
 - **Fixed I think?** ~~[x] 2026-03-11 Asap not fitting on mobile mobile~~
 
-- Leaving a game back to the menu / game over stuff / no escape though right?
-
 ## Difficulty levels
 
 - **I think it's better and less complex to leave it as duration** ~~That rather lovely idea of difficulty being reflected in either how long you play or how slow it is or both...~~
@@ -35,10 +33,9 @@
 - ~~add red underline to title?~~
 - ~~Indicate under Nightmare that it can be unlocked (remove text when it's unlocked)~~
 - **Nah let's not overthink it** ~~Fancy UX to indicate when Nightmare unlocked but they haven't tried?~~
-
-- Leave selected element highlighted (disable input)
-- Allow selection during fade in
-- Add back button to get to main menu again
+- ~~Leave selected element highlighted (disable input)~
+- ~~Allow selection during fade in~~
+- ~~Add back button to get to main menu again~~
 
 ## Pong
 
