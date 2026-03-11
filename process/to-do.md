@@ -8,6 +8,7 @@
 - ~~Resurrect cursor input for desktop~~
 - ~~Instructions for input? (Where? When? Always?)~~
 - ~~z-index of instructions~~
+- **Fixed I think?** ~~[x] 2026-03-11 Asap not fitting on mobile mobile~~
 
 - Leaving a game back to the menu / game over stuff / no escape though right?
 
@@ -22,6 +23,7 @@
 ## Sound/music
 
 - **Well there's something now** ~~Right?~~
+- **Couldn't work this out** ~~[~] 2026-03-11 Asap sound when you navigate away ands back on mobile?~~
 
 - Work on the music
 
@@ -33,6 +35,10 @@
 - ~~add red underline to title?~~
 - ~~Indicate under Nightmare that it can be unlocked (remove text when it's unlocked)~~
 - **Nah let's not overthink it** ~~Fancy UX to indicate when Nightmare unlocked but they haven't tried?~~
+
+- Leave selected element highlighted (disable input)
+- Allow selection during fade in
+- Add back button to get to main menu again
 
 ## Pong
 

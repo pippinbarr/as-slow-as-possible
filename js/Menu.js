@@ -22,7 +22,7 @@ class Menu extends Phaser.Scene {
   createTitle(title) {
     // Title
     this.titleText = this.add.text(this.indent, this.indent, title, {
-      font: "32px sans-serif",
+      font: "28px sans-serif",
       color: FG_COLOR_STRING,
       padding: {
         top: 0,
@@ -40,7 +40,7 @@ class Menu extends Phaser.Scene {
     for (let i = 0; i < data.length; i++) {
       const itemData = data[i];
       const menuItemText = this.add.text(this.indent, this.indent + 32 + 32 + (32 * 2 * i), itemData.text, {
-        font: "32px sans-serif",
+        font: "28px sans-serif",
         color: FG_COLOR_STRING,
         padding: {
           top: 0,
@@ -52,7 +52,7 @@ class Menu extends Phaser.Scene {
 
       if (itemData.subtext && itemData.locked) {
         const menuItemSubtext = this.add.text(menuItemText.x, menuItemText.y + menuItemText.height * 1.1, itemData.subtext, {
-          font: "18px sans-serif",
+          font: "16px sans-serif",
           color: FG_COLOR_STRING,
           padding: {
             top: 0,

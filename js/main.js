@@ -4,8 +4,8 @@ const TIME_SCALE = urlParams.get('timescale') || 1;
 
 const DEBUG = false;
 const START_SCENE = "gamemenu";
-const WIDTH = 480;
-const HEIGHT = 850;
+const HEIGHT = 720;
+const WIDTH = 405;
 const LANG = "en";
 
 const FG_COLOR = 0x7777ff;
@@ -19,8 +19,11 @@ const FADE_TIME = 5000 * TIME_SCALE;
 
 let config = {
   type: Phaser.AUTO,
+  parent: "game",
+
   width: WIDTH,
   height: HEIGHT,
+
   backgroundColor: "#000000",
   scene: [
     Boot,
@@ -43,34 +46,43 @@ let config = {
       debug: DEBUG
     }
   },
+
   scale: {
     mode: Phaser.Scale.FIT,
-    autoCenter: Phaser.Scale.BOTH,
+    autoCenter: Phaser.Scale.CENTER_BOTH,
+    parent: "game",
     width: WIDTH,
     height: HEIGHT,
   },
 };
 
+let game = new Phaser.Game(config);
+
+
+// Music music music
+
 initStrudel({
   prebake: () => samples('github:tidalcycles/dirt-samples'),
 });
-// document.addEventListener('click', () => s('bd sd').play());
 
-document.addEventListener("mousedown", startTheMusic)
-document.addEventListener("touchstart", startTheMusic)
+document.body.addEventListener("mousedown", startTheMusic)
+document.body.addEventListener("touchstart", startTheMusic)
 
-let game = new Phaser.Game(config);
 
 function startTheMusic() {
+  // document.body.style.backgroundColor = "#ff0000"
+  // s("bd bd sd bd").play();
+
   stack(
     chord("<C G Am Am7 F7 Am C G F>")
       .voicing()
       // .sound("supersaw"),
       // .add(-24)
-      .sound("sine")
+      // .sound("sine")
       .gain(0)
-      .sometimes(x => x.gain("0.8"))
-      // .sometimesBy(0.7, x => x.gain("0.8"))
+      // .sometimes(x => x.gain("0.8"))
+      .sometimesBy(0.6, x => x.gain("0.8"))
+      // .vibrato(20)
       // .octave(-2)
       .clip(1.8)
       .slow(3.14)
@@ -88,5 +100,6 @@ function startTheMusic() {
       .fast(6.28)
       .room(2)
   ).play();
-  document.removeEventListener("click", startTheMusic);
+  document.removeEventListener("mousedown", startTheMusic);
+  document.removeEventListener("touchstart", startTheMusic);
 }
