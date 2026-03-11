@@ -12,7 +12,6 @@ class SpaceInvaders extends Game {
 
         this.playerMissileCooldown = 5000 * TIME_SCALE;
 
-        this.invaderUnit = 36;
         this.invaders = [];
     }
 
@@ -24,11 +23,13 @@ class SpaceInvaders extends Game {
 
         super.create();
 
+        this.invaderUnit = this.width / 16;
+
         // Player
-        const playerUnit = 42;
+        const playerUnit = this.width / 16;
         const playerTriangle = this.add.triangle(0, 0, 0, playerUnit, playerUnit, playerUnit, playerUnit / 2, 0, FG_COLOR);
         this.player = this.physics.add.existing(playerTriangle);
-        this.player.setPosition(this.width / 2, this.height - this.player.displayHeight / 0.66);
+        this.player.setPosition(this.width / 2, this.height - this.player.displayHeight * 2);
         this.player.body.setCollideWorldBounds(true);
 
         this.addPlayerMissile();
@@ -64,14 +65,16 @@ class SpaceInvaders extends Game {
 
         this.physics.add.overlap(this.invaderMissilesGroup, this.basesGroup, this.missileHitBase, null, this);
         this.physics.add.overlap(this.invaderMissilesGroup, this.player, this.missileHitPlayer, null, this);
+
+        this.invadersPaused = true;
     }
 
     createInvaders() {
         // Invaders
         this.invadersGroup = this.physics.add.group();
         this.invaderMissilesGroup = this.physics.add.group();
-        const offsetX = 50;
-        const offsetY = 100;
+        const offsetX = this.width * 0.1;
+        const offsetY = this.width * 0.3;
         const rows = 5;
         const cols = 11;
         for (let row = 0; row < rows; row++) {
@@ -120,6 +123,7 @@ class SpaceInvaders extends Game {
     startPlay() {
         super.startPlay();
         this.invadersGroup.dir = 1;
+        this.invadersPaused = false;
     }
 
     update(time, delta) {
@@ -135,7 +139,7 @@ class SpaceInvaders extends Game {
 
         this.invadersGroup.incX(this.invaderSpeed * this.invadersGroup.dir);
 
-        if (Math.random() < 0.05) {
+        if (Math.random() < 0.04 && !this.invadersPaused) {
             const invader = Phaser.Math.RND.pick(this.invadersGroup.getChildren());
 
             let canFire = true;
@@ -158,38 +162,18 @@ class SpaceInvaders extends Game {
         missile.body.setVelocity(0, this.invaderMissileSpeed);
     }
 
-    // handleInput() {
-    //     if (!this.inputEnabled) return;
-
-    //     if (this.cursors.left.isDown) {
-    //         this.player.body.setVelocity(-this.playerSpeed, 0)
-    //     } else if (this.cursors.right.isDown) {
-    //         this.player.body.setVelocity(this.playerSpeed, 0)
-    //     } else {
-    //         this.player.body.setVelocity(0, 0)
-    //     }
-
-    //     if (this.player.missile) {
-    //         this.player.missile.x = this.player.body.x + this.player.body.width / 2;
-    //     }
-
-    //     // if (Phaser.Input.Keyboard.JustDown(this.cursors.space)) {
-
-
-    //     // }
-    // }
-
     addPlayerMissile() {
-        const missile = this.add.rectangle(this.player.x, this.player.y - this.player.displayHeight / 2, 4, 4, HIGHLIGHT_COLOR);
+        const missile = this.add.rectangle(this.player.body.x, this.player.body.y, 4, 4, HIGHLIGHT_COLOR);
         this.physics.add.existing(missile);
         this.player.missile = missile;
     }
 
     invadersHitWall(invader, wall) {
         if (!this.invadersMovementHandled) {
-            this.invadersGroup.dir *= -1;
-            this.invadersGroup.incY(this.invaderUnit * 0.8);
             this.invadersMovementHandled = true;
+            this.invadersGroup.dir *= -1;
+            this.invadersGroup.incX(this.invadersGroup.dir * this.invaderSpeed);
+            this.invadersGroup.incY(this.invaderUnit * 0.5);
         }
     }
 
@@ -215,15 +199,16 @@ class SpaceInvaders extends Game {
         missile.destroy();
     }
 
-    missileHitPlayer(missile, player) {
-        player.setActive(false);
+    missileHitPlayer(player, missile) {
+        // player.setActive(false);
         player.setVisible(false);
         this.inputEnabled = false;
         missile.destroy();
+        player.missile.destroy();
+        player.missile = null;
     }
 
     left() {
-        console.log("Moving?")
         this.player.body.setVelocity(-this.playerSpeed, 0);
     }
 
@@ -242,7 +227,7 @@ class SpaceInvaders extends Game {
     }
 
     fire() {
-        if (this.player.missile !== null) {
+        if (!this.invadersPaused && this.player.missile !== null) {
             this.playerMissilesGroup.add(this.player.missile);
             this.player.missile.body.setVelocity(0, -this.playerMissileSpeed);
             this.player.missile = null;
