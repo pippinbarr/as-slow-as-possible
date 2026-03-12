@@ -1,4 +1,42 @@
-# To-dos
+# To-dos ("final" )
+
+## Music
+- Looks like it'll be too hard for me to bother ~~One-time triggering of sounds for events? Or not worth it?~~
+
+- One more pass
+
+## General
+
+- Transition from game over to any kind of message to menu? Maybe just the same style as instructions but "Game Over. Tap/space to return to the menu" ?
+
+## Pong
+
+- Syrup level
+
+## Breakout
+
+- Syrup level
+
+## Space Invaders
+- ~~Tween the invaders down rather than jump~~
+- ~~Action on player death by missile (everything stops then respawn?)~~
+- ~~Action on three player deaths by missile (everything stops then reset?)~~
+- ~~Particle effects for player death~~
+
+- Syrup level
+- Enemy Firing rate based on speed (realizing it can't just be a probability tied to framerate)
+- Action on player death by invaders (everything stops then reset?)
+- Action on invaders reach bottom in general (everything stops then reset?)
+- Action on all invaders dead (reset)
+- Particle effects for invader death
+
+## Missile command
+
+- Syrup level
+
+---
+
+# To-dos (pre end-game)
 
 ## Overall
 

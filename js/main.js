@@ -3,7 +3,7 @@ const urlParams = new URLSearchParams(queryString);
 const TIME_SCALE = urlParams.get('timescale') || 1;
 
 const DEBUG = false;
-const START_SCENE = "gamemenu";
+const START_SCENE = "spaceinvaders";
 const HEIGHT = 720;
 const WIDTH = 405;
 const LANG = "en";
@@ -73,6 +73,16 @@ function startTheMusic() {
   // document.body.style.backgroundColor = "#ff0000"
   // s("bd bd sd bd").play();
 
+  // setTime(0);
+  // register('oneshot', (grid, pat) => {
+  //   const t = getTime();
+  //   const qt = Math.ceil(t / grid) * grid;
+  //   return pat.filterWhen((t) => t >= qt && t < qt + 1);
+  // });
+
+  // sound("sd").oneshot(1).play();
+
+  // return;
   stack(
     chord("<C G Am Am7 F7 Am C G F>")
       .voicing()
