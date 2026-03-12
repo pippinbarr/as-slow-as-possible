@@ -1,9 +1,9 @@
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const TIME_SCALE = urlParams.get('timescale') || 1;
+const START_SCENE = urlParams.get('startscene') || "gamemenu";
 
 const DEBUG = false;
-const START_SCENE = "spaceinvaders";
 const HEIGHT = 720;
 const WIDTH = 405;
 const LANG = "en";
