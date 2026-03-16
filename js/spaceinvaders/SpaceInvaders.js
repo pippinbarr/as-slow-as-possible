@@ -9,8 +9,12 @@ class SpaceInvaders extends Game {
 
         this.playerMissileSpeed = 20 / TIME_SCALE;
         this.invaderMissileSpeed = 20 / TIME_SCALE;
+        this.invaderFireProbability = 0.004 / TIME_SCALE;
 
         this.playerMissileCooldown = 5000 * TIME_SCALE;
+
+        this.particleLifespan = 5000 * TIME_SCALE;
+        this.explosionSpeed = 10 / TIME_SCALE;
 
         this.invaders = [];
     }
@@ -31,7 +35,7 @@ class SpaceInvaders extends Game {
         this.player = this.physics.add.existing(playerTriangle);
         this.player.setPosition(this.width / 2, this.height - this.player.displayHeight * 2);
         this.player.body.setCollideWorldBounds(true);
-        this.player.lives = 3;
+        this.player.lives = 1//3;
 
         this.addPlayerMissile();
 
@@ -44,6 +48,10 @@ class SpaceInvaders extends Game {
 
         const rightWall = this.add.rectangle(this.width + 5, this.height / 2, 10, this.height, 0xff0000);
         this.rightWall = this.physics.add.existing(rightWall);
+
+        const bottomWall = this.add.rectangle(this.width / 2, this.height + 5, this.width, 10, 0xff0000);
+        this.bottomWall = this.physics.add.existing(bottomWall);
+
 
         this.wallsGroup = this.physics.add.group();
         this.wallsGroup.add(this.leftWall);
@@ -63,6 +71,7 @@ class SpaceInvaders extends Game {
         // Overlaps
         this.physics.add.overlap(this.invadersGroup, this.wallsGroup, this.invadersHitWall, null, this);
         this.physics.add.overlap(this.invadersGroup, this.player, this.invadersHitPlayer, null, this);
+        this.physics.add.overlap(this.invadersGroup, bottomWall, this.invadersReachedBottom, null, this);
 
         this.physics.add.overlap(this.playerMissilesGroup, this.invadersGroup, this.missileHitInvader, null, this);
         this.physics.add.overlap(this.playerMissilesGroup, this.basesGroup, this.missileHitBase, null, this);
@@ -105,12 +114,12 @@ class SpaceInvaders extends Game {
         else if ((row + 2) % 3 == 0) {
             return this.add.circle(0, 0, mainSize * 0.5, FG_COLOR);
         }
-        else console.error("Whoops... no matching shape.")
+        else console.error("Whoops... no matching shape. I am a software engineer.")
     }
 
     createBases() {
         // Bases
-        const bases = 0//4;
+        const bases = 4;
         const baseUnit = this.width / 9;
         const offsetX = baseUnit * 1.5;
         for (let baseNum = 0; baseNum < bases; baseNum++) {
@@ -141,7 +150,7 @@ class SpaceInvaders extends Game {
         if (!this.invadersPaused) {
             this.invadersGroup.incX(this.invaderSpeed * this.invadersGroup.dir);
 
-            if (Math.random() < 0.04) {
+            if (Math.random() < this.invaderFireProbability) {
                 const invader = Phaser.Math.RND.pick(this.invadersGroup.getChildren());
 
                 let canFire = true;
@@ -195,19 +204,23 @@ class SpaceInvaders extends Game {
 
     invadersHitPlayer(invader, player) {
         this.killPlayer();
-        // But we also then need to reset the game (as if 0 lives I guess)
     }
 
     invadersReachedBottom() {
-        // Can this happen without the player being there? Yes, if there are very
-        // few invaders? Or should they just not go down at the end and eventually sweep
-        // over the player, killing them
+        this.resetGame();
     }
 
     missileHitInvader(missile, invader) {
         this.invaders[invader.row][invader.col] = null;
+
+        this.explosionAt(invader.x, invader.y);
+
         invader.destroy();
         missile.destroy();
+
+        if (this.invadersGroup.getFirstAlive() === null) {
+            this.resetGame();
+        }
     }
 
     missileHitBase(missile, base) {
@@ -219,15 +232,8 @@ class SpaceInvaders extends Game {
     }
 
     missileHitPlayer(player, missile) {
-        // player.setActive(false);
         this.killPlayer(player, missile);
         missile.destroy();
-
-        // this.time.addEvent({
-        //     delay: 2000,
-        //     callback: this.newPlayer,
-        //     callbackScope: this
-        // });
     }
 
     killPlayer() {
@@ -245,10 +251,19 @@ class SpaceInvaders extends Game {
         this.inputEnabled = false;
         this.invadersPaused = true;
 
-        const lifespan = 1000;
+        this.explosionAt(this.player.x, this.player.y);
+
+        this.time.addEvent({
+            delay: this.particleLifespan,
+            callback: this.resurrectPlayer,
+            callbackScope: this
+        });
+    }
+
+    explosionAt(x, y) {
         const particles = this.add.particles(0, 0, 'particle', {
-            speed: { min: -100, max: 100 },
-            lifespan: lifespan,
+            speed: { min: -this.explosionSpeed, max: this.explosionSpeed },
+            lifespan: this.particleLifespan,
             scale: 4,
             tint: FG_COLOR,
             gravityY: 0,
@@ -256,19 +271,12 @@ class SpaceInvaders extends Game {
             emitting: false // Do not start automatically
         });
 
-        this.time.addEvent({
-            delay: lifespan,
-            callback: this.resurrectPlayer,
-            callbackScope: this
-        });
-
         // Trigger the explosion at coordinates (x, y)
-        particles.explode(20, this.player.x, this.player.y);
+        particles.explode(20, x, y);
+
     }
 
     resurrectPlayer() {
-        console.log(this.player.lives);
-
         if (this.player.lives > 0) {
             this.newPlayer();
         }
@@ -287,19 +295,40 @@ class SpaceInvaders extends Game {
     }
 
     resetGame() {
-        console.log("Resetting...")
-        this.invadersGroup.clear(true, true);
-        this.invaders = [];
-        this.createInvaders();
-        this.basesGroup.clear(true, true);
-        this.createBases();
+        this.invadersPaused = true;
+        this.inputEnabled = false;
+        this.playerMissilesGroup.getChildren().forEach((missile) => {
+            missile.body.setVelocity(0, 0);
+        });
+        this.invaderMissilesGroup.getChildren().forEach((missile) => {
+            missile.body.setVelocity(0, 0);
+        });
 
-        if (this.player.missile) this.player.missile.destroy();
-        this.player.x = this.width / 2;
-        this.player.lives = 3;
-        this.resurrectPlayer();
+        const targets = [...this.invadersGroup.getChildren(), ...this.invaderMissilesGroup.getChildren(), ...this.playerMissilesGroup.getChildren(), this.player];
+        if (this.player.missile) targets.push(this.player.missile);
+        this.tweens.add({
+            targets: targets,
+            alpha: 0,
+            duration: 5000,
+            onComplete: () => {
+                this.invadersGroup.clear(true, true);
+                this.invaderMissilesGroup.clear(true, true);
+                this.playerMissilesGroup.clear(true, true);
+                this.invaders = [];
+                this.createInvaders();
+                this.basesGroup.clear(true, true);
+                this.createBases();
 
-        this.invadersPaused = false;
+                if (this.player.missile) this.player.missile.destroy();
+                this.player.setAlpha(1);
+                this.player.x = this.width / 2;
+                this.player.lives = 3;
+                this.resurrectPlayer();
+
+                this.invadersPaused = false;
+                this.inputEnabled = true;
+            }
+        })
     }
 
     left() {

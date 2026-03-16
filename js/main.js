@@ -1,7 +1,7 @@
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const TIME_SCALE = urlParams.get('timescale') || 1;
-const START_SCENE = urlParams.get('startscene') || "gamemenu";
+const START_SCENE = urlParams.get('scene') || "gamemenu";
 
 const DEBUG = false;
 const HEIGHT = 720;

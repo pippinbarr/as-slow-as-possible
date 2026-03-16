@@ -22,13 +22,14 @@
 - ~~Action on player death by missile (everything stops then respawn?)~~
 - ~~Action on three player deaths by missile (everything stops then reset?)~~
 - ~~Particle effects for player death~~
+- ~~Action on player death by invaders (everything stops then reset?)~~
+- ~~Action on invaders reach bottom in general (everything stops then reset?)~~
+- ~~Action on all invaders dead (reset)~~
+- ~~Particle effects for invader death~~
 
-- Syrup level
-- Enemy Firing rate based on speed (realizing it can't just be a probability tied to framerate)
-- Action on player death by invaders (everything stops then reset?)
-- Action on invaders reach bottom in general (everything stops then reset?)
-- Action on all invaders dead (reset)
-- Particle effects for invader death
+- Syrup level (it's not *bad* at the moment but I can maybe do better - ship might be too fast?)
+- Enemy Firing rate based on speed (realizing it can't just be a probability tied to framerate) <- I tried this and it didn't seem quite right. Worst case I can tune it for TIME_SCALE of 1 though
+- Still some weird shit around resets looking proper and not stupid
 
 ## Missile command
 
