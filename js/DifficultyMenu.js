@@ -9,6 +9,7 @@ class DifficultyMenu extends Menu {
   init(data) {
     this.title = data.title;
     this.gameScene = data.state;
+    this.players = data.players;
   }
 
   create() {
@@ -44,6 +45,9 @@ class DifficultyMenu extends Menu {
         }
       ]
     };
+    for (let item of data.menuItems) {
+      item.players = this.players;
+    }
 
     super.create();
 

@@ -29,6 +29,7 @@ let config = {
     Boot,
     Preloader,
     GameMenu,
+    PlayersMenu,
     DifficultyMenu,
 
     Pong,
@@ -70,19 +71,6 @@ document.body.addEventListener("touchstart", startTheMusic)
 
 
 function startTheMusic() {
-  // document.body.style.backgroundColor = "#ff0000"
-  // s("bd bd sd bd").play();
-
-  // setTime(0);
-  // register('oneshot', (grid, pat) => {
-  //   const t = getTime();
-  //   const qt = Math.ceil(t / grid) * grid;
-  //   return pat.filterWhen((t) => t >= qt && t < qt + 1);
-  // });
-
-  // sound("sd").oneshot(1).play();
-
-  // return;
   stack(
     chord("<C G Am Am7 F7 Am C G F>")
       .voicing()
@@ -106,8 +94,6 @@ function startTheMusic() {
         .gain(0)
         .sometimes(x => x.gain("0.2 0.2")),
     )
-      // .bank("dr")
-      // .sometimesBy(0.628, x => x.gain("1"))
       .fast(6.28)
       .room(2)
   ).play();

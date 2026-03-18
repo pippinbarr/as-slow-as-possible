@@ -8,6 +8,7 @@ class Game extends Phaser.Scene {
     init(data) {
         this.duration = data.duration;
         this.key = data.toState;
+        this.players = data.players;
 
         // this.duration = 3;
     }
