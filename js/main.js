@@ -3,6 +3,7 @@ const urlParams = new URLSearchParams(queryString);
 const TIME_SCALE = urlParams.get('timescale') || 1;
 const START_SCENE = urlParams.get('scene') || "clicktostart";
 const DEBUG = urlParams.get('debug') || false;
+const PRELOADER_DELAY = urlParams.get('preloaderdelay') || 3000;
 
 const HEIGHT = 720 * 2;
 const WIDTH = 405 * 2;
