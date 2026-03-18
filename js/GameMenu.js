@@ -34,6 +34,8 @@ class GameMenu extends Menu {
       ]
     };
 
+    this.noFadeIn = true;
+
     super.create();
 
     // Load data
@@ -58,5 +60,12 @@ class GameMenu extends Menu {
     this.createTitle(data.title);
 
     this.createMenu(data.menuItems);
+
+    this.menuItems.setAlpha(0);
+    this.tweens.add({
+      targets: this.menuItems.getChildren(),
+      alpha: 1,
+      duration: FADE_TIME
+    })
   }
 }

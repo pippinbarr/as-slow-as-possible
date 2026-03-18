@@ -9,6 +9,8 @@
 
 - ~~Transition from game over to any kind of message to menu? Maybe just the same style as instructions but "Game Over. Tap/space to return to the menu" ?~~
 
+- Intro "click to begin" screen
+
 ## Pong
 
 - Syrup level
@@ -16,20 +18,6 @@
 ## Breakout
 
 - Syrup level
-
-## Space Invaders
-- ~~Tween the invaders down rather than jump~~
-- ~~Action on player death by missile (everything stops then respawn?)~~
-- ~~Action on three player deaths by missile (everything stops then reset?)~~
-- ~~Particle effects for player death~~
-- ~~Action on player death by invaders (everything stops then reset?)~~
-- ~~Action on invaders reach bottom in general (everything stops then reset?)~~
-- ~~Action on all invaders dead (reset)~~
-- ~~Particle effects for invader death~~
-
-- Syrup level (it's not *bad* at the moment but I can maybe do better - ship might be too fast?)
-- Enemy Firing rate based on speed (realizing it can't just be a probability tied to framerate) <- I tried this and it didn't seem quite right. Worst case I can tune it for TIME_SCALE of 1 though
-- Still some weird shit around resets looking proper and not stupid
 
 ## Missile command
 
@@ -137,3 +125,17 @@
 
 - Improve asteroid breakup positioning and motion?
 - Add timing limit to missiles (at least create the same spatial cap if you spam? How to signal the missile is not ready to fire? Attach it to the front of the ship all the time and fire? Something else?)
+
+## Space Invaders
+- ~~Tween the invaders down rather than jump~~
+- ~~Action on player death by missile (everything stops then respawn?)~~
+- ~~Action on three player deaths by missile (everything stops then reset?)~~
+- ~~Particle effects for player death~~
+- ~~Action on player death by invaders (everything stops then reset?)~~
+- ~~Action on invaders reach bottom in general (everything stops then reset?)~~
+- ~~Action on all invaders dead (reset)~~
+- ~~Particle effects for invader death~~
+
+- Syrup level (it's not *bad* at the moment but I can maybe do better - ship might be too fast?)
+- Enemy Firing rate based on speed (realizing it can't just be a probability tied to framerate) <- I tried this and it didn't seem quite right. Worst case I can tune it for TIME_SCALE of 1 though
+- Still some weird shit around resets looking proper and not stupid

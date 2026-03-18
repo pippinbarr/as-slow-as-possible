@@ -12,12 +12,14 @@ class Menu extends Phaser.Scene {
 
     this.cameras.main.setBackgroundColor(BG_COLOR);
 
-    this.cameras.main.once('camerafadeincomplete', function (camera) {
+    if (!this.noFadeIn) {
+      this.cameras.main.once('camerafadeincomplete', function (camera) {
 
-    }, this);
-    this.cameras.main.fadeIn(FADE_TIME, 0, 0, 255, (camera, progress) => {
-      this.fadeInProgress = progress;
-    });
+      }, this);
+      this.cameras.main.fadeIn(FADE_TIME, 0, 0, 255, (camera, progress) => {
+        this.fadeInProgress = progress;
+      });
+    }
 
     this.inputEnabled = true;
   }
@@ -39,6 +41,8 @@ class Menu extends Phaser.Scene {
   }
 
   createMenu(data) {
+    this.menuItems = this.add.group();
+
     // Go through the menu data and create menu items for each entry
     for (let i = 0; i < data.length; i++) {
       const itemData = data[i];
@@ -52,6 +56,7 @@ class Menu extends Phaser.Scene {
       }).setOrigin(0, 0);
       menuItemText.setPadding(0, 0, 0, 5);
 
+      this.menuItems.add(menuItemText);
 
       if (itemData.subtext && itemData.locked) {
         const menuItemSubtext = this.add.text(menuItemText.x, menuItemText.y + menuItemText.height * 0.9, itemData.subtext, {
