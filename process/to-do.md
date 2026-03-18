@@ -10,6 +10,8 @@
 - ~~Transition from game over to any kind of message to menu? Maybe just the same style as instructions but "Game Over. Tap/space to return to the menu" ?~~
 - ~~Intro "click to begin" screen~~
 
+- Try to upscale the resolution? It looked gross on my phone.
+
 ## Pong
 
 - Syrup level

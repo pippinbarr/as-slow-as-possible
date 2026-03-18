@@ -25,8 +25,8 @@ class Game extends Phaser.Scene {
 
         this.timer = this.duration > 0 ? this.duration : 0;
 
-        this.timerText = this.add.text(this.width - 10, this.height - 10, "3:00", {
-            font: "24px sans-serif",
+        this.timerText = this.add.text(this.width - 20, this.height - 20, "3:00", {
+            font: "48px sans-serif",
             color: FG_COLOR_STRING,
             padding: {
                 top: 0,
@@ -40,7 +40,7 @@ class Game extends Phaser.Scene {
         this.baseInteraction = this.sys.game.device.input.touch ? TOUCH_INTERACTION : KEYBOARD_INTERACTION;
 
         this.instructionsText = this.add.text(this.width * 0.5, this.height * 0.5, this.instructions + "\n\n" + this.baseInteraction, {
-            font: "18px sans-serif",
+            font: "36px sans-serif",
             color: BG_COLOR_STRING,
             padding: 10,
             backgroundColor: HIGHLIGHT_COLOR_STRING,

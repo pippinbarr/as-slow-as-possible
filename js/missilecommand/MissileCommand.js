@@ -25,7 +25,7 @@ class MissileCommand extends Game {
         //     this.launchMissile(this.input.activePointer);
         // });
 
-        this.ground = this.add.rectangle(this.width / 2, this.height * 0.9, this.width, 60, FG_COLOR);
+        this.ground = this.add.rectangle(this.width / 2, this.height * 0.9, this.width, 60 * 2, FG_COLOR);
         this.physics.add.existing(this.ground);
         // this.ground.setStrokeStyle(2, 0x111111);
 
@@ -33,13 +33,13 @@ class MissileCommand extends Game {
         this.pauseEnemyMissiles = false;
 
         this.towers = [];
-        this.towers.push(this.newTower(this.width * 0.15, this.height * 0.82));
-        this.towers.push(this.newTower(this.width * 0.85, this.height * 0.82));
+        this.towers.push(this.newTower(this.width * 0.15, this.height * 0.83));
+        this.towers.push(this.newTower(this.width * 0.85, this.height * 0.83));
 
         this.cities = [];
-        this.cities.push(this.newCity(this.width * 0.33, this.height * 0.85));
-        this.cities.push(this.newCity(this.width * 0.5, this.height * 0.85));
-        this.cities.push(this.newCity(this.width * 0.66, this.height * 0.85));
+        this.cities.push(this.newCity(this.width * 0.33, this.height * 0.86));
+        this.cities.push(this.newCity(this.width * 0.5, this.height * 0.86));
+        this.cities.push(this.newCity(this.width * 0.66, this.height * 0.86));
 
         this.targets = [];
         this.targets = this.targets.concat(this.towers);
@@ -66,20 +66,20 @@ class MissileCommand extends Game {
     }
 
     newCity(x, y) {
-        const top = this.add.arc(0, 0, 30, 180, 360, false, FG_COLOR);
+        const top = this.add.arc(0, 0, 30 * 2, 180 * 2, 360 * 2, false, FG_COLOR);
 
         const container = this.add.container(x, y, [top]);
-        container.setSize(40, 60);
+        container.setSize(40 * 2, 60 * 2);
         this.physics.add.existing(container);
         container.type = "city";
         return container;
     }
 
     newTower(x, y) {
-        const city = this.add.triangle(0, 0, 0, 50, 50, 50, 25, 0, FG_COLOR);
+        const city = this.add.triangle(0, 0, 0, 50 * 2, 50 * 2, 50 * 2, 25 * 2, 0, FG_COLOR);
         // city.setStrokeStyle(2, 0x111111);
         const tower = this.add.container(x, y, [city]);
-        tower.setSize(50, 25);
+        tower.setSize(50 * 2, 25 * 2);
         this.physics.add.existing(tower);
         tower.type = "tower";
 
@@ -103,8 +103,8 @@ class MissileCommand extends Game {
 
         this.physics.moveToObject(tower.missile, pointer, this.playerMissileSpeed);
 
-        const dest_line_1 = this.add.line(0, 0, 0, 0, 0, 20, FG_COLOR);
-        const dest_line_2 = this.add.line(0, 0, 0, 0, 20, 0, FG_COLOR);
+        const dest_line_1 = this.add.line(0, 0, 0, 0, 0, 20 * 2, FG_COLOR);
+        const dest_line_2 = this.add.line(0, 0, 0, 0, 20 * 2, 0, FG_COLOR);
         const dest = this.add.container(pointer.x, pointer.y, [dest_line_1, dest_line_2]);
         dest.setSize(2, 2);
         dest.setRotation(Math.PI / 4);
@@ -116,7 +116,7 @@ class MissileCommand extends Game {
             this.physics.world.removeCollider(collider);
             missile.destroy();
             dest.destroy();
-            this.explode(dest.x, dest.y, 25, FG_COLOR);
+            this.explode(dest.x, dest.y, 25 * 2, FG_COLOR);
         });
 
         tower.missile = null;
@@ -127,7 +127,7 @@ class MissileCommand extends Game {
 
     addMissileTo(tower) {
         // if (tower.missiles.length > 0) {
-        const missile = this.add.rectangle(tower.x, tower.y - tower.displayHeight, 4, 4, HIGHLIGHT_COLOR);
+        const missile = this.add.rectangle(tower.x, tower.y - tower.displayHeight, 4 * 2, 4 * 2, HIGHLIGHT_COLOR);
         this.physics.add.existing(missile);
         tower.missile = missile;
 
@@ -232,7 +232,7 @@ class MissileCommand extends Game {
         const startY = 0;
         const startX = this.getRndInteger(0, this.width)
 
-        const missile = this.add.circle(startX, startY, 5, HIGHLIGHT_COLOR)
+        const missile = this.add.circle(startX, startY, 5 * 2, HIGHLIGHT_COLOR)
         const line = this.add.line(0, 0, 0, 0, 0, 0, HIGHLIGHT_COLOR)
             .setOrigin(0, 0);
         missile.trace = {
@@ -266,7 +266,7 @@ class MissileCommand extends Game {
                 tgt.setVisible(false);
             }
             this.physics.world.removeCollider(collTarget);
-            this.explode(msl.x, msl.y, 80, HIGHLIGHT_COLOR);
+            this.explode(msl.x, msl.y, 80 * 2, HIGHLIGHT_COLOR);
         });
 
         const collExplosion = this.physics.add.overlap(missile, this.explosionGroup, (msl, exp) => {
@@ -275,7 +275,7 @@ class MissileCommand extends Game {
             msl.destroy();
             this.enemyMissiles.splice(this.enemyMissiles.indexOf(msl), 1)
             this.physics.world.removeCollider(collExplosion);
-            this.explode(msl.x, msl.y, 50, HIGHLIGHT_COLOR);
+            this.explode(msl.x, msl.y, 50 * 2, HIGHLIGHT_COLOR);
         });
 
     }

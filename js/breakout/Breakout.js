@@ -50,7 +50,7 @@ class Breakout extends Game {
         this.bricks = this.physics.add.group();
         const cols = 10;
         const rows = 6;
-        const padding = 4;
+        const padding = 4 * 2;
         const cellWidth = this.width / cols;
         const cellHeight = this.PADDLE_HEIGHT + padding;
         const brickWidth = cellWidth - padding;
@@ -61,7 +61,7 @@ class Breakout extends Game {
         for (let set = 0; set < 3; set++) {
             const bricks = [];
             for (let i = 0; i < cols * rows; i++) {
-                const brick = this.bricks.create(300, 400, 'particle');
+                const brick = this.bricks.create(0, 0, 'particle');
                 brick.setDisplaySize(brickWidth, brickHeight)
                 brick.setImmovable(true);
                 brick.setTint(0x6666ff);
@@ -74,7 +74,7 @@ class Breakout extends Game {
                 cellWidth: cellWidth,
                 cellHeight: cellHeight,
                 x: cellWidth / 2,
-                y: 100 + set * 180
+                y: 100 * 2 + set * 180 * 1.5
             });
         }
 

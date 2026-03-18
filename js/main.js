@@ -4,8 +4,8 @@ const TIME_SCALE = urlParams.get('timescale') || 1;
 const START_SCENE = urlParams.get('scene') || "clicktostart";
 const DEBUG = urlParams.get('debug') || false;
 
-const HEIGHT = 720;
-const WIDTH = 405;
+const HEIGHT = 720 * 2;
+const WIDTH = 405 * 2;
 const LANG = "en";
 
 const FG_COLOR = 0x7777ff;

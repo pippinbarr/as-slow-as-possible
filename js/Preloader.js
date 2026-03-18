@@ -22,6 +22,6 @@ class Preloader extends Phaser.Scene {
     })
     setTimeout(() => {
       this.scene.start(START_SCENE);
-    }, 3000);
+    }, 0)//3000);
   }
 }

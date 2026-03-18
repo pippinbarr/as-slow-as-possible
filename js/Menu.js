@@ -3,7 +3,7 @@ class Menu extends Phaser.Scene {
   constructor(config) {
     super(config);
 
-    this.indent = 50;
+    this.indent = 100;
   }
 
   create() {
@@ -27,7 +27,7 @@ class Menu extends Phaser.Scene {
   createTitle(title) {
     // Title
     this.titleText = this.add.text(this.indent, this.indent, title, {
-      font: "28px sans-serif",
+      font: "56px sans-serif",
       color: FG_COLOR_STRING,
       padding: {
         top: 0,
@@ -46,8 +46,8 @@ class Menu extends Phaser.Scene {
     // Go through the menu data and create menu items for each entry
     for (let i = 0; i < data.length; i++) {
       const itemData = data[i];
-      const menuItemText = this.add.text(this.indent, this.indent + 32 + 32 + (32 * 2 * i), itemData.text, {
-        font: "28px sans-serif",
+      const menuItemText = this.add.text(this.indent, this.indent + 64 + 64 + (64 * 2 * i), itemData.text, {
+        font: "56px sans-serif",
         color: FG_COLOR_STRING,
         padding: {
           top: 0,
@@ -60,7 +60,7 @@ class Menu extends Phaser.Scene {
 
       if (itemData.subtext && itemData.locked) {
         const menuItemSubtext = this.add.text(menuItemText.x, menuItemText.y + menuItemText.height * 0.9, itemData.subtext, {
-          font: "16px sans-serif",
+          font: "32px sans-serif",
           color: FG_COLOR_STRING,
           padding: {
             top: 0,

@@ -5,7 +5,7 @@ class ClickToStart extends Phaser.Scene {
       key: "clicktostart"
     });
 
-    this.indent = 50;
+    this.indent = 100;
   }
 
   create() {
@@ -33,7 +33,7 @@ class ClickToStart extends Phaser.Scene {
   createTitle(title) {
     // Title
     this.titleText = this.add.text(0, 0, title, {
-      font: "28px sans-serif",
+      font: "56px sans-serif",
       color: FG_COLOR_STRING,
       padding: {
         top: 0,
@@ -46,7 +46,7 @@ class ClickToStart extends Phaser.Scene {
       .setOrigin(0, 0);
 
     this.authorText = this.add.text(this.underline.x + this.underline.width, this.underline.y + this.underline.height, "by Pippin Barr", {
-      font: "18px sans-serif",
+      font: "36px sans-serif",
       color: FG_COLOR_STRING,
       padding: {
         top: 0,
@@ -113,7 +113,7 @@ class ClickToStart extends Phaser.Scene {
     const instruction = this.sys.game.device.input.touch ? "Tap to begin" : "Click to begin";
 
     this.instructionsText = this.add.text(this.width - this.indent * 0.25, this.height - this.indent * 0.25, instruction, {
-      font: "18px sans-serif",
+      font: "36px sans-serif",
       color: BG_COLOR_STRING,
       padding: 2,
       backgroundColor: HIGHLIGHT_COLOR_STRING,
