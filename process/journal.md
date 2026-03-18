@@ -198,3 +198,15 @@ So
 - Missile Command: each base/turret death adds time to the timer (and game resets once all turrets destroyed?)
 
 I think this is worth implementing and I'm probably going to feel more feelings about it as I go that will lead the way.
+
+## Space Invaders Repelled (2026-03-18)
+
+Well I just deleted Space Invaders from the project. This after also deleting Asteroids a while back (and replacing is with Space Invaders). I was struggling a lot with some really basic coding stuff around the physics but also just the general mess of the complexity of Space Invaders as a game compared to the other three and I realized... I don't even like this. Of all three games it feels the least like it works in the slow mode. I mean, everything *works* but it doesn't feel like it emphasizes what I want enough? Missile Command does the job of the almost melancholy nature (aided by the music - realizing melancholy is in here) of warfare in this setting. Space Invaders was just fiddly in play and in code.
+
+So in the spirit of conversations we've had in the Materializing Design group, but also in the spirit of a writing workshop I attended yesterday with Lídia Perreira where we wrote something and then deleted it (I wrote about Mario not moving at the start of World 1-1 for the record)... in that spirit I realized I could just delete Space Invaders and stop fighting it.
+
+When I look at the menu now there are "only" three games and I can feel my anxiety around why there aren't more games. But what would more games achieve? There's something about the balance of "two paddle games and two laser games" in there (which is why when Asteroids failed I turned to Space Invaders) but that's kind of arbitrary? Three games is enough I suspect... the idea survives and doesn't need expounding through as many as possible? Just a handful.
+
+I just realized Pong could be multiplayer. OOOOoooooo. That's nice. I'll throw that in as I think it'll be kind of easy to implement (though nicer on mobile than on desktop). And having a multiplayer in there maybe asks some different questions. Can be optional too, can have a submenu for number of players.
+
+Hmmm... anyway my main point is that deleting one of the games feels useful and clear. And with it the game is close to done. I need to reflect a bit more on "what it is" and what I think it accomplishes, but I don't think I need to labour on it too too too much further?
