@@ -17,7 +17,7 @@ class Preloader extends Phaser.Scene {
     this.add.tween({
       targets: clown,
       rotation: 0,
-      duration: 3000,
+      duration: PRELOADER_DELAY,
       // loop: true
     })
     setTimeout(() => {
