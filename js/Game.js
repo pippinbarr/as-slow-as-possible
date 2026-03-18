@@ -8,6 +8,8 @@ class Game extends Phaser.Scene {
     init(data) {
         this.duration = data.duration;
         this.key = data.toState;
+
+        // this.duration = 3;
     }
 
     create() {
@@ -32,7 +34,11 @@ class Game extends Phaser.Scene {
         }).setOrigin(1, 1);
         this.updateTimerText();
 
-        this.instructionsText = this.add.text(this.width * 0.5, this.height * 0.5, this.instructions, {
+        const TOUCH_INTERACTION = "Tap here to continue.";
+        const KEYBOARD_INTERACTION = "Press space to continue."
+        this.baseInteraction = this.sys.game.device.input.touch ? TOUCH_INTERACTION : KEYBOARD_INTERACTION;
+
+        this.instructionsText = this.add.text(this.width * 0.5, this.height * 0.5, this.instructions + "\n\n" + this.baseInteraction, {
             font: "18px sans-serif",
             color: BG_COLOR_STRING,
             padding: 10,
@@ -116,11 +122,17 @@ class Game extends Phaser.Scene {
     }
 
     startPlay() {
-        this.startTimer();
-        this.physics.resume();
-        this.inputEnabled = true;
-        this.state = this.states.PLAY;
-        this.instructionsText.setVisible(false);
+        this.tweens.add({
+            targets: this.instructionsText,
+            alpha: 0,
+            duration: FADE_TIME,
+            onComplete: () => {
+                this.startTimer();
+                this.physics.resume();
+                this.inputEnabled = true;
+                this.state = this.states.PLAY;
+            }
+        })
     }
 
     handleInput() {
@@ -187,22 +199,60 @@ class Game extends Phaser.Scene {
             if (this.timer < 0) {
                 this.timer = 0;
 
-                this.gameOver = true;
-
-                const freshData = {
-                    pong: this.registry.get("pong"),
-                    missilecommand: this.registry.get("missilecommand"),
-                    breakout: this.registry.get("breakout"),
-                    spaceinvaders: this.registry.get("spaceinvaders")
-                };
-                freshData[this.key] = false;
-                this.registry.set(freshData);
-                localStorage.setItem("as-slow-as-possible-data", JSON.stringify(freshData))
-
-                this.scene.start("gamemenu");
+                this.stopPlay();
             }
             this.updateTimerText();
         }
+    }
+
+    stopPlay() {
+        this.gameOver = true;
+
+        this.tweens.killAll();
+
+        const freshData = {
+            pong: this.registry.get("pong"),
+            missilecommand: this.registry.get("missilecommand"),
+            breakout: this.registry.get("breakout"),
+            spaceinvaders: this.registry.get("spaceinvaders")
+        };
+        freshData[this.key] = false;
+        this.registry.set(freshData);
+        localStorage.setItem("as-slow-as-possible-data", JSON.stringify(freshData))
+
+        this.stopTimer();
+        this.physics.pause();
+        this.inputEnabled = false;
+        this.state = this.states.GAME_OVER;
+
+        this.instructionsText.text = `GAME OVER\n\n${this.baseInteraction}`;
+        this.instructionsText.setAlpha(0);
+        this.instructionsText.setVisible(true);
+        this.tweens.add({
+            targets: this.instructionsText,
+            alpha: 1,
+            duration: FADE_TIME,
+            onComplete: () => {
+                if (this.sys.game.device.input.touch) {
+                    this.input.once('pointerdown', () => {
+                        this.toMenu();
+                    });
+                }
+                else {
+                    this.input.keyboard.once("keydown-SPACE", () => {
+                        this.toMenu();
+                    });
+                }
+            },
+        })
+    }
+
+    toMenu() {
+        this.cameras.main.fade(FADE_TIME, 0, 0, 255, false, (camera, progress) => {
+            if (progress == 1) {
+                this.scene.start("gamemenu");
+            }
+        });
     }
 
     startTimer() {

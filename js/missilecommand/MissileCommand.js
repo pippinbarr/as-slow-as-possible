@@ -13,8 +13,8 @@ class MissileCommand extends Game {
     }
 
     create() {
-        const TOUCH_INSTRUCTIONS = "Tap on the screen to target and launch missiles from one of your missile batteries.\n\nTap here to begin.";
-        const KEYBOARD_INSTRUCTIONS = "Click on the screen to target and launch a missile from one of your missile batteries.\n\n Press space to begin.";
+        const TOUCH_INSTRUCTIONS = "Tap on the screen to target and launch missiles from one of your missile batteries.";
+        const KEYBOARD_INSTRUCTIONS = "Click on the screen to target and launch a missile from one of your missile batteries.";
 
         this.instructions = this.sys.game.device.input.touch ? TOUCH_INSTRUCTIONS : KEYBOARD_INSTRUCTIONS;
 

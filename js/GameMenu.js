@@ -25,13 +25,13 @@ class GameMenu extends Menu {
           toState: "difficultymenu"
 
         },
-        {
-          text: "Space Invaders",
-          title: "Space Invaders",
-          state: "spaceinvaders",
-          toState: "difficultymenu"
+        // {
+        //   text: "Space Invaders",
+        //   title: "Space Invaders",
+        //   state: "spaceinvaders",
+        //   toState: "difficultymenu"
 
-        },
+        // },
         {
           text: "Missile Command",
           title: "Missile Command",

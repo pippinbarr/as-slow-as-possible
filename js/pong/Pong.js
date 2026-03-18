@@ -10,8 +10,8 @@ class Pong extends Game {
     }
 
     create() {
-        const TOUCH_INSTRUCTIONS = "Touch the sides of the screen to move your paddle left and right.\n\nTap here to begin.";
-        const KEYBOARD_INSTRUCTIONS = "Use the arrow keys to move your paddle left and right.\n\nPress space to begin.";
+        const TOUCH_INSTRUCTIONS = "Touch the sides of the screen to move your paddle left and right.";
+        const KEYBOARD_INSTRUCTIONS = "Use the arrow keys to move your paddle left and right.";
 
         this.instructions = this.sys.game.device.input.touch ? TOUCH_INSTRUCTIONS : KEYBOARD_INSTRUCTIONS;
 

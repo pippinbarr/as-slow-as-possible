@@ -7,7 +7,7 @@
 
 ## General
 
-- Transition from game over to any kind of message to menu? Maybe just the same style as instructions but "Game Over. Tap/space to return to the menu" ?
+- ~~Transition from game over to any kind of message to menu? Maybe just the same style as instructions but "Game Over. Tap/space to return to the menu" ?~~
 
 ## Pong
 

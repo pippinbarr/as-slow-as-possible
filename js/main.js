@@ -2,8 +2,8 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const TIME_SCALE = urlParams.get('timescale') || 1;
 const START_SCENE = urlParams.get('scene') || "gamemenu";
+const DEBUG = urlParams.get('debug') || false;
 
-const DEBUG = false;
 const HEIGHT = 720;
 const WIDTH = 405;
 const LANG = "en";
@@ -34,7 +34,7 @@ let config = {
     Pong,
     Breakout,
     MissileCommand,
-    SpaceInvaders
+    // SpaceInvaders
   ],
   render: {
     // pixelArt: true,
@@ -86,10 +86,11 @@ function startTheMusic() {
   stack(
     chord("<C G Am Am7 F7 Am C G F>")
       .voicing()
-      // .sound("supersaw"),
+      // .sound("gm_piano")
       // .add(-24)
       // .sound("sine")
       .gain(0)
+      .transpose(-12)
       // .sometimes(x => x.gain("0.8"))
       .sometimesBy(0.6, x => x.gain("0.8"))
       // .vibrato(20)
