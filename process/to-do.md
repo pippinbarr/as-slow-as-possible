@@ -1,17 +1,20 @@
 # To-dos ("final" )
 
+## Testing
+- Send to a couple of testers
+
 ## Music
 - Looks like it'll be too hard for me to bother ~~One-time triggering of sounds for events? Or not worth it?~~
 
-- One more pass
+- One more pass (maybe pending Gabriel's advice)
+- "Headphones recommended"?
 
 ## General
 
 - ~~Transition from game over to any kind of message to menu? Maybe just the same style as instructions but "Game Over. Tap/space to return to the menu" ?~~
 - ~~Intro "click to begin" screen~~
 - ~~Try to upscale the resolution? It looked gross on my phone.~~
-
-- Change timings based on larger canvas (things are moving slower)
+- ~~Change timings based on larger canvas (things are moving slower)~~
 
 ## Pong
 

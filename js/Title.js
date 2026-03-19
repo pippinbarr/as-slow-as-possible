@@ -18,7 +18,7 @@ class Title extends Phaser.Scene {
 
     this.createTitle(title);
 
-    this.createHelp();
+    // this.createHelp();
 
     this.cameras.main.once('camerafadeincomplete', function (camera) {
 
@@ -59,7 +59,14 @@ class Title extends Phaser.Scene {
     this.titleContainer.add(this.underline);
     this.titleContainer.add(this.authorText);
 
-
+    this.headphonesText = this.add.text(this.width - this.indent, this.height - this.indent, "(Headphones recommended.)", {
+      font: "36px sans-serif",
+      color: FG_COLOR_STRING,
+      padding: {
+        top: 0,
+        bottom: 0,
+      },
+    }).setOrigin(1, 1);
 
 
     // this.titleText.setInteractive(new Phaser.Geom.Rectangle(0, 0, this.titleText.width, this.titleText.height), Phaser.Geom.Rectangle.Contains);
@@ -95,7 +102,7 @@ class Title extends Phaser.Scene {
       //   }
       // });
 
-      this.instructionsText.setAlpha(0)
+      // this.instructionsText.setAlpha(0)
 
       this.tweens.add({
         targets: this.titleContainer,
