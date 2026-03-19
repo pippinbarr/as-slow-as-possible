@@ -235,3 +235,28 @@ So I suppose I'm thinking of a kind of dual potential:
 3. ... and yet it is an arcade videogame...
 
 Hmmm, that's still not sufficiently well expressed, but these are the thoughts cycling in my mind.
+
+## Syrup session (2026-03-19)
+
+Sitting down with the game now to do some syrup tastings.
+
+### Pong
+
+- Well just found out that the ball isn't respawning which is something to fix
+- At 10 pixels per second the ball/paddle felt so slow it seemed defeating
+- At 20 pixels per second it felt kind of good, but in watching the clock (which you do!) it takes like a full minute to just bounce off the paddle at all... which is hilarious! But... well but what?
+- 30 pixels per second it feels like it's kind of manageable, though it takes a minute  for the ball to reach the other paddle?
+
+It makes me want to stay at 20 pixels per second because that seemed to have the deepest time-sense? I definitely perceived time more then, it took me outside whatever normal "system" there is of feeling in the game... I was observing different things... I felt the time dilate as the ball got closer to the paddle... etc.? It's odd to me that this is true but I think it's true? Strangely there's just time to breath... it meets the tone of the music better? Getting a bit woo and need to check with others. But for now it's at 20 (can can be tweaked easily with the URL)
+
+### Breakout
+
+I suppose I would assume the same settings for now? Let's see... yeah. It's the same thing. FIrst brick breaks after like 40 seconds. It's so weird. I think I love it.
+
+### Missile command
+
+Okay well actually spending even this little time with the game makes me feel... in love with it again thank fuck. A reminder to play the game and feel the feelings, not assume you know them, or not remain detached for too long?
+
+I'm in a weird mood right now, but missile command makes me kind of want to cry in a good way.
+
+The timing here is kind of perfect I think.

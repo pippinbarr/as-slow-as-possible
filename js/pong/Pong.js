@@ -17,8 +17,8 @@ class Pong extends Game {
 
         super.create();
 
-        this.BALL_SPEED = 10 / TIME_SCALE;
-        this.PADDLE_SPEED = 10 / TIME_SCALE;
+        this.BALL_SPEED = 20 / TIME_SCALE;
+        this.PADDLE_SPEED = 20 / TIME_SCALE;
         this.PADDLE_WIDTH = this.width / 4;
         this.PADDLE_HEIGHT = this.PADDLE_WIDTH * 0.1;
 

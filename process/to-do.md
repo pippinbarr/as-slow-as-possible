@@ -15,15 +15,19 @@
 
 ## Pong
 
-- Syrup level
+- ~~Syrup level~~
+
+- Ball not resetting
+- AI may suck too much, needs to plan ahead a bit? Obtain an "AI"?
+- Check paddle bounce logic for angle... seems to steepen in the middle which would be wrong? (Same for breakout)
 
 ## Breakout
 
-- Syrup level
+- ~~Syrup level~~
 
 ## Missile command
 
-- Syrup level
+- ~~Syrup level~~
 
 ---
 
