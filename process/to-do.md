@@ -16,10 +16,10 @@
 ## Pong
 
 - ~~Syrup level~~
-
-- Ball not resetting
-- AI may suck too much, needs to plan ahead a bit? Obtain an "AI"?
-- Check paddle bounce logic for angle... seems to steepen in the middle which would be wrong? (Same for breakout)
+- ~~Ball not resetting~~
+- Hmm, it seems fine? Oh WAIT it's because of the fucking timescale ~~Check paddle bounce logic for angle... seems to steepen in the middle which would be wrong? (Same for breakout)~~
+- ~~Fix bounce angle to account for the time scale~~
+- I think this really does not matter ~~AI may suck too much, needs to plan ahead a bit? Obtain an "AI"?~~
 
 ## Breakout
 

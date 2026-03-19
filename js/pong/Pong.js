@@ -59,8 +59,8 @@ class Pong extends Game {
         // this.handleInput();
         this.handleTopPaddle();
 
-        if (this.ball.y > this.height + this.ball.displayHeight) {
-            this.addTimePenalty();
+        if (this.ball.y > this.height + this.ball.displayHeight || this.ball.y < -this.ball.displayHeight) {
+            // this.addTimePenalty();
             this.ball.body.setVelocity(0, 0);
             this.ball.setAlpha(0);
             this.ball.setPosition(this.width / 2, this.height / 2);
@@ -96,18 +96,40 @@ class Pong extends Game {
     }
 
     handleTopPaddle() {
+        // let vx = this.ball.body.velocity.x;
+        // let vy = this.ball.body.velocity.y;
+        // let x = this.ball.x;
+        // let y = this.ball.y;
+
+        // // If the ball is coming towards the top paddle
+        // if (vy < 0) {
+        //     // Calculate where it will hit on x when it gets there
+        //     while (y > this.topPaddle.y) {
+        //         y += vy;
+        //         x += vx;
+        //         // Simulate hitting the walls and reversing vx
+        //         if (x < 0 || x > this.width) {
+        //             x -= vx;
+        //             vx *= -1;
+        //         }
+        //     }
+        // }
+        // else {
+        //     x = this.bottomPaddle.x;
+        // }
+
         if (this.ball.x < this.topPaddle.x) {
-            this.topPaddle.body.setVelocity(-this.PADDLE_SPEED, 0);
+            this.topPaddle.body.setVelocity(-this.PADDLE_SPEED * 1.05, 0);
         }
         else if (this.ball.x > this.topPaddle.x) {
-            this.topPaddle.body.setVelocity(this.PADDLE_SPEED, 0);
+            this.topPaddle.body.setVelocity(this.PADDLE_SPEED * 1.05, 0);
         }
         this.topPaddle.x = Phaser.Math.Clamp(this.topPaddle.x, this.PADDLE_WIDTH * 0.5, this.width - this.PADDLE_WIDTH * 0.5);
     }
 
     paddleHit(ball, paddle) {
-        // May want to include "spin" here?
         const dx = ball.x - paddle.x;
-        ball.body.velocity.x += dx * 2;
+        // console.log(dx)
+        ball.body.velocity.x += (0.1 / TIME_SCALE) * dx; // This is good at 0.1 so if we're 10x slower...
     }
 }
