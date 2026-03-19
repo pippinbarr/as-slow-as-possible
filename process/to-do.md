@@ -11,6 +11,8 @@
 - ~~Intro "click to begin" screen~~
 - ~~Try to upscale the resolution? It looked gross on my phone.~~
 
+- Change timings based on larger canvas (things are moving slower)
+
 ## Pong
 
 - Syrup level

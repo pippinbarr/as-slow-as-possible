@@ -210,3 +210,28 @@ When I look at the menu now there are "only" three games and I can feel my anxie
 I just realized Pong could be multiplayer. OOOOoooooo. That's nice. I'll throw that in as I think it'll be kind of easy to implement (though nicer on mobile than on desktop). And having a multiplayer in there maybe asks some different questions. Can be optional too, can have a submenu for number of players.
 
 Hmmm... anyway my main point is that deleting one of the games feels useful and clear. And with it the game is close to done. I need to reflect a bit more on "what it is" and what I think it accomplishes, but I don't think I need to labour on it too too too much further?
+
+## The taste of syrup (2026-03-19)
+
+Okay well. Simultaneous with working on this project I feel like life has been pretty definitively whirling out of control just in terms of work in general (mostly: being department chair) and I've been reflecting over the past couple of days about just how much the emotional tenor of moment to moment life impacts how enthusiastic I'm able to feel about the creative project I'm working on. Hardly surprising, but it's one more challenge to account for when you're trying to do good work right? I think I still feel like I "know" this is a good and worthwhile project, and I can kind of "coast" on the core work early on (when I was enthused) to establish what "works" here... so I don't *need* the emotional power as much right now? But then I have doubts - what if my flat mood about things means that I'm no longer seeing the project clearly and making bad decisions for it? Impossible to say.
+
+Soooooo, where are we? Well, we're very close to done. I pruned a lot in the end so that there are "only" three games in this thing, but I still think today (as I did yesterday) that this is completely fine. It's arbitrary how many there are so long as, perhaps, there are more than two for some reason? Three's a crowd in a good way? I'd kind of *like* to add more but I also don't think I have the energy and I don't thiiiiink it'll make so much of a difference to the outcome... and that's kind of the key? What am I trying to *do*, to *prove* to *explore*? I think that the core of this thing is *in there* and doesn't require further expansion.... I think.
+
+So what remains? Well mostly as seen in my [to-dos](./to-do.md) it's to try to nail down the pacing on them all, the "syrup level" as I've been calling it. I want each game to feel syrupy in just the right way. And one of the tricky things here is that I think it hugely depends on how you're feeling when you play... sometimes it seems too fast and sometimes "too slow" and sometimes just right... so what do I tune it to? I think it would be sensible to tune it to someone a bit more impatient than me... their threshold for this experience will be lower and it would be nice to keep them in it a little longer, even at the expense of it being a bit too fast for me? Or I don't know? Anyway this question of perception and experience of time is key and it's different for different people of course.
+
+I think over the passage of this project I've for sure moved away (and never really deeply considered) the whole "erotic charge" thing... though I do want to go back to that somehow... the idea of "touching" things (I guess this relates to stuff Junior did). 
+
+Instead it has coalesced around ideas of, what...
+
+- A slow arcade game is an inherently strange thing to experience, it is "wrong" and therefore demands a "why?" from its player
+- The why centres around the idea that playing these games at these speeds is potentially mesmerizing, relaxing, meditative, contemplative
+- The game is undeniably a counter-point to what seems like such an accelerated experience of all media including games, especially in the context of our phones I suppose
+- It is almost *painful* to play this game at all, but especially on the phone, because it feels like a "waste of time", but I'm interested in how spending three minutes (on easy) is a waste of time perceptually, when of course I might read the Guardian compulsively, learning essentially nothing new, for five minutes and think nothing of it... there's a self-questioning involved in it for me, a question of "why can't I do this?"
+
+So I suppose I'm thinking of a kind of dual potential:
+
+1. Why can't I do this? What is it about my life and perceptions and attention that make this somehow such a crime against my time?
+2. When I can do this, I find that I am calmer, more present
+3. ... and yet it is an arcade videogame...
+
+Hmmm, that's still not sufficiently well expressed, but these are the thoughts cycling in my mind.
