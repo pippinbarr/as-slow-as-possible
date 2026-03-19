@@ -1,8 +1,8 @@
-class ClickToStart extends Phaser.Scene {
+class Title extends Phaser.Scene {
 
   constructor(config) {
     super({
-      key: "clicktostart"
+      key: "title"
     });
 
     this.indent = 100;
@@ -54,7 +54,7 @@ class ClickToStart extends Phaser.Scene {
       },
     }).setOrigin(1, 0);
 
-    this.titleContainer = this.add.container(this.indent, this.height / 2);
+    this.titleContainer = this.add.container(this.indent, this.height * 0.45);
     this.titleContainer.add(this.titleText);
     this.titleContainer.add(this.underline);
     this.titleContainer.add(this.authorText);

@@ -1,7 +1,7 @@
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const TIME_SCALE = urlParams.get('timescale') || 1;
-const START_SCENE = urlParams.get('scene') || "clicktostart";
+const START_SCENE = urlParams.get('scene') || "title";
 const DEBUG = urlParams.get('debug') || false;
 const PRELOADER_DELAY = urlParams.get('preloaderdelay') || 3000;
 
@@ -29,7 +29,7 @@ let config = {
   scene: [
     Boot,
     Preloader,
-    ClickToStart,
+    Title,
     GameMenu,
     PlayersMenu,
     DifficultyMenu,
