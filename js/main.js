@@ -74,7 +74,7 @@ document.body.addEventListener("touchstart", startTheMusic)
 
 function startTheMusic() {
   stack(
-    chord("<C G Am Am7 F7 Am C G F>")
+    chord("<C G Am Am7 F7 F6 C G F C>")
       .voicing()
       // .sound("gm_piano")
       // .add(-24)

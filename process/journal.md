@@ -267,35 +267,39 @@ I sent the game out to some trusted smart friends last week and they responded v
 
 ### Gabriel (20:32, THursday, 19 March 2026)
 
-> I think the combo slowness/sparse music work very well! the speed of the game is so slow, and the music is so meditative, that I ended up thinking/playing/listening at the same time. I also think the "nostalgic" feeling of the music goes well with the nostalgic craving for these games 🙂
+```
+I think the combo slowness/sparse music work very well! the speed of the game is so slow, and the music is so meditative, that I ended up thinking/playing/listening at the same time. I also think the "nostalgic" feeling of the music goes well with the nostalgic craving for these games 🙂
+```
 
 ### Csongor (13:06, Sunday, 22 March 2026)
 
-> This is... this is just beautiful.
+```
+This is... this is just beautiful.
 
-> I love this... but I have an emotional connection to ASLSP, there is a chance I will attend the next Klangwechsel in Halberstadt this year.
+I love this... but I have an emotional connection to ASLSP, there is a chance I will attend the next Klangwechsel in Halberstadt this year.
 
-> I'm writing you all this without having read your journal. Would be curious about your thinking.
+I'm writing you all this without having read your journal. Would be curious about your thinking.
 
-> The obvious question is: is this slow enough? My initial thought was: make it much slower. But what is the right speed of this, especially in our fast world? What speed is meaningful? When is watching still enjoyable? When is it too much...? Missile Command feels the fastest, as there is sooo much happening on the screen. The slowness of the chain-reactions is really impressive. 
+The obvious question is: is this slow enough? My initial thought was: make it much slower. But what is the right speed of this, especially in our fast world? What speed is meaningful? When is watching still enjoyable? When is it too much...? Missile Command feels the fastest, as there is sooo much happening on the screen. The slowness of the chain-reactions is really impressive. 
 
-> In a way: Do you go for the original ASLSP or the Halberstadt-version? 
+In a way: Do you go for the original ASLSP or the Halberstadt-version? 
 
-> For me it feels strange to connect the difficulty to time. It somehow feels like you would see the this as a punishment. The longer you have to do it the harder? But what if I enjoy this? I mean, is this not the point of ASLSP? To speed down, to get into the rhythm, the see what you can't see usually?
+For me it feels strange to connect the difficulty to time. It somehow feels like you would see the this as a punishment. The longer you have to do it the harder? But what if I enjoy this? I mean, is this not the point of ASLSP? To speed down, to get into the rhythm, the see what you can't see usually?
 
-> Have you considered connecting the difficulty to speed?
+Have you considered connecting the difficulty to speed?
 
-> I like the endless mode though.
+I like the endless mode though.
 
-> The city of Missile Command has a certain juiciness to it. 
+The city of Missile Command has a certain juiciness to it. 
 
-> Somehow missing sounds of the interactions. My brain is waiting for sounds to happen when the ball hits a paddle... but thats for sure because this is what I know from the originals (at least Pong & Breakout). So a very slow explosion, or a sound that just mixes itself into the music (what I really like, who is this?). But I could imagine it could add something interesting, an other element of anticipation. 
+Somehow missing sounds of the interactions. My brain is waiting for sounds to happen when the ball hits a paddle... but thats for sure because this is what I know from the originals (at least Pong & Breakout). So a very slow explosion, or a sound that just mixes itself into the music (what I really like, who is this?). But I could imagine it could add something interesting, an other element of anticipation. 
 
-> Three bug-like observations: 
+Three bug-like observations: 
 
-> in Pong, the enemy paddle is vibrating a few pixels left-right when it is adjusting its position in all 3: nightmare mode is also activated by having completed easy or normal this could be a design decision, but: I can't quit the levels, I have to play them to the end
+in Pong, the enemy paddle is vibrating a few pixels left-right when it is adjusting its position in all 3: nightmare mode is also activated by having completed easy or normal this could be a design decision, but: I can't quit the levels, I have to play them to the end
 
-> I'm out now, but this is really just... ❤️  Thanks!
+I'm out now, but this is really just... ❤️  Thanks!
+```
 
 ### David (10:03, Friday, 20 March 2026)
 
@@ -325,3 +329,69 @@ i think the koans would be a bit heavyhanded, just depends
 there's likely a way to add score and the way the numbers change can be really really significant because w hat is in a point anyway?
 maybe the score is a timer ticking up as the time on the game ticks down
 ```
+
+## Feedback II: Feed Harder (2026-03-24)
+
+I promised myself I would refelct further on the feedback above (plus some more I've received in conversation with a couple of these people) and see how I could maybe integrate into the game which I'm now considering closer and closer to done and would reeeeeeeaaaaaally like to send into the world tomorrow if remotely possible. Which I know is a dumb way to feel, but I *always* hit this point in a project where I'm just kind of "done" and need to move on.
+
+Unclear to me whether the wise person listens to that feeling, or the wise person fights that feeling? I dunno.
+
+ANYWAY.
+
+Here are some notes:
+
+#### Beauty
+
+Both Csongor and David used the word "beautiful" and I could not be more happy about that. I feel that about this game too... there's a quality to slowness that I find a huge relief in its counterposition to what's normal in a game. And the strange restfulness it creates for me is, yeah, beautiful in a way. So great.
+
+#### Nostalgia
+
+Gabriel pointed out the idea that the music feels nostalgic which I liked because it's not a word I've thought about at all during this process. Which is odd because if you look at it it's *full* of kind of "nostalgic moves". 
+
+- The chords in the music are, secretly(?) from *Let It Be* by the Beatles. Obviously at a completely different pacing and expression and so on, but no question it's a nostalgic kind song and I suppose they're nostalgic chords in this order (or at all? I don't know music theory well enough).
+- The title *As Slow As Possible* comes unconsciously from John Cage's work of the same name (I'd actually thought it was the name of Marina Abramovic's slow-walking performance but that seems to just be called "Slow Motion Walk"). I think you could say there's some sort of nostalgia in that work for "time"? The organ, the sort of hugeness of ideas around the church? Nostalgia for a different time that reaches forward into a new time? 
+- The games that make up the collection are all ultra-classic Atari-era arcade games that people have plenty of nostalgia for - a golden age, a time when things were simpler, childhood, etc. etc.
+- I think there's some way, potentially, that slowness itself feeds into nostalgia - maybe the ache in nostalgia is supported/encouraged/induced by that stretching of time? Like the pleasure-pain of a good hamstring stretch? (Look at me waxing poetic.)
+
+So yeah. Notalgia.
+
+#### Is it slow enough? How slow is slow?
+
+Csongor is an incisive guy so I wasn't surprised to get really key questions from him. This is a question I've kept asking myself, oscillating between feeling like the games are "too slow" and "too fast" and trying to find that middle-ground I keep referring to as "syrupy". 
+
+I don't know if it's slow enough. As I said to him, I feel caught in trying to second guess what a general "player" will think and feel. People's perceptions of time, their impatience and their patience... it's all pretty personal. So how do you strike the right quality of time here? My working assumption has been that I should make the game slightly faster than is "slow enough" for me, figuring I'm a slower person than most. Significantly, in case it's not clear, I don't want people to just instantly quit when they see how slow it is. I want to hit that line where they can't quite resist waiting and feeling the time... (gets a tiny bit back to the erotic stuff I wrote about early on...?)
+
+Csongor and I have discussed this a bit more too. There's also his suggestion to try out the different levels having different *speeds* instead of durations. And I think that's interesting. It pulls me back into all these questions about what is meant by "difficulty" here and my use of those classic difficulty mode names (especially Nightmare!). As I sit here I wonder... should they just be called "Slow, Slower, Slowest" instead?
+
+#### Points
+
+David and Csongor both end up kind of alluding to or directly addressing this core question of "punishment" and points. The worry I've had myself about the game positioning the experience of slowness as punitive and "bad", something to survive more than to love or to drink in or simply experience. The framing matters here because it's very very different to think about just "white knuckling through it" versus sinking into it with loose fingers.
+
+And how I present the game (however minimally) will shape that. Most notably:
+
+- The name of the levels Easy Normal Hard Nightmare compare the game modes (currently duration) with "difficulty" and "challenge" (and certainly difficulty at a certain point leaves the territory of balancing your pleasure and becomes - as people often call it - "punishing")
+- The timer and the countdown, the suggestion that you should play for a specific duration, which I want to liken to a meditation timer, but which can be taken as something to survive. (Though I'll freely admit that meditation feels like something to "survive" often enough.)
+- The presence or lack of points. The current build has no points, just the timer. I'd kind of thought earlier on "oh the timer is the points how clever" but I'm less and less convinced the equation is there, or if it's the right equation. What would it be like if there were points and the points counted up to some number (you could even display 223/1000 or something?), a point per second. Then the points are the timer. In "Nightmare!" you could imagine setting a "high score"... (though how you would ever quit to register the score is unclear and I don't think I want the player to exit?)
+
+### Back to just me thinking
+
+Hmmm.
+
+Replacing the timer with points *is* interesting for sure, it gets more toward time spent as virtuous which I like, rather than counting downwards as an indication of "surviving" the specified time?
+
+Nightmare Mode is hugely there, when I think about it, because it's *funny* and it also represents something to "unlock" and therefore to strive to achieve for gamers who fall into that category. Which I like. But perhaps just the "slowest" mode could be unlocked? Or they could be sequentially unlocked?
+
+So what about a model of 
+
+- Slow
+- Slower
+- Slowest
+
+Each one increasingly slow, each one with a higher "score" to reach by continuing to play. Each one unlocking the next.
+
+I should probably at least *see* that.
+
+So my big next moves are:
+- Try out slow slower slowest
+- Try to figure out the SFX better
+- Ship em danno?
