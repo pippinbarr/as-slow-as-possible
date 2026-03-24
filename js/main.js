@@ -1,9 +1,17 @@
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
-const TIME_SCALE = urlParams.get('timescale') || 1;
+const UI_TIME_SCALE = urlParams.get('uitimescale') || 1;
 const START_SCENE = urlParams.get('scene') || "title";
 const DEBUG = urlParams.get('debug') || false;
 const PRELOADER_DELAY = urlParams.get('preloaderdelay') || 3000;
+
+const SLOW_DURATION = 60 * 3;
+const SLOWER_DURATION = 60 * 7;
+const SLOWEST_DURATION = 60 * 15;
+
+const SLOW_TIMESCALE = 1;
+const SLOWER_TIMESCALE = 1.5;
+const SLOWEST_TIMESCALE = 2;
 
 const HEIGHT = 720 * 2;
 const WIDTH = 405 * 2;
@@ -16,7 +24,7 @@ const HIGHLIGHT_COLOR_STRING = "#ff77ff";
 const BG_COLOR = 0x0000ff;
 const BG_COLOR_STRING = "#0000ff";
 
-const FADE_TIME = 5000 * TIME_SCALE;
+const FADE_TIME = 5000 * UI_TIME_SCALE;
 
 let GAIN = 0;
 

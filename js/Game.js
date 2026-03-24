@@ -7,10 +7,9 @@ class Game extends Phaser.Scene {
 
     init(data) {
         this.duration = data.duration;
+        this.timescale = data.timescale;
         this.key = data.toState;
         this.players = data.players;
-
-        // this.duration = 3;
     }
 
     create() {
@@ -34,6 +33,12 @@ class Game extends Phaser.Scene {
             },
         }).setOrigin(1, 1);
         this.updateTimerText();
+        this.timerText.setVisible(false);
+
+        this.timerBar = this.add.image(0, this.height, `particle`)
+            .setTint(HIGHLIGHT_COLOR)
+            .setOrigin(0, 1)
+            .setScale(this.width, 4)
 
         const TOUCH_INTERACTION = "Tap here to continue.";
         const KEYBOARD_INTERACTION = "Press space to continue."
@@ -203,6 +208,7 @@ class Game extends Phaser.Scene {
                 this.stopPlay();
             }
             this.updateTimerText();
+            this.updateTimerBar();
         }
     }
 
@@ -212,14 +218,21 @@ class Game extends Phaser.Scene {
         this.tweens.killAll();
 
         const freshData = {
-            pong: this.registry.get("pong"),
-            missilecommand: this.registry.get("missilecommand"),
-            breakout: this.registry.get("breakout"),
-            spaceinvaders: this.registry.get("spaceinvaders")
+            "pong-slower": this.registry.get("pong-slower"),
+            "pong-slowest": this.registry.get("pong-slowest"),
+            "breakout-slower": this.registry.get("breakout-slower"),
+            "breakout-slowest": this.registry.get("breakout-slowest"),
+            "missilecommand-slower": this.registry.get("missilecommand-slower"),
+            "missilecommand-slowest": this.registry.get("missile-command-slowest"),
         };
-        if (this.duration === HARD_DURATION) {
-            freshData[this.key] = false;
+
+        if (this.duration === SLOW_DURATION) {
+            freshData[`${this.key}-slower`] = false;
         }
+        else if (this.duration === SLOWER_DURATION) {
+            freshData[`${this.key}-slowest`] = false;
+        }
+
         this.registry.set(freshData);
         localStorage.setItem("as-slow-as-possible-data", JSON.stringify(freshData))
 
@@ -266,11 +279,6 @@ class Game extends Phaser.Scene {
         this.timerOn = false;
     }
 
-    addTimePenalty() {
-        this.timer += this.duration > 0 ? 30 : -30;
-        if (this.timer < 0) this.timer = 0;
-    }
-
     updateTimerText() {
         const hours = Math.floor(this.timer / 60 / 60);
         const hoursText = (hours < 10) ? "0" + hours : hours;
@@ -288,6 +296,10 @@ class Game extends Phaser.Scene {
         else {
             this.timerText.text = `${hoursText}:${minutesText}:${secondsText}`;
         }
+    }
+
+    updateTimerBar() {
+        this.timerBar.setScale(this.width * (this.timer / this.duration), 4);
     }
 
     left() {

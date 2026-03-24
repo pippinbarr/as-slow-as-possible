@@ -3,16 +3,16 @@ class MissileCommand extends Game {
         super({
             key: "missilecommand"
         });
-
-        this.enemyMissileSpeed = 14 / TIME_SCALE;
-        this.playerMissileSpeed = 40 / TIME_SCALE;
-        this.enemyMissileDelay = 10000 * TIME_SCALE;
-        this.explodeDuration = 10000 * TIME_SCALE;
-        this.towerMissileCooldown = 1000 * TIME_SCALE;
-        this.restartFadeDuration = 5000 * TIME_SCALE;
     }
 
     create() {
+        this.enemyMissileSpeed = 14 / this.timescale;
+        this.playerMissileSpeed = 40 / this.timescale;
+        this.enemyMissileDelay = 10000 * this.timescale;
+        this.explodeDuration = 10000 * this.timescale;
+        this.towerMissileCooldown = 1000 * this.timescale;
+        this.restartFadeDuration = 5000 * this.timescale;
+
         const TOUCH_INSTRUCTIONS = "Tap on the screen to target and launch missiles from one of your missile batteries.";
         const KEYBOARD_INSTRUCTIONS = "Click on the screen to target and launch a missile from one of your missile batteries.";
 

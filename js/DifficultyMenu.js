@@ -1,3 +1,4 @@
+
 const EASY_DURATION = 3 * 60;
 const NORMAL_DURATION = 7 * 60;
 const HARD_DURATION = 20 * 60;
@@ -21,26 +22,26 @@ class DifficultyMenu extends Menu {
       title: this.title,
       menuItems: [
         {
-          text: "Easy",
+          text: "Slow",
           toState: this.gameScene,
-          duration: EASY_DURATION
+          duration: SLOW_DURATION,
+          timescale: SLOW_TIMESCALE
         },
         {
-          text: "Normal",
+          text: "Slower",
           toState: this.gameScene,
-          duration: NORMAL_DURATION
+          duration: SLOWER_DURATION,
+          timescale: SLOWER_TIMESCALE,
+          locked: this.registry.get(`${this.gameScene}-slower`),
+          subtext: "Unlock by completing the game on Slow"
         },
         {
-          text: "Hard",
+          text: "Slowest",
           toState: this.gameScene,
-          duration: HARD_DURATION
-        },
-        {
-          text: "Nightmare",
-          toState: this.gameScene,
-          duration: -1,
-          locked: this.registry.get(this.gameScene),
-          subtext: "Unlock by completing the game on Hard"
+          duration: SLOWEST_DURATION,
+          timescale: SLOWEST_TIMESCALE,
+          locked: this.registry.get(`${this.gameScene}-slowest`),
+          subtext: "Unlock by completing the game on Slower"
         },
         {
           text: "←",
@@ -60,3 +61,4 @@ class DifficultyMenu extends Menu {
     this.createMenu(data.menuItems);
   }
 }
+
