@@ -40,7 +40,6 @@ class Game extends Phaser.Scene {
             .setOrigin(0, 1)
             .setScale(this.width, 8)
             .setDepth(10000000)
-
         const TOUCH_INTERACTION = "Tap here to continue.";
         const KEYBOARD_INTERACTION = "Press space to continue."
         this.baseInteraction = this.sys.game.device.input.touch ? TOUCH_INTERACTION : KEYBOARD_INTERACTION;

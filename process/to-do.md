@@ -4,12 +4,17 @@
 
 - Work on the info page etc.
 
+## Release prep
+
+- Work on the info page etc.
+
 ## Testing
 - ~~Send to a couple of testers~~
 
 ## Music
 - Looks like it'll be too hard for me to bother ~~One-time triggering of sounds for events? Or not worth it?~~
 - ~~"Headphones recommended"?~~
+- Got the stamp of approval ~~One more pass (maybe pending Gabriel's advice)~~
 - Got the stamp of approval ~~One more pass (maybe pending Gabriel's advice)~~
 
 ## General
