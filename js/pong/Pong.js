@@ -47,10 +47,10 @@ class Pong extends Game {
 
         this.ball.body.setVelocity(Phaser.Math.Between(-this.BALL_SPEED, this.BALL_SPEED), this.BALL_SPEED)
 
-        this.physics.add.collider(this.ball, this.rightWall);
-        this.physics.add.collider(this.ball, this.leftWall);
-        this.physics.add.collider(this.ball, this.topPaddle, this.paddleHit);
-        this.physics.add.collider(this.ball, this.bottomPaddle, this.paddleHit);
+        this.physics.add.collider(this.ball, this.rightWall, this.wallHit, null, this);
+        this.physics.add.collider(this.ball, this.leftWall, this.wallHit, null, this);
+        this.physics.add.collider(this.ball, this.topPaddle, this.paddleHit, null, this);
+        this.physics.add.collider(this.ball, this.bottomPaddle, this.paddleHit, null, this);
     }
 
     update(time, delta) {
@@ -127,9 +127,12 @@ class Pong extends Game {
         this.topPaddle.x = Phaser.Math.Clamp(this.topPaddle.x, this.PADDLE_WIDTH * 0.5, this.width - this.PADDLE_WIDTH * 0.5);
     }
 
+    wallHit(ball, wall) {
+
+    }
+
     paddleHit(ball, paddle) {
         const dx = ball.x - paddle.x;
-        // console.log(dx)
         ball.body.velocity.x += (0.1 / TIME_SCALE) * dx; // This is good at 0.1 so if we're 10x slower...
     }
 }

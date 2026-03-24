@@ -12,13 +12,15 @@ class Preloader extends Phaser.Scene {
   }
 
   create() {
+
+
     const clown = this.add.image(this.game.canvas.width / 2, this.game.canvas.height / 2, "clown");
     clown.setRotation(Math.PI);
+
     this.add.tween({
       targets: clown,
       rotation: 0,
       duration: PRELOADER_DELAY,
-      // loop: true
     })
     setTimeout(() => {
       this.scene.start(START_SCENE);

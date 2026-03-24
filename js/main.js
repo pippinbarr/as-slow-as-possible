@@ -18,6 +18,8 @@ const BG_COLOR_STRING = "#0000ff";
 
 const FADE_TIME = 5000 * TIME_SCALE;
 
+let GAIN = 0;
+
 let config = {
   type: Phaser.AUTO,
   parent: "game",
@@ -65,26 +67,23 @@ let game = new Phaser.Game(config);
 // Music music music
 
 initStrudel({
-  prebake: () => samples('github:tidalcycles/dirt-samples'),
+  prebake: () => samples({
+    bd: 'assets/sounds/bd.wav',
+    sd: 'assets/sounds/sd.wav',
+    hh: 'assets/sounds/hh.wav',
+  })
 });
 
 document.body.addEventListener("mousedown", startTheMusic)
 document.body.addEventListener("touchstart", startTheMusic)
 
-
 function startTheMusic() {
   stack(
     chord("<C G Am Am7 F7 F6 C G F C>")
       .voicing()
-      // .sound("gm_piano")
-      // .add(-24)
-      // .sound("sine")
       .gain(0)
       .transpose(-12)
-      // .sometimes(x => x.gain("0.8"))
       .sometimesBy(0.6, x => x.gain("0.8"))
-      // .vibrato(20)
-      // .octave(-2)
       .clip(1.8)
       .slow(3.14)
       .attack(1).decay(7)
@@ -94,7 +93,7 @@ function startTheMusic() {
       .sometimes(x => x.gain("0.5 0.4 0.3 0.5 0.6 1 0.4")),
       s("<~ sd ~ [~ ~] ~ ~ ~ ~ ~ sd ~ ~ ~ ~ ~ ~ sd ~ ~>")
         .gain(0)
-        .sometimes(x => x.gain("0.2 0.2")),
+        .sometimes(x => x.gain("0.2 0.2"))
     )
       .fast(6.28)
       .room(2)
