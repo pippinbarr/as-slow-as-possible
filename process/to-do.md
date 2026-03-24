@@ -1,13 +1,16 @@
 # To-dos ("final" )
 
+## Release prep
+
+- Work on the info page etc.
+
 ## Testing
 - ~~Send to a couple of testers~~
 
 ## Music
 - Looks like it'll be too hard for me to bother ~~One-time triggering of sounds for events? Or not worth it?~~
 - ~~"Headphones recommended"?~~
-
-- One more pass (maybe pending Gabriel's advice)
+- Got the stamp of approval ~~One more pass (maybe pending Gabriel's advice)~~
 
 ## General
 
@@ -15,6 +18,13 @@
 - ~~Intro "click to begin" screen~~
 - ~~Try to upscale the resolution? It looked gross on my phone.~~
 - ~~Change timings based on larger canvas (things are moving slower)~~
+- Yes this is nicer tonally ~~Slow, Slower, Slowest~~
+- This is now in there ~~Each unlocks the next?~~
+- Added this and I think it works ~~Spoke to Rilla who pointed out that *time itself* (in the form of the timer) feels like it moves too fast (which is a pretty brilliant observation)~~
+
+- Typography of instructions?
+- Is the slowest too slow? Need to try it
+- Is this otherwise actually ready?
 
 ## Pong
 

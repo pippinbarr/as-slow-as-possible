@@ -5,8 +5,6 @@ class Pong extends Game {
             key: "pong"
         });
 
-        this.ballLaunchDelay = 6000 * TIME_SCALE;
-        this.ballReviveDealy = 5000 * TIME_SCALE;
     }
 
     create() {
@@ -15,10 +13,13 @@ class Pong extends Game {
 
         this.instructions = this.sys.game.device.input.touch ? TOUCH_INSTRUCTIONS : KEYBOARD_INSTRUCTIONS;
 
+        this.ballLaunchDelay = 6000 * this.timescale;
+        this.ballReviveDelay = 5000 * this.timescale;
+
         super.create();
 
-        this.BALL_SPEED = 20 / TIME_SCALE;
-        this.PADDLE_SPEED = 20 / TIME_SCALE;
+        this.BALL_SPEED = 20 / this.timescale;
+        this.PADDLE_SPEED = 20 / this.timescale;
         this.PADDLE_WIDTH = this.width / 4;
         this.PADDLE_HEIGHT = this.PADDLE_WIDTH * 0.1;
 
@@ -74,7 +75,7 @@ class Pong extends Game {
                     },
                     duration: this.ballLaunchDelay
                 })
-            }, this.ballReviveDealy);
+            }, this.ballReviveDelay);
         }
     }
 
@@ -133,6 +134,6 @@ class Pong extends Game {
 
     paddleHit(ball, paddle) {
         const dx = ball.x - paddle.x;
-        ball.body.velocity.x += (0.1 / TIME_SCALE) * dx; // This is good at 0.1 so if we're 10x slower...
+        ball.body.velocity.x += (0.1 / this.timescale) * dx; // This is good at 0.1 so if we're 10x slower...
     }
 }

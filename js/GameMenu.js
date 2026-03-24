@@ -48,10 +48,12 @@ class GameMenu extends Menu {
     }
     else {
       const freshData = {
-        pong: true,
-        missilecommand: true,
-        breakout: true,
-        spaceinvaders: true
+        "pong-slower": true,
+        "pong-slowest": true,
+        "breakout-slower": true,
+        "breakout-slowest": true,
+        "missilecommand-slower": true,
+        "missilecommand-slowest": true,
       };
       this.registry.set(freshData);
       localStorage.setItem("as-slow-as-possible-data", JSON.stringify(freshData))
