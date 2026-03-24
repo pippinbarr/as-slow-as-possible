@@ -1,5 +1,7 @@
 # As Slow As Possible
 
+![An image of a game of Pong](./images/as-slow-as-possible-banner.png)
+
 # [Play Online](../index.html)  
 #### (Mobile and desktop)
 

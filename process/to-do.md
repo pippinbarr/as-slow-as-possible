@@ -21,9 +21,9 @@
 - Yes this is nicer tonally ~~Slow, Slower, Slowest~~
 - This is now in there ~~Each unlocks the next?~~
 - Added this and I think it works ~~Spoke to Rilla who pointed out that *time itself* (in the form of the timer) feels like it moves too fast (which is a pretty brilliant observation)~~
+- Nope it's good ~~Is the slowest too slow? Need to try it~~
+- They look a little nicer now I think. ~~Typography of instructions?~~
 
-- Typography of instructions?
-- Is the slowest too slow? Need to try it
 - Is this otherwise actually ready?
 
 ## Pong

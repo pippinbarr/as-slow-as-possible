@@ -25,7 +25,7 @@ class MissileCommand extends Game {
         //     this.launchMissile(this.input.activePointer);
         // });
 
-        this.ground = this.add.rectangle(this.width / 2, this.height * 0.9, this.width, 60 * 2, FG_COLOR);
+        this.ground = this.add.rectangle(this.width / 2, this.height * 0.95, this.width, 123 * 2, FG_COLOR)
         this.physics.add.existing(this.ground);
         // this.ground.setStrokeStyle(2, 0x111111);
 
@@ -53,7 +53,7 @@ class MissileCommand extends Game {
     startPlay() {
         super.startPlay();
 
-        // this.launchEnemyMissile();
+        this.launchEnemyMissile();
         this.time.addEvent({ delay: this.enemyMissileDelay, callback: this.launchEnemyMissile, loop: true, callbackScope: this });
     }
 

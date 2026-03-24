@@ -38,13 +38,14 @@ class Game extends Phaser.Scene {
         this.timerBar = this.add.image(0, this.height, `particle`)
             .setTint(HIGHLIGHT_COLOR)
             .setOrigin(0, 1)
-            .setScale(this.width, 4)
+            .setScale(this.width, 8)
+            .setDepth(10000000)
 
         const TOUCH_INTERACTION = "Tap here to continue.";
         const KEYBOARD_INTERACTION = "Press space to continue."
         this.baseInteraction = this.sys.game.device.input.touch ? TOUCH_INTERACTION : KEYBOARD_INTERACTION;
 
-        this.instructionsText = this.add.text(this.width * 0.5, this.height * 0.5, this.instructions + "\n\n" + this.baseInteraction, {
+        this.instructionsText = this.add.text(this.width * 0.5, this.height * 0.5, this.instructions, {
             font: "36px sans-serif",
             color: BG_COLOR_STRING,
             padding: 10,
@@ -55,7 +56,22 @@ class Game extends Phaser.Scene {
         })
             .setOrigin(0.5, 0.5)
             .setAlpha(0)
-            .setDepth(1000)
+            .setDepth(1000);
+
+        this.continueText = this.add.text(this.instructionsText.x, this.instructionsText.y + this.instructionsText.height * 1.5, this.baseInteraction, {
+            font: "36px sans-serif",
+            color: BG_COLOR_STRING,
+            padding: 10,
+            backgroundColor: HIGHLIGHT_COLOR_STRING,
+            wordWrap: {
+                width: this.width * 0.8
+            }
+        })
+            .setOrigin(0.5, 0.5)
+            .setAlpha(0)
+            .setDepth(1000);
+
+        this.continueText.y = this.instructionsText.y + this.instructionsText.height / 2 + this.continueText.height * 0.75;
 
 
         this.input.keyboard.on('keydown-ONE', () => {
@@ -98,7 +114,7 @@ class Game extends Phaser.Scene {
 
     showInstructions() {
         this.tweens.add({
-            targets: this.instructionsText,
+            targets: [this.instructionsText, this.continueText],
             alpha: 1,
             onComplete: () => {
                 if (this.sys.game.device.input.touch) {
@@ -129,7 +145,7 @@ class Game extends Phaser.Scene {
 
     startPlay() {
         this.tweens.add({
-            targets: this.instructionsText,
+            targets: [this.instructionsText, this.continueText],
             alpha: 0,
             duration: FADE_TIME,
             onComplete: () => {
@@ -241,11 +257,14 @@ class Game extends Phaser.Scene {
         this.inputEnabled = false;
         this.state = this.states.GAME_OVER;
 
-        this.instructionsText.text = `GAME OVER\n\n${this.baseInteraction}`;
+        this.instructionsText.text = `Done.`;
         this.instructionsText.setAlpha(0);
         this.instructionsText.setVisible(true);
+
+        this.continueText.y = this.instructionsText.y + this.instructionsText.height / 2 + this.continueText.height * 0.75;
+
         this.tweens.add({
-            targets: this.instructionsText,
+            targets: [this.instructionsText, this.continueText],
             alpha: 1,
             duration: FADE_TIME,
             onComplete: () => {
@@ -299,7 +318,7 @@ class Game extends Phaser.Scene {
     }
 
     updateTimerBar() {
-        this.timerBar.setScale(this.width * (this.timer / this.duration), 4);
+        this.timerBar.setScale(this.width * (this.timer / this.duration), 8);
     }
 
     left() {
