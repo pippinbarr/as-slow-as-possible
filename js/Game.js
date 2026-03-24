@@ -217,7 +217,9 @@ class Game extends Phaser.Scene {
             breakout: this.registry.get("breakout"),
             spaceinvaders: this.registry.get("spaceinvaders")
         };
-        freshData[this.key] = false;
+        if (this.duration === HARD_DURATION) {
+            freshData[this.key] = false;
+        }
         this.registry.set(freshData);
         localStorage.setItem("as-slow-as-possible-data", JSON.stringify(freshData))
 

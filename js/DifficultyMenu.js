@@ -1,3 +1,7 @@
+const EASY_DURATION = 3 * 60;
+const NORMAL_DURATION = 7 * 60;
+const HARD_DURATION = 20 * 60;
+
 class DifficultyMenu extends Menu {
 
   constructor(config) {
@@ -19,17 +23,17 @@ class DifficultyMenu extends Menu {
         {
           text: "Easy",
           toState: this.gameScene,
-          duration: 60 * 2
+          duration: EASY_DURATION
         },
         {
           text: "Normal",
           toState: this.gameScene,
-          duration: 60 * 5
+          duration: NORMAL_DURATION
         },
         {
           text: "Hard",
           toState: this.gameScene,
-          duration: 60 * 15
+          duration: HARD_DURATION
         },
         {
           text: "Nightmare",

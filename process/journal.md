@@ -260,3 +260,68 @@ Okay well actually spending even this little time with the game makes me feel...
 I'm in a weird mood right now, but missile command makes me kind of want to cry in a good way.
 
 The timing here is kind of perfect I think.
+
+## Music to my ears // Feedback (2026-03-24)
+
+I sent the game out to some trusted smart friends last week and they responded very generously with feedback which they also said I could paste in here for the record, so I'm pasting. I'll write another entry in a bit to reflect on what they said, all of which was very perceptive, encouraging, and worth following up on.
+
+### Gabriel (20:32, THursday, 19 March 2026)
+
+> I think the combo slowness/sparse music work very well! the speed of the game is so slow, and the music is so meditative, that I ended up thinking/playing/listening at the same time. I also think the "nostalgic" feeling of the music goes well with the nostalgic craving for these games 🙂
+
+### Csongor (13:06, Sunday, 22 March 2026)
+
+> This is... this is just beautiful.
+
+> I love this... but I have an emotional connection to ASLSP, there is a chance I will attend the next Klangwechsel in Halberstadt this year.
+
+> I'm writing you all this without having read your journal. Would be curious about your thinking.
+
+> The obvious question is: is this slow enough? My initial thought was: make it much slower. But what is the right speed of this, especially in our fast world? What speed is meaningful? When is watching still enjoyable? When is it too much...? Missile Command feels the fastest, as there is sooo much happening on the screen. The slowness of the chain-reactions is really impressive. 
+
+> In a way: Do you go for the original ASLSP or the Halberstadt-version? 
+
+> For me it feels strange to connect the difficulty to time. It somehow feels like you would see the this as a punishment. The longer you have to do it the harder? But what if I enjoy this? I mean, is this not the point of ASLSP? To speed down, to get into the rhythm, the see what you can't see usually?
+
+> Have you considered connecting the difficulty to speed?
+
+> I like the endless mode though.
+
+> The city of Missile Command has a certain juiciness to it. 
+
+> Somehow missing sounds of the interactions. My brain is waiting for sounds to happen when the ball hits a paddle... but thats for sure because this is what I know from the originals (at least Pong & Breakout). So a very slow explosion, or a sound that just mixes itself into the music (what I really like, who is this?). But I could imagine it could add something interesting, an other element of anticipation. 
+
+> Three bug-like observations: 
+
+> in Pong, the enemy paddle is vibrating a few pixels left-right when it is adjusting its position in all 3: nightmare mode is also activated by having completed easy or normal this could be a design decision, but: I can't quit the levels, I have to play them to the end
+
+> I'm out now, but this is really just... ❤️  Thanks!
+
+### David (10:03, Friday, 20 March 2026)
+
+```
+this is beautiful
+could see it in an exhibit as-is tbh
+been playing pong on "hard"
+no pause button? heh
+part of me wonders if there are sentences that ought to come up in the margins, questions, like meditative accusations
+it's probably best to leave it open to interpretation
+an instant replay might also be a fun thing
+decisive moments
+guessing this is the music you were making you mentioned on a previous VMM?
+(switching to missile command) if you are going for an arcade thing, too, you might consider the score 
+missile command is beautiful
+it's odd how much of this is just serene in accepting a feeling of inevitable doom
+it also reminds me of this
+https://youtu.be/EPhBgRSj6YQ
+```
+
+Later
+
+```
+i hope it's helpful
+i think you can add more that also gives space for people to reflect / interpret
+i think the koans would be a bit heavyhanded, just depends
+there's likely a way to add score and the way the numbers change can be really really significant because w hat is in a point anyway?
+maybe the score is a timer ticking up as the time on the game ticks down
+```

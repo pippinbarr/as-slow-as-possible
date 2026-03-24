@@ -1,13 +1,13 @@
 # To-dos ("final" )
 
 ## Testing
-- Send to a couple of testers
+- ~~Send to a couple of testers~~
 
 ## Music
 - Looks like it'll be too hard for me to bother ~~One-time triggering of sounds for events? Or not worth it?~~
+- ~~"Headphones recommended"?~~
 
 - One more pass (maybe pending Gabriel's advice)
-- "Headphones recommended"?
 
 ## General
 
