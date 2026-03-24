@@ -2,14 +2,13 @@
 
 ![An image of a game of Pong](./images/as-slow-as-possible-banner.png)
 
-# [Play Online](../index.html)  
-#### (Mobile and desktop)
+# [Play Online](../index.html) (Mobile and desktop)
 
 ## Description
 
-*...*
+*Slow down.*
 
-*As Slow As Possible* is ...
+*As Slow As Possible* is a set of three slow arcade games. 
 
 *As Slow As Possible* was created using [Phaser 3](https://phaser.io/).
 

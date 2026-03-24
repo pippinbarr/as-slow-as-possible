@@ -4,10 +4,6 @@
 
 - Work on the info page etc.
 
-## Release prep
-
-- Work on the info page etc.
-
 ## Testing
 - ~~Send to a couple of testers~~
 
