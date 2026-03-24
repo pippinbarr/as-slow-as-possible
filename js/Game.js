@@ -249,7 +249,7 @@ class Game extends Phaser.Scene {
         }
 
         this.registry.set(freshData);
-        localStorage.setItem("as-slow-as-possible-data", JSON.stringify(freshData))
+        localStorage.setItem("asap-data", JSON.stringify(freshData))
 
         this.stopTimer();
         this.physics.pause();

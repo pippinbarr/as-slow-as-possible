@@ -39,8 +39,7 @@ class GameMenu extends Menu {
     super.create();
 
     // Load data
-    // localStorage.removeItem("as-slow-as-possible-data")
-    const playerDataString = localStorage.getItem("as-slow-as-possible-data");
+    const playerDataString = localStorage.getItem("asap-data");
 
     const playerData = JSON.parse(playerDataString);
     if (playerData) {
@@ -56,7 +55,7 @@ class GameMenu extends Menu {
         "missilecommand-slowest": true,
       };
       this.registry.set(freshData);
-      localStorage.setItem("as-slow-as-possible-data", JSON.stringify(freshData))
+      localStorage.setItem("asap-data", JSON.stringify(freshData))
     }
 
     this.createTitle(data.title);

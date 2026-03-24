@@ -41,7 +41,6 @@ let config = {
     Preloader,
     Title,
     GameMenu,
-    PlayersMenu,
     DifficultyMenu,
 
     Pong,
