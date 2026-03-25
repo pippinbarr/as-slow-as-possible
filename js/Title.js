@@ -89,6 +89,9 @@ class Title extends Phaser.Scene {
 
     this.input.once('pointerup', () => {
       if (!this.inputEnabled) return;
+
+      startTheMusic();
+
       // this.titleText.y -= 2;
       // this.titleText.x -= 2;
       // this.titleText.setTint(HIGHLIGHT_COLOR);

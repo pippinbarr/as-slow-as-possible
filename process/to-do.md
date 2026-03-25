@@ -4,7 +4,8 @@
 
 - ~~Work on the info page etc.~~
 
-- Update and push the website
+- ~~Update and push the website~~
+- ~~Add to itch.io~~
 - Tell people about it, tell everyone...
 
 ## Testing
@@ -28,8 +29,7 @@
 - Nope it's good ~~Is the slowest too slow? Need to try it~~
 - They look a little nicer now I think. ~~Typography of instructions?~~
 - I think so? ~~Is this otherwise actually ready?~~
-
-- Add the "as slow as possible" mode - locked or unlocked?
+- ~~Add the "as slow as possible" mode - locked or unlocked?~~
 
 ## Pong
 

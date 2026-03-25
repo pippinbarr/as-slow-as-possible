@@ -81,9 +81,6 @@ initStrudel({
   })
 });
 
-document.body.addEventListener("mousedown", startTheMusic)
-document.body.addEventListener("touchstart", startTheMusic)
-
 function startTheMusic() {
   stack(
     chord("<C G Am Am7 F7 F6 C G F C>")
