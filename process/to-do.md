@@ -6,7 +6,12 @@
 
 - ~~Update and push the website~~
 - ~~Add to itch.io~~
-- Tell people about it, tell everyone...
+- ~~Bluesky~~
+- ~~Instagram/Facebook~~
+- ~~Email pressy people~~
+- ~~Post on reddit~~
+- ~~Tell Discords~~
+- Yes, I need to ponder the mailing list idea. ~~Anything else??~~
 
 ## Testing
 - ~~Send to a couple of testers~~
