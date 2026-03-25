@@ -29,6 +29,8 @@
 - They look a little nicer now I think. ~~Typography of instructions?~~
 - I think so? ~~Is this otherwise actually ready?~~
 
+- Add the "as slow as possible" mode - locked or unlocked?
+
 ## Pong
 
 - ~~Syrup level~~

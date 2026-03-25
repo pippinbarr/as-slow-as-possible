@@ -24,17 +24,6 @@ class Game extends Phaser.Scene {
 
         this.timer = this.duration > 0 ? this.duration : 0;
 
-        this.timerText = this.add.text(this.width - 20, this.height - 20, "3:00", {
-            font: "48px sans-serif",
-            color: FG_COLOR_STRING,
-            padding: {
-                top: 0,
-                bottom: 0,
-            },
-        }).setOrigin(1, 1);
-        this.updateTimerText();
-        this.timerText.setVisible(false);
-
         this.timerBar = this.add.image(0, this.height, `particle`)
             .setTint(HIGHLIGHT_COLOR)
             .setOrigin(0, 1)
@@ -43,6 +32,10 @@ class Game extends Phaser.Scene {
         const TOUCH_INTERACTION = "Tap here to continue.";
         const KEYBOARD_INTERACTION = "Press space to continue."
         this.baseInteraction = this.sys.game.device.input.touch ? TOUCH_INTERACTION : KEYBOARD_INTERACTION;
+
+        if (this.duration === -1) {
+            this.timerBar.setVisible(false);
+        }
 
         this.instructionsText = this.add.text(this.width * 0.5, this.height * 0.5, this.instructions, {
             font: "36px sans-serif",
@@ -222,7 +215,6 @@ class Game extends Phaser.Scene {
 
                 this.stopPlay();
             }
-            this.updateTimerText();
             this.updateTimerBar();
         }
     }
@@ -295,25 +287,6 @@ class Game extends Phaser.Scene {
 
     stopTimer() {
         this.timerOn = false;
-    }
-
-    updateTimerText() {
-        const hours = Math.floor(this.timer / 60 / 60);
-        const hoursText = (hours < 10) ? "0" + hours : hours;
-
-        const minutes = Math.floor(this.timer / 60) - (hours * 60);
-        const minutesText = (minutes < 10) ? "0" + minutes : minutes;
-
-        const seconds = Math.floor(this.timer) - (hours * 60 * 60) - (minutes * 60);
-        const secondsText = (seconds < 10) ? "0" + seconds : seconds;
-
-
-        if (this.duration > 0) {
-            this.timerText.text = `${minutesText}:${secondsText}`;
-        }
-        else {
-            this.timerText.text = `${hoursText}:${minutesText}:${secondsText}`;
-        }
     }
 
     updateTimerBar() {

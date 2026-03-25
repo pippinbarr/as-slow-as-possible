@@ -44,6 +44,12 @@ class DifficultyMenu extends Menu {
           subtext: "Unlock by completing the game on Slower"
         },
         {
+          text: "As Slow As Possible",
+          toState: this.gameScene,
+          duration: -1,
+          timescale: SLOWEST_TIMESCALE
+        },
+        {
           text: "←",
           toState: "gamemenu",
           duration: 0
