@@ -10,7 +10,7 @@
 
 *As Slow As Possible* is a set of three slow arcade games. 
 
-*As Slow As Possible* was created using [Phaser 3](https://phaser.io/).
+*As Slow As Possible* was created using [Phaser 3](https://phaser.io/) (for the game engine) and [Strudel](https://strudel.cc/) (for the music pattern language). The version of *Missile Command* in the game is based on [mslcmd](https://github.com/domdom82/mslcmd) by Dominik Froehlich ([domdom82](https://github.com/domdom82)).
 
 ## Press
 
@@ -23,5 +23,5 @@ Read the [Press Kit](../press) for press information
 * Look at the [Code Repository](https://github.com/pippinbarr/as-slow-as-possible)
 
 ## License
-*As Slow As Possible* is licensed under a [MIT License](https://opensource.org/license/mit).
+*As Slow As Possible* is licensed under a [MIT License](https://opensource.org/license/mit). The license for mslcmd is available in its [folder in the repository](https://github.com/pippinbarr/as-slow-as-possible/tree/main/js/missilecommand).
  

@@ -1,8 +1,11 @@
 # To-dos ("final" )
 
-## Release prep
+## Release prep and flawless execution
 
-- Work on the info page etc.
+- ~~Work on the info page etc.~~
+
+- Update and push the website
+- Tell people about it, tell everyone...
 
 ## Testing
 - ~~Send to a couple of testers~~
@@ -24,8 +27,7 @@
 - Added this and I think it works ~~Spoke to Rilla who pointed out that *time itself* (in the form of the timer) feels like it moves too fast (which is a pretty brilliant observation)~~
 - Nope it's good ~~Is the slowest too slow? Need to try it~~
 - They look a little nicer now I think. ~~Typography of instructions?~~
-
-- Is this otherwise actually ready?
+- I think so? ~~Is this otherwise actually ready?~~
 
 ## Pong
 
