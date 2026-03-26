@@ -25,17 +25,6 @@ class Breakout extends Game {
         this.paddle.body.setImmovable(true)
             .setCollideWorldBounds(true)
 
-        // this.walls = this.physics.add.group();
-        // const leftWall = this.add.rectangle(-this.PADDLE_WIDTH * 0.5, this.height / 2, this.PADDLE_WIDTH, this.height);
-        // this.leftWall = this.physics.add.existing(leftWall);
-        // this.leftWall.body.setImmovable(true);
-        // this.walls.add(this.leftWall)
-
-        // const rightWall = this.add.rectangle(this.width + this.PADDLE_WIDTH * 0.5, this.height / 2, this.PADDLE_WIDTH, this.height, 0xffffff);
-        // this.rightWall = this.physics.add.existing(rightWall);
-        // this.rightWall.body.setImmovable(true);
-        // this.walls.add(this.rightWall)
-
         const ball = this.add.circle(this.width / 2, this.height / 1.4, this.PADDLE_HEIGHT * 0.75, HIGHLIGHT_COLOR);
         this.ball = this.physics.add.existing(ball)
 
@@ -81,14 +70,12 @@ class Breakout extends Game {
 
         this.physics.add.collider(this.ball, this.paddle, this.paddleHit);
         this.physics.add.collider(this.ball, this.bricks, this.brickHit, null, this);
-        // this.physics.add.collider(this.ball, this.walls, this.wallHit, null, this);
 
     }
 
     update(time, delta) {
         super.update(time, delta);
 
-        // this.handleInput();
 
         if (this.ball.y > this.height + this.ball.displayHeight) {
             this.ball.body.setVelocity(0, 0);
@@ -110,11 +97,6 @@ class Breakout extends Game {
             }, this.ballReviveDealy);
         }
     }
-
-    // handleInput() {
-    //     // Handles mouse and touch
-    //     this.paddle.x = Phaser.Math.Clamp(this.input.activePointer.x, this.PADDLE_WIDTH * 0.5, this.width - this.PADDLE_WIDTH * 0.5);
-    // }
 
     paddleHit(ball, paddle) {
         // May want to include "spin" here?

@@ -18,8 +18,6 @@ class Title extends Phaser.Scene {
 
     this.createTitle(title);
 
-    // this.createHelp();
-
     this.cameras.main.once('camerafadeincomplete', function (camera) {
 
     }, this);
@@ -68,44 +66,12 @@ class Title extends Phaser.Scene {
       },
     }).setOrigin(1, 1);
 
-
-    // this.titleText.setInteractive(new Phaser.Geom.Rectangle(0, 0, this.titleText.width, this.titleText.height), Phaser.Geom.Rectangle.Contains);
-
-    // this.titleText.on('pointerover', () => {
-    //   if (!this.inputEnabled) return;
-    //   this.titleText.setTint(HIGHLIGHT_COLOR);
-    // });
-
-    // this.titleText.on('pointerout', () => {
-    //   if (!this.inputEnabled) return;
-    //   this.titleText.setTint(0xffffff);
-    // });
-
-    // this.input.activePointer.on('pointerdown', () => {
-    //   if (!this.inputEnabled) return;
-    //   this.titleText.y += 2;
-    //   this.titleText.x += 2;
-    // });
-
     this.input.once('pointerup', () => {
       if (!this.inputEnabled) return;
 
       startTheMusic();
 
-      // this.titleText.y -= 2;
-      // this.titleText.x -= 2;
-      // this.titleText.setTint(HIGHLIGHT_COLOR);
-
       this.inputEnabled = false;
-      // this.cameras.main.fadeEffect.reset();
-      // this.cameras.main.setAlpha(this.fadeInProgress);
-      // this.cameras.main.fade(FADE_TIME, 0, 0, 255, false, (camera, progress) => {
-      //   if (progress == 1) {
-      //     this.scene.start(itemData.toState, itemData);
-      //   }
-      // });
-
-      // this.instructionsText.setAlpha(0)
 
       this.tweens.add({
         targets: this.titleContainer,

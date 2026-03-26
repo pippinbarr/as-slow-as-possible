@@ -21,13 +21,9 @@ class MissileCommand extends Game {
         super.create();
 
         this.input.setDefaultCursor('crosshair');
-        // this.input.on('pointerdown', () => {
-        //     this.launchMissile(this.input.activePointer);
-        // });
 
         this.ground = this.add.rectangle(this.width / 2, this.height * 0.95, this.width, 123 * 2, FG_COLOR)
         this.physics.add.existing(this.ground);
-        // this.ground.setStrokeStyle(2, 0x111111);
 
         this.enemyMissiles = [];
         this.pauseEnemyMissiles = false;
@@ -77,18 +73,10 @@ class MissileCommand extends Game {
 
     newTower(x, y) {
         const city = this.add.triangle(0, 0, 0, 50 * 2, 50 * 2, 50 * 2, 25 * 2, 0, FG_COLOR);
-        // city.setStrokeStyle(2, 0x111111);
         const tower = this.add.container(x, y, [city]);
         tower.setSize(50 * 2, 25 * 2);
         this.physics.add.existing(tower);
         tower.type = "tower";
-
-        // tower.missilesRemaining = 10;
-        // tower.missiles = [];
-        // for (let m = 0; m < tower.missilesRemaining; m++) {
-        // const missile = this.add.rectangle(tower.x - tower.width * 0.4 + (m * 5), tower.y + tower.displayHeight * 1.25, 4, 4, HIGHLIGHT_COLOR);
-        // tower.missiles.push(missile);
-        // }
 
         this.addMissileTo(tower);
 
@@ -126,14 +114,9 @@ class MissileCommand extends Game {
     }
 
     addMissileTo(tower) {
-        // if (tower.missiles.length > 0) {
         const missile = this.add.rectangle(tower.x, tower.y - tower.displayHeight, 4 * 2, 4 * 2, HIGHLIGHT_COLOR);
         this.physics.add.existing(missile);
         tower.missile = missile;
-
-        // const missileIcon = tower.missiles.pop();
-        // missileIcon.destroy();
-        // }
     }
 
     explode(x, y, radius, color) {
@@ -256,11 +239,6 @@ class MissileCommand extends Game {
                     tgt.missile.destroy();
                     tgt.missile = null;
                 }
-                // if (tgt.missiles) {
-                //     for (let m of tgt.missiles) {
-                //         m.destroy();
-                //     }
-                // }
 
                 tgt.body.setEnable(false);
                 tgt.setVisible(false);

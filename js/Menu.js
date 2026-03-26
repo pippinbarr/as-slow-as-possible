@@ -67,12 +67,10 @@ class Menu extends Phaser.Scene {
             bottom: 0,
           },
         }).setOrigin(0, 0);
-        // menuItemSubtext.setAlpha(0.666);
       }
 
       if (itemData.locked) {
         menuItemText.setAlpha(0.666);
-        // return;
       }
       else {
 

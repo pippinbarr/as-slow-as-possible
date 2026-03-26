@@ -46,12 +46,7 @@ let config = {
     Pong,
     Breakout,
     MissileCommand,
-    // SpaceInvaders
   ],
-  render: {
-    // pixelArt: true,
-  },
-  // pixelArt: true,
   physics: {
     default: 'arcade',
     arcade: {

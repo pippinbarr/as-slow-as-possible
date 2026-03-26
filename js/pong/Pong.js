@@ -57,11 +57,9 @@ class Pong extends Game {
     update(time, delta) {
         super.update(time, delta);
 
-        // this.handleInput();
         this.handleTopPaddle();
 
         if (this.ball.y > this.height + this.ball.displayHeight || this.ball.y < -this.ball.displayHeight) {
-            // this.addTimePenalty();
             this.ball.body.setVelocity(0, 0);
             this.ball.setAlpha(0);
             this.ball.setPosition(this.width / 2, this.height / 2);
@@ -79,11 +77,6 @@ class Pong extends Game {
         }
     }
 
-    // handleInput() {
-    //     // Handles mouse and touch
-    //     this.bottomPaddle.x = Phaser.Math.Clamp(this.input.activePointer.x, this.PADDLE_WIDTH * 0.5, this.width - this.PADDLE_WIDTH * 0.5);
-    // }
-
     left() {
         this.bottomPaddle.body.setVelocity(-this.PADDLE_SPEED, 0);
     }
@@ -97,27 +90,6 @@ class Pong extends Game {
     }
 
     handleTopPaddle() {
-        // let vx = this.ball.body.velocity.x;
-        // let vy = this.ball.body.velocity.y;
-        // let x = this.ball.x;
-        // let y = this.ball.y;
-
-        // // If the ball is coming towards the top paddle
-        // if (vy < 0) {
-        //     // Calculate where it will hit on x when it gets there
-        //     while (y > this.topPaddle.y) {
-        //         y += vy;
-        //         x += vx;
-        //         // Simulate hitting the walls and reversing vx
-        //         if (x < 0 || x > this.width) {
-        //             x -= vx;
-        //             vx *= -1;
-        //         }
-        //     }
-        // }
-        // else {
-        //     x = this.bottomPaddle.x;
-        // }
 
         if (this.ball.x < this.topPaddle.x) {
             this.topPaddle.body.setVelocity(-this.PADDLE_SPEED * 1.05, 0);
