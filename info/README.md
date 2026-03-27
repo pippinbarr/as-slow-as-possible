@@ -14,6 +14,9 @@
 
 ## Press
 
+- Rob Beschizza. [How slow can you play these classic arcade games?
+](https://boingboing.net/2026/03/27/how-slow-can-you-play-these-classic-arcade-games.html). *Boing Boing*. 27 March 2026.
+
 Read the [Press Kit](../press) for press information
 
 ## Documentation
