@@ -395,3 +395,67 @@ So my big next moves are:
 - Try out slow slower slowest
 - Try to figure out the SFX better
 - Ship em danno?
+
+## Let's see here... (2026-03-27)
+
+Released this game yesterday? Day before actually I think. 25th. To no particularly strong public effect, as happens. But
+
+### Sickos
+
+Have ended up thinking quite a bit about, or at least holding in my mind, Paolo Pedercini's idea of artists in today's post-social media (kinda) moment (and also the bigger "discoverability is either impossible or so much work you better think twice" era) needing to think about focusing more on a few "sickos" who actively appreciate and are interested in your work (and probably it is/should be reciprocal?). So that rather than thinking about making a game as something where you should "naturally" try to achieve the widest possible distribution, you should think more about the "quality" of the people who you do actually show it to. Sickos.
+
+There's a part of my game making soul that grew up *exactly* during a kind of social media boom on *Twitter* - and so *did* get to send work out to really quite large numbers of folks - that hurts when I don't get to really do that so much anymore. That is uncomfortable with the idea that I can very easily release a game to relative silence.
+
+But increasingly I'm leaning more toward the validity of the sickos idea. I could try *super hard* to *get attention* for the work I'm doing, but the problem is that it turns into an entire job on its own, a job I don't enjoy and that necessarily sucks time from making the games themselves. So I'm trying to steer my ship toward the sickos. In a sense I already do some of this - I know there's a core group of people (not many!) who I can reach out to directly and say "hey here's my new thing" and they'll take a look and even offer some thoughts on it (I very obviously got that from Gabriel, David, and Csongor above in their literal playtests). I think there's a really crucial reorienting toward the true value of someone else's genuine engagement and attention and insight, over the raw numbers of something being seen a lot.
+
+(All this said, I'll acknowledge that the numbers *are* useful. I do have a job, I do have to prove that I'm good at it. The people who evaluate me do understand numbers like "10,000 people played this game" better than "Csongor liked it!")
+
+The sickos thing makes me think about newsletters again, something I've "had" in the past but never really treated as an important angle. I've talked to Gordon a bunch about this stuff, and good ol *email* came up as a really useful, really basic concept. It also gels, I think, with the general "slow down" ethos that I think is kind of important. I just daydreamed about tiktoking my process but then I'm like... *really*? *Really, Pippin?* No, not really.
+
+So here's to the sickos? Here's to resurrecting my newsletter and actually thinking about it as a thing-in-itself? Here's to fewer eyes and more genuine care? Let's see.
+
+### Not what it was
+
+When I revisit the [Why](./why.md) document and more generally think about this project, I find something notable in the way it grew its focus - or maybe more actually stripped away things that were blurry or too much?
+
+The idea of a "slow arcade game" has room to express quite a few different ideas, and I thought about a bunch of them (or at least some of them) throughout, but I ended up mostly with some sort of "meditative state" version of things. I should/will write more about that separately, but what *isn't* the final game about in the end? (I tried to say some of this out loud to Matt the other day kind of unsuccessfully - or it's just not as profound as it feels internally perhaps.) Anyway, there were maybe two really separate conceptions of what this game could have been. 
+
+One was the idea of *skilful play* where the effect of the slowness is that it emphasizes the nature of skilled play because it allows *any* player to have the time to think and react, more or less cutting out the physical dexterity and high-speed-thinking that arcade games end up requireing. My thought was that there would be a kind of expert flow state involved - a marvelling at how "awesomely" you're playing the game. It applied maybe most of all when I was working of *Asteroids* which I ended up cutting (mostly because of mobile control issues). The idea of effortlessly pivoting, firing with precision, dancing around the screen, etc. The idea that if you played a session back at "normal" speed it would look like incredibly high level play and kind of *would* be? There was something to that - there's a *feeling* involved in that that's worth exploring and shaping. But I didn't do that - it's not that that's not still available in the game (you can play missile command with great expertise, say), it's that I chose not to *emphasize* it through design decisions surrounding the most fundamental "slow play" idea. There's the core idea (slow games) and then there's how you shape the experience of that through the myriad decisions involved in bringing it to life - the UI, the language, the visual representation, the music, the sfx, etc. I went another way (toward this meditative idea).
+
+The other idea I was interested in during early testing with *Pong* was the thought that there's an *erotic charge* involved when you slow things down. The main observation was that as the ball would approach the player paddle (my paddle - already feels like innuendo in this context!) there was this anticipation of being *touched* by another thing, a charge would build up around that, and then release with contact. And then the next touch would be anticipated etc. The slowness made that happen - I've never even thought about it when playing regular-speed Pong. Even as I write about this I remain pretty fascinated and keen to explore this, but at least in the game I made this time, I didn't emphasize these ideas and so again they're *there* (a player could think about the same thing that I did) but not shaped by design strongly occur to the player, to try to ramp up the erotic potential of the situation. (Occurs to me that missile command - despite its phallic stuff - doesn't really work in the same way? The key would seem to be the feeling of *being touched*.) So, this one is there and not there - I'd really like to explore it further. Sex sells, sickos.
+
+### What it is
+
+So what *is* it? Like I said, I think my pre-occuptation has been with the meditative side of things, definitely a continuation of stuff I thought about in *It is as if you were on your phone*. But it's not chasing the more explicit "Zen-stuff" I was interested in then, it's not as explicit in that way. I think the core of my idea here was around the games as a weird kind of interactive meditation timer - they occupy you for the length of a meditation, slowly, not overexciting you etc., marking time. And I think that works pretty well - I think the game communicates "meditation timer" relatively well in its design, particularly in terms of the UI stuff (the slow fades, the minimalist presentation, Rilla's contribution of the progress-bar style literal timer at the end there).
+
+*However*, Gabriel's comment about *nostalgia* helps me to properly see and acknowledge that it's *not* really, or not *only*, a meditation thing. One of the core elements of the game I didn't necessarily grapple with a ton as I made it, but was definitely aware of the whole time, was the *emotional* quality of play. Slowing these games down - and most especially Missile Command - gives them a different emotional quality. They aren't exciting and action-packed, they aren't particularly about victory, or winning and losing, because those things become moot when you can react more or less perfectly all the time (and also the games themselves don't acknowledge the basics of success/failure - they just reset etc. as necessary without points or "you lose"es etc.). 
+
+There's fact that these are old games from a different time in videogame history for sure, but it's the slowing down that changes the experience of them. The slowness means you spend more time operating at a different - distanced? - level relative to the game itself. You observe the game as you play it. If I may, the game seems a bit more vulnerable without its immersive/compulsive/engaging qualities? Your core concerns aren't the design concerns anymore - "reacting accurately in time", essentially? Now they're about having time and space to sit, to reflect, to watch, to assess, to feel?
+
+Nostalgia is literally an "ache for the past" or something right? That ache is very interesting. The slowness to me is something like a *stretch*? Stretches also kind of hurt "in a good way"? A good pain, a pain we seek out. A pain that's good *for* us in some way? And there's a layer, maybe of nostalgia for simplicity? For a slower pace of life? These are things that a slow game can communicate or facilitate our thinking and feeling about?
+
+And then there's the music - I didn't give the music a ton of really planned thought. I was inspired in part by some drums that Bea had put together in strudel.cc, and I was feeling (yep) my way towards something open and spare, something that wouldn't sound driving and repetitive, nothing with a clear fixed rhythmic propulsion. So the drums became kind of sparse, the chords blur into each other or sometimes aren't there at all, I randomized whether you'd hear any given drum or chord at all (or how much). All of this stuff was basically intuitive, but in retrospect it was intended to find a shape for that more emotional component of the slowness, and it's clear that it's almost sort of depressive - but ideally maybe swimming into the kind of deliciousness of that feeling, like goth music say? Luxuriating in a kind of poignant-feeling sadness? (Again, nostalgia is pretty strong here.) That pain is in the game without the music, but I think the music is what emphasizes it and encourages the player to *feel that way*. (I'm brand new to even remotely thinking about making music for my games at all - outside of some very basic generative stuff I've done - and especially new to questions of emotional tone in the music.) The key (or whatever) being established by the chords from *Let It Be* are part of all this too - I don't pretend to know how that actually works, but it's there as well and was chosen consciously as having the right kind of "mood" to match what I was thinking the game felt like.
+
+That musical part, the nostalgia part, that's no longer about *meditation* in any real way. Or it's a focused kind of "meditation" that's not the same as Zen - it's about dwelling in a feeling, a different kind of immersion? So the games are a way to spend time *feeling this way* ...? Kind of interesting to me.
+
+Also also, but I need to wrap up here: there's something specific about Missile Command. It's the star of the show to me, the one that works especially well. *Pong*/*Breakout* do a great job of surfacing the basic questions of slowness, waiting, anticipation; but Missile Command is the one where I think the emotional pitch works the best. Anyway, I was also just wanting to register: I think that *counter* to the ideas above about slowness being about skilful play and expertise, the slowness of Missile Command feels *tragic* to me? The war seen in slow motion doubles down on the horrible inevitability of the missiles incoming, the missiles outgoing, the vulnerability of the buildings, the endlessness of the war? I think there's some stuff in there too.
+
+### So...
+
+So I think... I started this talking about how I'd really refined down the point of the game, I'd thought it was meditative-but-using games, but in writing this and getting impressions (from sickos) it's apparent that: a) "meditation" is probably not exactly the right word and b) it's not as pure and focused as I thought, there's a bunch of complexity and multiple ideas still swimming in it. 
+
+Maybe that's always the case no matter how much you refine things, and maybe that's kind of awesome, but there's clearly more to think about in all of this about how this sort of minimal design can *still* be super complicated and blurry?
+
+### Later...
+
+Things to "follow up on" in design?
+
+- Nostalgia
+- Erotic charges and anticipation of being touched
+- Actual "proper" meditation
+- Slowness and "fake" extreme skill
+- Tragedy and inevitability at slow speeds
+
+Slowness is powerful. Let's go as slow as possible.
+
+Also I need to write a real closing statement. I'm hoping the above brain dump helps me.
