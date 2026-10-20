@@ -1,0 +1,169 @@
+class Menu extends Phaser.Scene {
+
+  constructor(config) {
+    super(config);
+
+    this.indent = 100;
+  }
+
+  create() {
+    this.width = this.game.canvas.width;
+    this.height = this.game.canvas.height;
+
+    this.cameras.main.setBackgroundColor(BG_COLOR);
+
+    if (!this.noFadeIn) {
+      this.cameras.main.once('camerafadeincomplete', function (camera) {
+
+      }, this);
+      this.cameras.main.fadeIn(FADE_TIME, 0, 0, 255, (camera, progress) => {
+        this.fadeInProgress = progress;
+      });
+    }
+
+    this.setupInput();
+
+    this.inputEnabled = true;
+  }
+
+  createTitle(title) {
+    // Title
+    this.titleText = this.add.text(this.indent, this.indent, title, {
+      font: "56px sans-serif",
+      color: FG_COLOR_STRING,
+      padding: {
+        top: 0,
+        bottom: 0,
+      },
+    }).setOrigin(0, 0);
+
+    // Underline
+    this.add.line(this.titleText.x, this.titleText.y + this.titleText.displayHeight, 0, 0, this.titleText.displayWidth, 0, HIGHLIGHT_COLOR)
+      .setOrigin(0, 0);
+  }
+
+  createMenu(data) {
+    this.data = data;
+    this.selected = 0;
+
+    this.menuItems = this.add.group();
+
+    // Go through the menu data and create menu items for each entry
+    for (let i = 0; i < data.length; i++) {
+      const itemData = data[i];
+      const menuItemText = this.add.text(this.indent, this.indent + 64 + 64 + (64 * 2 * i), itemData.text, {
+        font: "56px sans-serif",
+        color: this.selected === i ? HIGHLIGHT_COLOR_STRING : FG_COLOR_STRING,
+        padding: {
+          top: 0,
+          bottom: 0,
+        },
+      }).setOrigin(0, 0);
+      menuItemText.setPadding(0, 0, 0, 5);
+
+      data[i].menuItemText = menuItemText;
+
+      this.menuItems.add(menuItemText);
+
+      if (itemData.subtext && itemData.locked) {
+        const menuItemSubtext = this.add.text(menuItemText.x, menuItemText.y + menuItemText.height * 0.9, itemData.subtext, {
+          font: "32px sans-serif",
+          color: FG_COLOR_STRING,
+          padding: {
+            top: 0,
+            bottom: 0,
+          },
+        }).setOrigin(0, 0);
+      }
+
+      if (itemData.locked) {
+        menuItemText.setAlpha(0.666);
+      }
+      else {
+
+        // menuItemText.setInteractive(new Phaser.Geom.Rectangle(0, 0, menuItemText.width, menuItemText.height), Phaser.Geom.Rectangle.Contains);
+
+        // menuItemText.on('pointerover', () => {
+        // if (!this.inputEnabled) return;
+        // menuItemText.setTint(HIGHLIGHT_COLOR);
+        // });
+
+        // menuItemText.on('pointerout', () => {
+        // if (!this.inputEnabled) return;
+        // menuItemText.setTint(0xffffff);
+        // });
+
+        // menuItemText.on('pointerdown', () => {
+        //   if (!this.inputEnabled) return;
+        //   menuItemText.y += 2;
+        //   menuItemText.x += 2;
+        // });
+
+        // menuItemText.on('pointerup', () => {
+        //   if (!this.inputEnabled) return;
+        //   menuItemText.y -= 2;
+        //   menuItemText.x -= 2;
+        //   menuItemText.setTint(HIGHLIGHT_COLOR);
+
+        //   this.inputEnabled = false;
+        //   this.cameras.main.fadeEffect.reset();
+        //   this.cameras.main.setAlpha(this.fadeInProgress);
+        //   this.cameras.main.fade(FADE_TIME, 0, 0, 255, false, (camera, progress) => {
+        //     if (progress == 1) {
+        //       this.scene.start(itemData.toState, itemData);
+        //     }
+        //   });
+        // });
+      }
+    }
+
+  }
+
+  setupInput() {
+    this.cursors = this.input.keyboard.createCursorKeys();
+
+    this.inputEnabled = false;
+
+    this.cursors.up.on("down", this.up, this);
+    this.cursors.down.on("down", this.down, this);
+    this.cursors.space.on("down", this.select, this);
+  }
+
+  up() {
+    if (!this.inputEnabled) return;
+
+    this.data[this.selected].menuItemText.setColor(FG_COLOR_STRING);
+    this.selected--;
+    if (this.selected < 0) this.selected = this.data.length - 1;
+    while (this.data[this.selected].locked) {
+      this.selected--;
+      if (this.selected < 0) this.selected = this.data.length - 1;
+    }
+    this.data[this.selected].menuItemText.setColor(HIGHLIGHT_COLOR_STRING);
+  }
+
+  down() {
+    if (!this.inputEnabled) return;
+
+    this.data[this.selected].menuItemText.setColor(FG_COLOR_STRING);
+    this.selected = (this.selected + 1) % this.data.length;
+    while (this.data[this.selected].locked) {
+      this.selected = (this.selected + 1) % this.data.length;
+    }
+    this.data[this.selected].menuItemText.setColor(HIGHLIGHT_COLOR_STRING);
+  }
+
+  select() {
+    if (!this.inputEnabled) return;
+
+    this.inputEnabled = false;
+    this.cameras.main.fadeEffect.reset();
+    this.cameras.main.setAlpha(this.fadeInProgress);
+    this.cameras.main.fade(FADE_TIME, 0, 0, 255, false, (camera, progress) => {
+      if (progress == 1) {
+        this.scene.start(this.data[this.selected].toState, this.data[this.selected]);
+      }
+    });
+  }
+
+}

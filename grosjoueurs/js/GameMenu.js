@@ -1,0 +1,73 @@
+class GameMenu extends Menu {
+
+  constructor(config) {
+    super({
+      key: "gamemenu"
+    });
+  }
+
+  create() {
+    this.input.setDefaultCursor('default');
+
+    const data = {
+      title: "As Slow As Possible",
+      menuItems: [
+        {
+          text: "Pong",
+          title: "Pong",
+          state: "pong",
+          toState: "difficultymenu"
+        },
+        {
+          text: "Breakout",
+          title: "Breakout",
+          state: "breakout",
+          toState: "difficultymenu"
+
+        },
+        {
+          text: "Missile Command",
+          title: "Missile Command",
+          state: "missilecommand",
+          toState: "difficultymenu"
+        }
+      ]
+    };
+
+    this.noFadeIn = true;
+
+    super.create();
+
+    // Load data
+    const playerDataString = localStorage.getItem("asap-data");
+
+    const playerData = JSON.parse(playerDataString);
+    if (playerData) {
+      this.registry.set(playerData);
+    }
+    else {
+      const freshData = {
+        "pong-slower": false,
+        "pong-slowest": false,
+        "breakout-slower": false,
+        "breakout-slowest": false,
+        "missilecommand-slower": false,
+        "missilecommand-slowest": false,
+      };
+      this.registry.set(freshData);
+      localStorage.setItem("asap-data", JSON.stringify(freshData))
+    }
+
+    this.createTitle(data.title);
+
+    this.createMenu(data.menuItems);
+
+    this.menuItems.setAlpha(0);
+    this.tweens.add({
+      targets: this.menuItems.getChildren(),
+      alpha: 1,
+      duration: FADE_TIME
+    })
+  }
+
+}
