@@ -118,7 +118,16 @@ class Game extends Phaser.Scene {
     setupInput() {
         this.cursors = this.input.keyboard.createCursorKeys();
 
+        this.input.keyboard.on('keydown-ENTER', this.reset, this);
+
         this.inputEnabled = false;
+    }
+
+    reset() {
+        this.stopTimer();
+        this.inputEnabled = false;
+        this.physics.pause();
+        this.toMenu();
     }
 
     startPlay() {
